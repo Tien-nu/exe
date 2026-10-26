@@ -3,8 +3,8 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Nghệ nhân | Yarnly",
-  description: "Các gian hàng đồ len handmade trên Yarnly.",
+  title: "Artisans | Yarnly",
+  description: "Handmade crochet shops on Yarnly.",
 }
 
 export default async function ArtisansPage() {
@@ -12,9 +12,9 @@ export default async function ArtisansPage() {
 
   return (
     <div className="content-container py-12">
-      <h1 className="text-3xl-regular mb-2">Nghệ nhân trên Yarnly</h1>
+      <h1 className="text-3xl-regular mb-2">Artisans on Yarnly</h1>
       <p className="txt-medium text-ui-fg-subtle mb-8">
-        Mỗi món đồ len được làm bởi một nghệ nhân thật. Chọn gian hàng để xem sản phẩm.
+        Every crochet piece is made by a real artisan. Choose a shop to explore its products.
       </p>
       <ul className="grid grid-cols-1 small:grid-cols-2 medium:grid-cols-3 gap-4">
         {artisans.map((artisan) => (
@@ -37,12 +37,12 @@ export default async function ArtisansPage() {
         ))}
       </ul>
       <div className="mt-12 rounded-md bg-violet-50 p-6">
-        <p className="txt-medium-plus">Bạn là người làm đồ len handmade?</p>
+        <p className="txt-medium-plus">Do you make handmade crochet?</p>
         <p className="txt-medium text-ui-fg-subtle mb-3">
-          Mở gian hàng miễn phí trên Yarnly, nhận đơn và nhận tiền mỗi thứ Hai.
+          Open a free shop on Yarnly, receive orders, and get paid every Monday.
         </p>
         <LocalizedClientLink href="/kenh-nghe-nhan/dang-ky" className="text-violet-700 underline">
-          Đăng ký làm nghệ nhân
+          Become an artisan
         </LocalizedClientLink>
       </div>
     </div>

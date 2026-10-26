@@ -6,12 +6,12 @@ import { clx } from "@modules/common/components/ui"
 import { useParams, usePathname } from "next/navigation"
 
 const LINKS = [
-  { href: "/kenh-nghe-nhan", label: "Tổng quan" },
-  { href: "/kenh-nghe-nhan/don-hang", label: "Đơn hàng có sẵn" },
-  { href: "/kenh-nghe-nhan/don-lam-rieng", label: "Đơn làm riêng" },
-  { href: "/kenh-nghe-nhan/san-pham", label: "Sản phẩm" },
-  { href: "/kenh-nghe-nhan/thu-nhap", label: "Thu nhập" },
-  { href: "/kenh-nghe-nhan/ho-so", label: "Hồ sơ gian hàng" },
+  { href: "/kenh-nghe-nhan", label: "Overview" },
+  { href: "/kenh-nghe-nhan/don-hang", label: "Ready-made orders" },
+  { href: "/kenh-nghe-nhan/don-lam-rieng", label: "Custom orders" },
+  { href: "/kenh-nghe-nhan/san-pham", label: "Products" },
+  { href: "/kenh-nghe-nhan/thu-nhap", label: "Earnings" },
+  { href: "/kenh-nghe-nhan/ho-so", label: "Shop profile" },
 ]
 
 export default function PortalNav({ shopName }: { shopName: string }) {
@@ -43,7 +43,7 @@ export default function PortalNav({ shopName }: { shopName: string }) {
       })}
       <form action={() => artisanLogout(countryCode)}>
         <button type="submit" className="mt-4 w-full rounded-md px-3 py-2 text-left txt-medium text-ui-fg-subtle hover:bg-gray-100">
-          Đăng xuất
+          Sign out
         </button>
       </form>
     </nav>

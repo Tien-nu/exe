@@ -379,10 +379,6 @@ export async function setAddresses(currentState: unknown, formData: FormData) {
         phone: formData.get("shipping_address.phone"),
       },
       email: formData.get("email"),
-      metadata: {
-        district_id: formData.get("district_id"),
-        ward_code: formData.get("ward_code"),
-      }
     } as any
 
     const sameAsBilling = formData.get("same_as_billing")
@@ -403,11 +399,13 @@ export async function setAddresses(currentState: unknown, formData: FormData) {
       }
     await updateCart(data)
 
-    // Auto-select first shipping option
-    const shippingOptions = await listCartShippingMethods(cartId)
-    if (shippingOptions && shippingOptions.length > 0) {
-      await setShippingMethod({ cartId, shippingMethodId: shippingOptions[0].id })
+    // Keep the address form open when quoting fails; never enter payment
+    // without a valid shipping method and hide the failure there.
+    const shippingOptions = await listCartShippingMethods(cartId, true)
+    if (!shippingOptions?.length) {
+      throw new Error("Unable to calculate shipping. Check your province, district, and ward, then try again.")
     }
+    await setShippingMethod({ cartId, shippingMethodId: shippingOptions[0].id })
   } catch (e: any) {
     return e.message
   }

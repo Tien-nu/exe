@@ -20,21 +20,21 @@ const Hint = ({ subOrder }: { subOrder: CustomerSubOrder }) => {
 
   switch (subOrder.status) {
     case "pending_payment":
-      return <>Chờ bạn chuyển khoản.</>
+      return <>Awaiting your bank transfer.</>
     case "pending_acceptance":
-      return <>{shop} sẽ xác nhận trước {formatDateTime(subOrder.accept_deadline)}.</>
+      return <>{shop} will confirm before {formatDateTime(subOrder.accept_deadline)}.</>
     case "processing":
       return subOrder.due_date ? (
-        <>{shop} đang làm, dự kiến xong trước {formatDate(subOrder.due_date)}.</>
+        <>{shop} is making your order, due before {formatDate(subOrder.due_date)}.</>
       ) : (
-        <>{shop} đang chuẩn bị hàng.</>
+        <>{shop} is preparing your items.</>
       )
     case "ready_to_ship":
-      return <>Đã làm xong, Yarnly đang tạo đơn vận chuyển.</>
+      return <>Production complete. Yarnly is arranging shipment.</>
     case "shipping":
       return (
         <>
-          {subOrder.carrier} – mã vận đơn{" "}
+          {subOrder.carrier} – tracking number{" "}
           {subOrder.tracking_url ? (
             <a href={subOrder.tracking_url} target="_blank" rel="noreferrer" className="font-semibold text-violet-700 underline">
               {subOrder.tracking_number}
@@ -43,20 +43,20 @@ const Hint = ({ subOrder }: { subOrder: CustomerSubOrder }) => {
             <strong>{subOrder.tracking_number}</strong>
           )}
           {subOrder.carrier_status_label && ` · ${subOrder.carrier_status_label}`}
-          {subOrder.expected_delivery_at && ` · dự kiến giao ${formatDate(subOrder.expected_delivery_at)}`}
+          {subOrder.expected_delivery_at && ` · estimated delivery ${formatDate(subOrder.expected_delivery_at)}`}
           {"."}
         </>
       )
     case "delivered":
-      return <>Đã giao lúc {formatDateTime(subOrder.delivered_at)}, tự hoàn thành sau 2 ngày.</>
+      return <>Delivered at {formatDateTime(subOrder.delivered_at)}, automatically completed after 2 days.</>
     case "completed":
-      return <>Hoàn thành. Cảm ơn bạn!</>
+      return <>Completed. Thank you!</>
     case "canceled":
       return (
         <>
           {subOrder.cancel_reason}
-          {subOrder.refund_status === "pending" && " · Yarnly sẽ hoàn tiền cho bạn."}
-          {subOrder.refund_status === "refunded" && " · Đã hoàn tiền."}
+          {subOrder.refund_status === "pending" && " · Yarnly will refund you."}
+          {subOrder.refund_status === "refunded" && " · Refunded."}
         </>
       )
     default:
@@ -75,7 +75,7 @@ const SubOrderCard = ({ subOrder }: { subOrder: CustomerSubOrder }) => {
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div>
           <p className="txt-medium-plus">
-            Đơn {subOrder.code}
+            Order {subOrder.code}
             {subOrder.artisan && (
               <>
                 {" · "}
@@ -89,14 +89,14 @@ const SubOrderCard = ({ subOrder }: { subOrder: CustomerSubOrder }) => {
             )}
           </p>
           {subOrder.is_custom && (
-            <p className="txt-small text-violet-700">Làm theo yêu cầu riêng</p>
+            <p className="txt-small text-violet-700">Custom made</p>
           )}
         </div>
         <span
           className={`rounded-full px-3 py-1 txt-small-plus ${SUB_ORDER_BADGE[subOrder.status]}`}
         >
           {subOrder.status === "pending_acceptance"
-            ? `Chờ ${subOrder.artisan?.shop_name ?? "shop"} xác nhận`
+            ? `Waiting for ${subOrder.artisan?.shop_name ?? "shop"} confirmed`
             : subOrder.status_label}
         </span>
       </div>
@@ -114,10 +114,10 @@ const SubOrderCard = ({ subOrder }: { subOrder: CustomerSubOrder }) => {
         ))}
       </ul>
       <p className="mt-1 flex justify-between gap-4 txt-medium text-ui-fg-subtle">
-        <span>Phí ship GHN</span>
+        <span>Shipping fee</span>
         <span>
           {subOrder.shipping_charged === null
-            ? "Trả cho shipper khi nhận"
+            ? "Pay the carrier on delivery"
             : formatVnd(subOrder.shipping_charged)}
         </span>
       </p>
@@ -132,24 +132,24 @@ const SubOrderCard = ({ subOrder }: { subOrder: CustomerSubOrder }) => {
             isLoading={pending}
             onClick={async () => {
               const ok = await confirm({
-                title: `Huỷ đơn ${subOrder.code}?`,
+                title: `Cancel order ${subOrder.code}?`,
                 description: subOrder.artisan
-                  ? `Phần hàng của ${subOrder.artisan.shop_name} sẽ bị huỷ. Các phần khác của đơn vẫn giữ nguyên.`
+                  ? `Items from ${subOrder.artisan.shop_name} will be canceled. Other parts of the order will remain unchanged.`
                   : undefined,
-                confirmText: "Huỷ đơn",
-                cancelText: "Giữ lại",
+                confirmText: "Cancel order",
+                cancelText: "Keep order",
                 tone: "danger",
               })
               if (!ok) return
               startTransition(async () => {
                 const result = await cancelSubOrder(subOrder.id)
                 if (result.error) toast.error(result.error)
-                else toast.success(`Đã huỷ đơn ${subOrder.code}`)
+                else toast.success(`Canceled order ${subOrder.code}`)
                 router.refresh()
               })
             }}
           >
-            Huỷ đơn này
+            Cancel this order
           </Button>
         </div>
       )}

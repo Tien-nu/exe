@@ -4,6 +4,7 @@ module.exports = {
   darkMode: "class",
   presets: [require("@medusajs/ui-preset")],
   content: [
+    "./node_modules/@medusajs/ui/dist/**/*.{js,jsx,ts,tsx}",
     "./src/app/**/*.{js,ts,jsx,tsx}",
     "./src/pages/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",

@@ -1,10 +1,8 @@
-import { listCartShippingMethods } from "@lib/data/fulfillment"
 import { listCartPaymentMethods } from "@lib/data/payment"
 import { HttpTypes } from "@medusajs/types"
 import Addresses from "@modules/checkout/components/addresses"
 import Payment from "@modules/checkout/components/payment"
 import Review from "@modules/checkout/components/review"
-import Shipping from "@modules/checkout/components/shipping"
 
 export default async function CheckoutForm({
   cart,
@@ -13,24 +11,38 @@ export default async function CheckoutForm({
   cart: HttpTypes.StoreCart | null
   customer: HttpTypes.StoreCustomer | null
 }) {
-  if (!cart) {
-    return null
-  }
+  if (!cart) return null
 
-  const shippingMethods = await listCartShippingMethods(cart.id)
+  // Address submission owns shipping quotes. A failed quote must not hide
+  // the entire form or prevent customers from correcting their address.
   const paymentMethods = await listCartPaymentMethods(cart.region?.id ?? "")
-
-  if (!shippingMethods || !paymentMethods) {
-    return null
-  }
 
   return (
     <div className="w-full grid grid-cols-1 gap-y-8">
       <Addresses cart={cart} customer={customer} />
-
-      <Payment cart={cart} availablePaymentMethods={paymentMethods} />
-
-      <Review cart={cart} />
+      {paymentMethods?.length ? (
+        <>
+          <Payment
+            cart={cart}
+            availablePaymentMethods={paymentMethods}
+            qrPayment={process.env.PAYMENT_MODE === "simulation"}
+          />
+          <Review cart={cart} />
+        </>
+      ) : (
+        <section
+          role="alert"
+          className="rounded-md border border-red-200 bg-red-50 p-4 text-red-800"
+        >
+          <h2 className="font-semibold">Unable to load payment methods</h2>
+          <p className="mt-2">
+            You can still edit your address. Reload the page to try again.
+          </p>
+          <a className="mt-3 inline-block underline" href="?step=payment">
+            Retry payment
+          </a>
+        </section>
+      )}
     </div>
   )
 }

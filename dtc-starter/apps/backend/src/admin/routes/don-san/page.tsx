@@ -86,7 +86,7 @@ const useAction = () => {
     mutationFn: ({ path, body }: { path: string; body?: unknown }) =>
       api(path, { method: "POST", body: body ?? {} }),
     onSuccess: () => {
-      toast.success("Đã cập nhật")
+      toast.success("Updated")
       refresh()
     },
     onError: (error: Error) => toast.error(error.message),
@@ -111,7 +111,7 @@ const ItemsCell = ({ subOrder }: { subOrder: SubOrder }) => (
     ))}
     {subOrder.is_custom && (
       <Text size="xsmall" className="text-ui-fg-interactive">
-        Làm theo yêu cầu riêng
+        Custom made
       </Text>
     )}
   </div>
@@ -132,8 +132,8 @@ const TransfersTab = () => {
     refetchInterval: 30000,
   })
 
-  if (isLoading) return <Empty>Đang tải…</Empty>
-  if (!data?.orders.length) return <Empty>Không có đơn nào chờ xác nhận chuyển khoản.</Empty>
+  if (isLoading) return <Empty>Loading…</Empty>
+  if (!data?.orders.length) return <Empty>No orders are awaiting transfer confirmation.</Empty>
 
   return (
     <>
@@ -141,11 +141,11 @@ const TransfersTab = () => {
     <Table>
       <Table.Header>
         <Table.Row>
-          <Table.HeaderCell>Đơn</Table.HeaderCell>
-          <Table.HeaderCell>Khách</Table.HeaderCell>
-          <Table.HeaderCell>Nội dung CK</Table.HeaderCell>
-          <Table.HeaderCell>Số tiền</Table.HeaderCell>
-          <Table.HeaderCell>Trạng thái</Table.HeaderCell>
+          <Table.HeaderCell>Order</Table.HeaderCell>
+          <Table.HeaderCell>Customer</Table.HeaderCell>
+          <Table.HeaderCell>Transfer reference</Table.HeaderCell>
+          <Table.HeaderCell>Amount</Table.HeaderCell>
+          <Table.HeaderCell>Status</Table.HeaderCell>
           <Table.HeaderCell />
         </Table.Row>
       </Table.Header>
@@ -173,8 +173,8 @@ const TransfersTab = () => {
                 <StatusBadge color={status.color}>{status.label}</StatusBadge>
                 <Text size="xsmall" className="text-ui-fg-subtle">
                   {order.payment_status === "transfer_submitted"
-                    ? `Báo lúc ${formatDateTime(order.transfer_submitted_at)}`
-                    : `Hạn ${formatDateTime(order.payment_deadline)}`}
+                    ? `Reported at ${formatDateTime(order.transfer_submitted_at)}`
+                    : `Deadline ${formatDateTime(order.payment_deadline)}`}
                 </Text>
               </Table.Cell>
               <Table.Cell>
@@ -183,34 +183,34 @@ const TransfersTab = () => {
                     size="small"
                     onClick={async () => {
                       const confirmed = await prompt({
-                        title: `Xác nhận đã nhận ${formatVnd(amount)}?`,
-                        description: `Chỉ xác nhận khi sao kê có giao dịch nội dung "YARNLY ${order.display_id}".`,
-                        confirmText: "Đã nhận tiền",
-                        cancelText: "Huỷ",
+                        title: `Confirm receipt of ${formatVnd(amount)}?`,
+                        description: `Only confirm when your statement includes a transaction with reference "YARNLY ${order.display_id}".`,
+                        confirmText: "Payment received",
+                        cancelText: "Cancel",
                       })
                       if (confirmed) {
                         action.mutate({ path: `/orders/${order.id}/confirm-payment` })
                       }
                     }}
                   >
-                    Đã nhận tiền
+                    Payment received
                   </Button>
                   <Button
                     size="small"
                     variant="secondary"
                     onClick={async () => {
                       const values = await ask({
-                        title: `Huỷ đơn #${order.display_id} vì không nhận được tiền?`,
-                        description: "Các đơn con đang chờ thanh toán sẽ bị huỷ và khách nhận email kèm lý do.",
+                        title: `Cancel order #${order.display_id} because payment was not received?`,
+                        description: "Suborders awaiting payment will be canceled and the customer will receive an email explaining why.",
                         fields: [
                           {
                             name: "reason",
-                            label: "Lý do gửi khách",
-                            defaultValue: "Yarnly không nhận được tiền chuyển khoản",
+                            label: "Reason sent to customer",
+                            defaultValue: "Yarnly did not receive the bank transfer",
                             multiline: true,
                           },
                         ],
-                        confirmText: "Huỷ đơn",
+                        confirmText: "Cancel order",
                         variant: "danger",
                       })
                       if (values) {
@@ -221,7 +221,7 @@ const TransfersTab = () => {
                       }
                     }}
                   >
-                    Không nhận được
+                    Payment not received
                   </Button>
                 </div>
               </Table.Cell>
@@ -271,22 +271,22 @@ const GhnButton = ({ subOrder }: { subOrder: SubOrder }) => {
         body: {},
       })
       const confirmed = await prompt({
-        title: `Tạo vận đơn GHN cho đơn ${subOrder.code}?`,
+        title: `Create a GHN shipment for order ${subOrder.code}?`,
         description:
-          `Lấy hàng: ${quote.from.name}, ${quote.from.address}, ${quote.from.ward_name}, ${quote.from.district_name}, ${quote.from.province_name}. ` +
-          `Giao tới: ${quote.to.name} (${quote.to.phone}), ${quote.to.address}. ` +
-          `Phí ship ${formatVnd(quote.total_fee)} (khách trả khi nhận)` +
-          (quote.cod_amount ? `, thu hộ tiền hàng ${formatVnd(quote.cod_amount)}.` : ", không thu hộ (đã chuyển khoản).") +
-          (quote.expected_delivery_time ? ` Dự kiến giao ${formatDate(quote.expected_delivery_time)}.` : ""),
-        confirmText: "Đặt shipper GHN",
-        cancelText: "Huỷ",
+          `Pickup: ${quote.from.name}, ${quote.from.address}, ${quote.from.ward_name}, ${quote.from.district_name}, ${quote.from.province_name}. ` +
+          `Delivery: ${quote.to.name} (${quote.to.phone}), ${quote.to.address}. ` +
+          `Shipping fee ${formatVnd(quote.total_fee)} (paid by customer on delivery)` +
+          (quote.cod_amount ? `, collect payment for items ${formatVnd(quote.cod_amount)}.` : ", no collection (paid by bank transfer).") +
+          (quote.expected_delivery_time ? ` Estimated delivery ${formatDate(quote.expected_delivery_time)}.` : ""),
+        confirmText: "Book GHN pickup",
+        cancelText: "Cancel",
       })
       if (!confirmed) return
       const created = await api<{ order_code: string }>(`/sub-orders/${subOrder.id}/ghn`, {
         method: "POST",
         body: {},
       })
-      toast.success(`Đã tạo vận đơn GHN ${created.order_code}`)
+      toast.success(`Created GHN shipment ${created.order_code}`)
       refresh()
     } catch (error) {
       toast.error((error as Error).message)
@@ -297,7 +297,7 @@ const GhnButton = ({ subOrder }: { subOrder: SubOrder }) => {
 
   return (
     <Button size="small" isLoading={busy} onClick={book}>
-      Tạo vận đơn GHN
+      Create GHN shipment
     </Button>
   )
 }
@@ -308,8 +308,8 @@ const ReadyToShipTab = () => {
   const ghnEnabled = useGhnEnabled()
   const { data, isLoading } = useSubOrders("status=ready_to_ship")
 
-  if (isLoading) return <Empty>Đang tải…</Empty>
-  if (!data?.sub_orders.length) return <Empty>Không có đơn nào chờ tạo vận đơn.</Empty>
+  if (isLoading) return <Empty>Loading…</Empty>
+  if (!data?.sub_orders.length) return <Empty>No orders are awaiting shipment creation.</Empty>
 
   return (
     <>
@@ -317,11 +317,11 @@ const ReadyToShipTab = () => {
     <Table>
       <Table.Header>
         <Table.Row>
-          <Table.HeaderCell>Đơn</Table.HeaderCell>
-          <Table.HeaderCell>Lấy hàng tại</Table.HeaderCell>
-          <Table.HeaderCell>Giao tới</Table.HeaderCell>
-          <Table.HeaderCell>Hàng</Table.HeaderCell>
-          <Table.HeaderCell>Thu hộ</Table.HeaderCell>
+          <Table.HeaderCell>Order</Table.HeaderCell>
+          <Table.HeaderCell>Pickup address</Table.HeaderCell>
+          <Table.HeaderCell>Delivery address</Table.HeaderCell>
+          <Table.HeaderCell>Items</Table.HeaderCell>
+          <Table.HeaderCell>Collection</Table.HeaderCell>
           <Table.HeaderCell />
         </Table.Row>
       </Table.Header>
@@ -340,7 +340,7 @@ const ReadyToShipTab = () => {
               </Text>
               {!sub.artisan.pickup_ward_name && (
                 <Text size="xsmall" className="text-ui-fg-error">
-                  Nghệ nhân chưa chọn Phường/Quận lấy hàng – chưa tạo được vận đơn GHN
+                  The artisan has not selected a pickup ward/district. A GHN shipment cannot be created yet
                 </Text>
               )}
             </Table.Cell>
@@ -358,11 +358,11 @@ const ReadyToShipTab = () => {
             <Table.Cell>
               {sub.shipping_charged === null
                 ? sub.marketplace_order.payment_method === "cod"
-                  ? `Thu ${formatVnd(sub.subtotal)} + ship (đơn cũ)`
-                  : "Chỉ phí ship (đơn cũ)"
+                  ? `Thu ${formatVnd(sub.subtotal)} + shipping (legacy order)`
+                  : "Shipping only (legacy order)"
                 : sub.marketplace_order.payment_method === "cod"
                   ? `Thu ${formatVnd(paid(sub))}`
-                  : "Đã trả trước – không thu"}
+                  : "Prepaid – no collection"}
             </Table.Cell>
             <Table.Cell>
               <div className="flex flex-col gap-y-2">
@@ -372,13 +372,13 @@ const ReadyToShipTab = () => {
                   variant="secondary"
                   onClick={async () => {
                     const values = await ask({
-                      title: `Nhập vận đơn cho đơn ${sub.code}`,
-                      description: "Dùng khi gửi hàng qua đơn vị khác hoặc đã tạo vận đơn ngoài hệ thống.",
+                      title: `Enter shipment details for order ${sub.code}`,
+                      description: "Use this for another carrier or a shipment booked outside the system.",
                       fields: [
-                        { name: "carrier", label: "Đơn vị vận chuyển", placeholder: "VD: GHTK, Viettel Post", required: true },
-                        { name: "tracking_number", label: "Mã vận đơn", required: true },
+                        { name: "carrier", label: "Carrier", placeholder: "VD: GHTK, Viettel Post", required: true },
+                        { name: "tracking_number", label: "Tracking number", required: true },
                       ],
-                      confirmText: "Lưu vận đơn",
+                      confirmText: "Save shipment",
                     })
                     if (values) {
                       action.mutate({
@@ -388,7 +388,7 @@ const ReadyToShipTab = () => {
                     }
                   }}
                 >
-                  Nhập tay
+                  Enter manually
                 </Button>
               </div>
             </Table.Cell>
@@ -405,17 +405,17 @@ const ShippingTab = () => {
   const prompt = usePrompt()
   const { data, isLoading } = useSubOrders("status=shipping")
 
-  if (isLoading) return <Empty>Đang tải…</Empty>
-  if (!data?.sub_orders.length) return <Empty>Không có đơn nào đang giao.</Empty>
+  if (isLoading) return <Empty>Loading…</Empty>
+  if (!data?.sub_orders.length) return <Empty>No orders are in transit.</Empty>
 
   return (
     <Table>
       <Table.Header>
         <Table.Row>
-          <Table.HeaderCell>Đơn</Table.HeaderCell>
-          <Table.HeaderCell>Vận đơn</Table.HeaderCell>
-          <Table.HeaderCell>Giao tới</Table.HeaderCell>
-          <Table.HeaderCell>Hàng</Table.HeaderCell>
+          <Table.HeaderCell>Order</Table.HeaderCell>
+          <Table.HeaderCell>Shipment</Table.HeaderCell>
+          <Table.HeaderCell>Delivery address</Table.HeaderCell>
+          <Table.HeaderCell>Items</Table.HeaderCell>
           <Table.HeaderCell />
         </Table.Row>
       </Table.Header>
@@ -462,7 +462,7 @@ const ShippingTab = () => {
                   size="small"
                   onClick={() => action.mutate({ path: `/sub-orders/${sub.id}/deliver` })}
                 >
-                  Đã giao
+                  Delivered
                 </Button>
                 {sub.carrier === "GHN" && (
                   <Button
@@ -470,10 +470,10 @@ const ShippingTab = () => {
                     variant="secondary"
                     onClick={async () => {
                       const ok = await prompt({
-                        title: `Huỷ vận đơn GHN ${sub.tracking_number}?`,
-                        description: "Chỉ huỷ được khi shipper chưa lấy hàng. Đơn con sẽ quay về \"Chờ giao hàng\" để tạo vận đơn mới.",
-                        confirmText: "Huỷ vận đơn",
-                        cancelText: "Giữ lại",
+                        title: `Cancel GHN shipment ${sub.tracking_number}?`,
+                        description: "You can only cancel before pickup. The suborder will return to \"Awaiting shipment\" so a new shipment can be created.",
+                        confirmText: "Cancel shipment",
+                        cancelText: "Keep order",
                         variant: "danger",
                       })
                       if (ok) {
@@ -481,7 +481,7 @@ const ShippingTab = () => {
                       }
                     }}
                   >
-                    Huỷ vận đơn GHN
+                    Cancel GHN shipment
                   </Button>
                 )}
               </div>
@@ -497,17 +497,17 @@ const RefundsTab = () => {
   const action = useAction()
   const { data, isLoading } = useSubOrders("refund_status=pending")
 
-  if (isLoading) return <Empty>Đang tải…</Empty>
-  if (!data?.sub_orders.length) return <Empty>Không có khoản nào cần hoàn.</Empty>
+  if (isLoading) return <Empty>Loading…</Empty>
+  if (!data?.sub_orders.length) return <Empty>No refunds are pending.</Empty>
 
   return (
     <Table>
       <Table.Header>
         <Table.Row>
-          <Table.HeaderCell>Đơn</Table.HeaderCell>
-          <Table.HeaderCell>Khách</Table.HeaderCell>
-          <Table.HeaderCell>Số tiền hoàn</Table.HeaderCell>
-          <Table.HeaderCell>Lý do huỷ</Table.HeaderCell>
+          <Table.HeaderCell>Order</Table.HeaderCell>
+          <Table.HeaderCell>Customer</Table.HeaderCell>
+          <Table.HeaderCell>Refund amount</Table.HeaderCell>
+          <Table.HeaderCell>Cancellation reason</Table.HeaderCell>
           <Table.HeaderCell />
         </Table.Row>
       </Table.Header>
@@ -523,7 +523,7 @@ const RefundsTab = () => {
                 size="small"
                 onClick={() => action.mutate({ path: `/sub-orders/${sub.id}/refunded` })}
               >
-                Đã hoàn tiền
+                Refunded
               </Button>
             </Table.Cell>
           </Table.Row>
@@ -538,8 +538,8 @@ const AllSubOrdersTab = () => {
   const [dialog, ask] = useFormPrompt()
   const { data, isLoading } = useSubOrders("")
 
-  if (isLoading) return <Empty>Đang tải…</Empty>
-  if (!data?.sub_orders.length) return <Empty>Chưa có đơn nào.</Empty>
+  if (isLoading) return <Empty>Loading…</Empty>
+  if (!data?.sub_orders.length) return <Empty>No orders yet.</Empty>
 
   return (
     <>
@@ -547,11 +547,11 @@ const AllSubOrdersTab = () => {
     <Table>
       <Table.Header>
         <Table.Row>
-          <Table.HeaderCell>Đơn</Table.HeaderCell>
-          <Table.HeaderCell>Nghệ nhân</Table.HeaderCell>
-          <Table.HeaderCell>Hàng</Table.HeaderCell>
-          <Table.HeaderCell>Tiền hàng</Table.HeaderCell>
-          <Table.HeaderCell>Trạng thái</Table.HeaderCell>
+          <Table.HeaderCell>Order</Table.HeaderCell>
+          <Table.HeaderCell>Artisans</Table.HeaderCell>
+          <Table.HeaderCell>Items</Table.HeaderCell>
+          <Table.HeaderCell>Item total</Table.HeaderCell>
+          <Table.HeaderCell>Status</Table.HeaderCell>
           <Table.HeaderCell />
         </Table.Row>
       </Table.Header>
@@ -585,9 +585,9 @@ const AllSubOrdersTab = () => {
                 </StatusBadge>
                 <Text size="xsmall" className="text-ui-fg-subtle">
                   {sub.status === "pending_acceptance" &&
-                    `Hạn nhận ${formatDateTime(sub.accept_deadline)}`}
+                    `Acceptance deadline ${formatDateTime(sub.accept_deadline)}`}
                   {sub.status === "processing" && sub.due_date &&
-                    `Hạn làm xong ${formatDate(sub.due_date)}`}
+                    `Production deadline ${formatDate(sub.due_date)}`}
                   {sub.status === "canceled" && sub.cancel_reason}
                 </Text>
               </Table.Cell>
@@ -598,10 +598,10 @@ const AllSubOrdersTab = () => {
                     variant="secondary"
                     onClick={async () => {
                       const values = await ask({
-                        title: `Huỷ đơn ${sub.code}?`,
-                        description: "Khách và nghệ nhân nhận email kèm lý do. Nếu khách đã chuyển khoản, đơn sẽ vào mục Cần hoàn tiền.",
-                        fields: [{ name: "reason", label: "Lý do huỷ", multiline: true, required: true }],
-                        confirmText: "Huỷ đơn",
+                        title: `Cancel order ${sub.code}?`,
+                        description: "The customer and artisan will receive an email explaining why. If the customer has paid, the order will appear under Pending refunds.",
+                        fields: [{ name: "reason", label: "Cancellation reason", multiline: true, required: true }],
+                        confirmText: "Cancel order",
                         variant: "danger",
                       })
                       if (values) {
@@ -612,7 +612,7 @@ const AllSubOrdersTab = () => {
                       }
                     }}
                   >
-                    Huỷ
+                    Cancel
                   </Button>
                 )}
               </Table.Cell>
@@ -628,18 +628,18 @@ const AllSubOrdersTab = () => {
 const MarketplaceOrdersPage = () => (
   <Container className="p-0">
     <div className="px-6 py-4">
-      <Heading>Đơn sàn</Heading>
+      <Heading>Marketplace Orders</Heading>
       <Text size="small" className="text-ui-fg-subtle">
-        Xác nhận chuyển khoản, tạo vận đơn khi nghệ nhân làm xong, hoàn tiền đơn huỷ.
+        Confirm bank transfers, arrange shipments when artisans finish, and refund canceled orders.
       </Text>
     </div>
     <Tabs defaultValue="transfers">
       <Tabs.List className="px-6">
-        <Tabs.Trigger value="transfers">Chờ xác nhận CK</Tabs.Trigger>
-        <Tabs.Trigger value="ready">Chờ giao hàng</Tabs.Trigger>
-        <Tabs.Trigger value="shipping">Đang giao</Tabs.Trigger>
-        <Tabs.Trigger value="refunds">Cần hoàn tiền</Tabs.Trigger>
-        <Tabs.Trigger value="all">Tất cả đơn con</Tabs.Trigger>
+        <Tabs.Trigger value="transfers">Pending transfer confirmation</Tabs.Trigger>
+        <Tabs.Trigger value="ready">Awaiting shipment</Tabs.Trigger>
+        <Tabs.Trigger value="shipping">Shipping</Tabs.Trigger>
+        <Tabs.Trigger value="refunds">Pending refunds</Tabs.Trigger>
+        <Tabs.Trigger value="all">All suborders</Tabs.Trigger>
       </Tabs.List>
       <Tabs.Content value="transfers" className="pt-2">
         <TransfersTab />
@@ -661,7 +661,7 @@ const MarketplaceOrdersPage = () => (
 )
 
 export const config = defineRouteConfig({
-  label: "Đơn sàn",
+  label: "Marketplace Orders",
   icon: ShoppingBag,
 })
 

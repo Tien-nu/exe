@@ -10,6 +10,7 @@ const requiredEnvs = [
 ];
 
 function checkEnvVariables() {
+  if (process.env.NEXT_PUBLIC_YARNLY_BACKEND_MODE === "mongodb") return;
   const missingEnvs = requiredEnvs.filter(function (env) {
     c;
     return !process.env[env.key];

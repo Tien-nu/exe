@@ -1,0 +1,1 @@
+import{M as n}from"./chunk-NANNVVYP-NTbwtxzc.js";import{m,fS as d,j as a,ak as u}from"./index-DOGDb_7A.js";var c=()=>{const{store:t,isPending:r,isError:e,error:o}=m(),{mutateAsync:s,isPending:i}=d(t?.id);if(e)throw o;return a.jsx(u,{children:a.jsx(n,{isPending:r,isMutating:i,hook:s,metadata:t?.metadata})})};export{c as Component};

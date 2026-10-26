@@ -5,22 +5,22 @@ import styles from "../home-editorial.module.css"
 
 const makingSteps = [
   {
-    number: "01 / KHÁM PHÁ",
-    title: "Chọn một món mình thương",
+    number: "01 / EXPLORE",
+    title: "Choose something you love",
     description:
-      "Một người bạn bằng len, một bông hoa hay món phụ kiện nhỏ. Bắt đầu từ điều khiến bạn mỉm cười.",
+      "A crochet companion, a flower, or a little accessory. Start with something that makes you smile.",
   },
   {
-    number: "02 / KẾT NỐI",
-    title: "Gặp người làm nên món ấy",
+    number: "02 / CONNECT",
+    title: "Meet its maker",
     description:
-      "Ghé gian hàng, tìm hiểu phong cách và câu chuyện của người nghệ nhân đứng sau từng mũi móc.",
+      "Visit the shop and discover the style and story behind every stitch.",
   },
   {
-    number: "03 / LÀM RIÊNG",
-    title: "Thêm một chút của riêng bạn",
+    number: "03 / CUSTOM MADE",
+    title: "Make it your own",
     description:
-      "Chia sẻ màu sắc, kích thước và ý tưởng để cùng nghệ nhân tạo nên món quà mang dấu ấn riêng.",
+      "Share your colors, size, and ideas to create a personal gift with an artisan.",
   },
 ]
 
@@ -29,16 +29,15 @@ const HomeStory = () => (
     <section className={styles.story} aria-labelledby="home-story-title">
       <div className={styles.storyHeading}>
         <div>
-          <p className={styles.eyebrow}>Phía sau một món đồ bằng len</p>
+          <p className={styles.eyebrow}>Behind every crochet piece</p>
           <h2 id="home-story-title" className={styles.sectionTitle}>
-            Có những điều đẹp,
+            Some things are beautiful
             <br />
-            vì được làm bằng tay.
+            because they are handmade.
           </h2>
         </div>
         <p>
-          Là thời gian, sự kiên nhẫn và chút yêu nghề trong từng vòng len.
-          Yarnly kết nối bạn với những người làm nên điều nhỏ bé ấy.
+          Time, patience, and a love of craft go into every loop. Yarnly connects you with the people behind these little treasures.
         </p>
       </div>
       <ol className={styles.steps}>
@@ -56,41 +55,39 @@ const HomeStory = () => (
       <div className={styles.customImage}>
         <Image
           src="/images/yarnly-studio-yarn.webp"
-          alt="Những cuộn len màu trung tính và kim đan trên khay gỗ trong góc làm thủ công"
+          alt="Neutral yarn and knitting needles on a wooden tray in a craft corner"
           fill
           sizes="(max-width: 760px) 100vw, 50vw"
         />
       </div>
       <div className={styles.customCopy}>
-        <p className={styles.eyebrow}>Bạn có một ý tưởng?</p>
+        <p className={styles.eyebrow}>Have an idea?</p>
         <h2 id="home-custom-title" className={styles.sectionTitle}>
-          Màu bạn thích.
+          Your favorite colors.
           <br />
-          Món quà bạn muốn.
+          Your perfect gift.
         </h2>
         <p>
-          Một chiếc túi đúng sắc màu, thú bông cho người đặc biệt, hay món quà
-          chưa tìm thấy ở đâu. Kể Yarnly nghe và cùng nghệ nhân biến ý tưởng
-          thành những mũi len.
+          A bag in just the right shade, a plush friend for someone special, or a gift you haven't found anywhere. Share your idea and bring it to life with an artisan.
         </p>
         <LocalizedClientLink
           href="/account/yeu-cau-lam-rieng"
           className={styles.button}
         >
-          Đặt làm theo ý bạn <span aria-hidden="true">↗</span>
+          Create your own piece <span aria-hidden="true">↗</span>
         </LocalizedClientLink>
       </div>
     </section>
     <section className={styles.maker} aria-labelledby="home-maker-title">
       <div>
-        <p className={styles.eyebrow}>Dành cho người yêu nghề len</p>
-        <h2 id="home-maker-title">Góc nhỏ cho những đôi tay tài hoa.</h2>
+        <p className={styles.eyebrow}>For those who love the craft</p>
+        <h2 id="home-maker-title">A little space for talented hands.</h2>
       </div>
       <LocalizedClientLink
         href="/kenh-nghe-nhan/dang-ky"
         className={styles.textLink}
       >
-        Mở gian hàng Yarnly <span aria-hidden="true">↗</span>
+        Open a Yarnly shop <span aria-hidden="true">↗</span>
       </LocalizedClientLink>
     </section>
   </>

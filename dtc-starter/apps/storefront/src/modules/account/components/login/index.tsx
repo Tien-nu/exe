@@ -25,8 +25,7 @@ const Login = ({ setCurrentView }: Props) => {
       </p>
       {fromCheckout && (
         <div className="w-full mb-6 text-center text-base-regular bg-amber-50 border border-amber-200 rounded-rounded p-4">
-          Vui lòng <strong>đăng nhập hoặc đăng ký</strong> để thanh toán. Giỏ
-          hàng của bạn vẫn được giữ nguyên.
+          Please <strong>sign in or register</strong> to check out. Your cart will be kept.
         </div>
       )}
       {message?.state === "verification_required" && (

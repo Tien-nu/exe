@@ -89,7 +89,7 @@ export async function artisanLogin(
     await artisanFetch("/me")
   } catch {
     return {
-      error: "Email hoặc mật khẩu không đúng, hoặc tài khoản chưa có gian hàng",
+      error: "Incorrect email or password, or this account has no shop",
       values: { email },
     }
   }
@@ -131,7 +131,7 @@ export async function artisanRegister(
   const values = { email, ...readProfile(formData) }
 
   if (password.length < 8) {
-    return { error: "Mật khẩu tối thiểu 8 ký tự", values }
+    return { error: "Password must contain at least 8 characters", values }
   }
 
   let token: string
@@ -144,7 +144,7 @@ export async function artisanRegister(
       token = await authToken(email, password, "")
     } catch {
       return {
-        error: "Email này đã được dùng. Hãy nhập đúng mật khẩu của email đó hoặc dùng email khác.",
+        error: "This email is already registered. Enter its existing password or use another email address.",
         values,
       }
     }
@@ -327,6 +327,20 @@ export async function uploadArtisanImages(
   } catch (error) {
     return { error: toError(error), urls: [] }
   }
+}
+
+export async function requestArtisanImageUpload(input: { filename: string; mime_type: string; size: number }) {
+  try {
+    const result = await artisanFetch<{ id: string; upload_url: string; headers: Record<string, string> }>("/uploads/sign", { method: "POST", body: input })
+    return { error: null, upload: result }
+  } catch (error) { return { error: toError(error), upload: null } }
+}
+
+export async function completeArtisanImageUpload(id: string) {
+  try {
+    const { file } = await artisanFetch<{ file: { id: string; url: string } }>(`/uploads/${encodeURIComponent(id)}/complete`, { method: "POST" })
+    return { error: null, url: file.url }
+  } catch (error) { return { error: toError(error), url: null } }
 }
 
 export async function acceptSubOrder(id: string) {

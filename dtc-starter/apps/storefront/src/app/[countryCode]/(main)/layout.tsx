@@ -9,6 +9,9 @@ import Footer from "@modules/layout/templates/footer"
 import Nav from "@modules/layout/templates/nav"
 import FreeShippingPriceNudge from "@modules/shipping/components/free-shipping-price-nudge"
 
+// Prices, stock and customer/cart data must be rendered from the current request.
+export const dynamic = "force-dynamic"
+
 export const metadata: Metadata = {
   metadataBase: new URL(getBaseURL()),
 }
@@ -21,7 +24,7 @@ export default async function PageLayout(props: { children: React.ReactNode }) {
   let shippingOptions: StoreCartShippingOption[] = []
 
   if (cart) {
-    const { shipping_options } = await listCartOptions()
+    const { shipping_options } = await listCartOptions().catch(() => ({ shipping_options: [] }))
 
     shippingOptions = shipping_options
   }

@@ -12,28 +12,27 @@ const Hero = () => (
       disablePictureInPicture
       preload="auto"
       poster="/images/yarnly-crochet-film-poster.webp"
-      aria-label="Đôi tay nghệ nhân đang móc từng mũi len"
+      aria-label="An artisan crocheting each stitch by hand"
     >
       <source src="/videos/yarnly-crochet-workshop.mp4" type="video/mp4" />
     </video>
     <div className={styles.shade} aria-hidden="true" />
     <div className={styles.content}>
-      <p className={styles.eyebrow}>Yarnly / Thế giới len thủ công</p>
+      <p className={styles.eyebrow}>Yarnly / A world of handmade crochet</p>
       <h1 id="home-title" className={styles.title}>
-        Đồ len nhỏ.
+        Little crochet pieces.
         <br />
-        Thương thật nhiều.
+        Made with so much love.
       </h1>
       <p className={styles.description}>
-        Những món đồ được làm chậm, để thương thật lâu. Tìm món len bạn yêu và
-        gặp người nghệ nhân làm nên nó.
+        Thoughtfully made to be loved for years. Find a piece you love and meet the artisan behind it.
       </p>
       <div className={styles.actions}>
         <a href="#san-pham" className={styles.button}>
-          Khám phá bộ sưu tập <span aria-hidden="true">↗</span>
+          Explore the collection <span aria-hidden="true">↗</span>
         </a>
         <LocalizedClientLink href="/nghe-nhan" className={styles.secondary}>
-          Gặp người làm len <span aria-hidden="true">↗</span>
+          Meet the makers <span aria-hidden="true">↗</span>
         </LocalizedClientLink>
       </div>
     </div>

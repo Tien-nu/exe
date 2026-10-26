@@ -7,7 +7,7 @@ import { Metadata } from "next"
 import { notFound, redirect } from "next/navigation"
 
 export const metadata: Metadata = {
-  title: "Thanh toán",
+  title: "Checkout",
 }
 
 export default async function Checkout(props: {

@@ -1,0 +1,8202 @@
+[
+  {
+    "table_name": "account_holder",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "account_holder",
+    "column_name": "provider_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "account_holder",
+    "column_name": "external_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "account_holder",
+    "column_name": "email",
+    "data_type": "text"
+  },
+  {
+    "table_name": "account_holder",
+    "column_name": "data",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "account_holder",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "account_holder",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "account_holder",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "account_holder",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "api_key",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "api_key",
+    "column_name": "token",
+    "data_type": "text"
+  },
+  {
+    "table_name": "api_key",
+    "column_name": "salt",
+    "data_type": "text"
+  },
+  {
+    "table_name": "api_key",
+    "column_name": "redacted",
+    "data_type": "text"
+  },
+  {
+    "table_name": "api_key",
+    "column_name": "title",
+    "data_type": "text"
+  },
+  {
+    "table_name": "api_key",
+    "column_name": "type",
+    "data_type": "text"
+  },
+  {
+    "table_name": "api_key",
+    "column_name": "last_used_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "api_key",
+    "column_name": "created_by",
+    "data_type": "text"
+  },
+  {
+    "table_name": "api_key",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "api_key",
+    "column_name": "revoked_by",
+    "data_type": "text"
+  },
+  {
+    "table_name": "api_key",
+    "column_name": "revoked_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "api_key",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "api_key",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "application_method_buy_rules",
+    "column_name": "application_method_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "application_method_buy_rules",
+    "column_name": "promotion_rule_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "application_method_target_rules",
+    "column_name": "application_method_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "application_method_target_rules",
+    "column_name": "promotion_rule_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "artisan",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "artisan",
+    "column_name": "handle",
+    "data_type": "text"
+  },
+  {
+    "table_name": "artisan",
+    "column_name": "shop_name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "artisan",
+    "column_name": "full_name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "artisan",
+    "column_name": "email",
+    "data_type": "text"
+  },
+  {
+    "table_name": "artisan",
+    "column_name": "phone",
+    "data_type": "text"
+  },
+  {
+    "table_name": "artisan",
+    "column_name": "description",
+    "data_type": "text"
+  },
+  {
+    "table_name": "artisan",
+    "column_name": "avatar_url",
+    "data_type": "text"
+  },
+  {
+    "table_name": "artisan",
+    "column_name": "pickup_address",
+    "data_type": "text"
+  },
+  {
+    "table_name": "artisan",
+    "column_name": "bank_name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "artisan",
+    "column_name": "bank_account_number",
+    "data_type": "text"
+  },
+  {
+    "table_name": "artisan",
+    "column_name": "bank_account_name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "artisan",
+    "column_name": "status",
+    "data_type": "text"
+  },
+  {
+    "table_name": "artisan",
+    "column_name": "status_reason",
+    "data_type": "text"
+  },
+  {
+    "table_name": "artisan",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "artisan",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "artisan",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "artisan",
+    "column_name": "pickup_province_name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "artisan",
+    "column_name": "pickup_district_id",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "artisan",
+    "column_name": "pickup_district_name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "artisan",
+    "column_name": "pickup_ward_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "artisan",
+    "column_name": "pickup_ward_name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "auth_identity",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "auth_identity",
+    "column_name": "app_metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "auth_identity",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "auth_identity",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "auth_identity",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "auth_mfa_factor",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "auth_mfa_factor",
+    "column_name": "auth_identity_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "auth_mfa_factor",
+    "column_name": "provider",
+    "data_type": "text"
+  },
+  {
+    "table_name": "auth_mfa_factor",
+    "column_name": "status",
+    "data_type": "text"
+  },
+  {
+    "table_name": "auth_mfa_factor",
+    "column_name": "provider_metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "auth_mfa_factor",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "auth_mfa_factor",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "auth_mfa_factor",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "auth_mfa_factor",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "auth_mfa_recovery_code",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "auth_mfa_recovery_code",
+    "column_name": "auth_identity_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "auth_mfa_recovery_code",
+    "column_name": "code_hash",
+    "data_type": "text"
+  },
+  {
+    "table_name": "auth_mfa_recovery_code",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "auth_mfa_recovery_code",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "auth_mfa_recovery_code",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "auth_password_reset_token",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "auth_password_reset_token",
+    "column_name": "auth_identity_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "auth_password_reset_token",
+    "column_name": "provider_identity_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "auth_password_reset_token",
+    "column_name": "entity_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "auth_password_reset_token",
+    "column_name": "token_hash",
+    "data_type": "text"
+  },
+  {
+    "table_name": "auth_password_reset_token",
+    "column_name": "expires_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "auth_password_reset_token",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "auth_password_reset_token",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "auth_password_reset_token",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "auth_verification",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "auth_verification",
+    "column_name": "auth_identity_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "auth_verification",
+    "column_name": "entity_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "auth_verification",
+    "column_name": "entity_type",
+    "data_type": "text"
+  },
+  {
+    "table_name": "auth_verification",
+    "column_name": "code_provider",
+    "data_type": "text"
+  },
+  {
+    "table_name": "auth_verification",
+    "column_name": "verified_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "auth_verification",
+    "column_name": "requested_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "auth_verification",
+    "column_name": "provider_metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "auth_verification",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "auth_verification",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "auth_verification",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "auth_verification",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "capture",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "capture",
+    "column_name": "amount",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "capture",
+    "column_name": "raw_amount",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "capture",
+    "column_name": "payment_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "capture",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "capture",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "capture",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "capture",
+    "column_name": "created_by",
+    "data_type": "text"
+  },
+  {
+    "table_name": "capture",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "cart",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart",
+    "column_name": "region_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart",
+    "column_name": "customer_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart",
+    "column_name": "sales_channel_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart",
+    "column_name": "email",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart",
+    "column_name": "currency_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart",
+    "column_name": "shipping_address_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart",
+    "column_name": "billing_address_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "cart",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "cart",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "cart",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "cart",
+    "column_name": "completed_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "cart",
+    "column_name": "locale",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_address",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_address",
+    "column_name": "customer_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_address",
+    "column_name": "company",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_address",
+    "column_name": "first_name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_address",
+    "column_name": "last_name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_address",
+    "column_name": "address_1",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_address",
+    "column_name": "address_2",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_address",
+    "column_name": "city",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_address",
+    "column_name": "country_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_address",
+    "column_name": "province",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_address",
+    "column_name": "postal_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_address",
+    "column_name": "phone",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_address",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "cart_address",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "cart_address",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "cart_address",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "cart_line_item",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_line_item",
+    "column_name": "cart_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_line_item",
+    "column_name": "title",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_line_item",
+    "column_name": "subtitle",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_line_item",
+    "column_name": "thumbnail",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_line_item",
+    "column_name": "quantity",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "cart_line_item",
+    "column_name": "variant_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_line_item",
+    "column_name": "product_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_line_item",
+    "column_name": "product_title",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_line_item",
+    "column_name": "product_description",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_line_item",
+    "column_name": "product_subtitle",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_line_item",
+    "column_name": "product_type",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_line_item",
+    "column_name": "product_collection",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_line_item",
+    "column_name": "product_handle",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_line_item",
+    "column_name": "variant_sku",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_line_item",
+    "column_name": "variant_barcode",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_line_item",
+    "column_name": "variant_title",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_line_item",
+    "column_name": "variant_option_values",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "cart_line_item",
+    "column_name": "requires_shipping",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "cart_line_item",
+    "column_name": "is_discountable",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "cart_line_item",
+    "column_name": "is_tax_inclusive",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "cart_line_item",
+    "column_name": "compare_at_unit_price",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "cart_line_item",
+    "column_name": "raw_compare_at_unit_price",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "cart_line_item",
+    "column_name": "unit_price",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "cart_line_item",
+    "column_name": "raw_unit_price",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "cart_line_item",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "cart_line_item",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "cart_line_item",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "cart_line_item",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "cart_line_item",
+    "column_name": "product_type_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_line_item",
+    "column_name": "is_custom_price",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "cart_line_item",
+    "column_name": "is_giftcard",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "cart_line_item_adjustment",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_line_item_adjustment",
+    "column_name": "description",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_line_item_adjustment",
+    "column_name": "promotion_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_line_item_adjustment",
+    "column_name": "code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_line_item_adjustment",
+    "column_name": "amount",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "cart_line_item_adjustment",
+    "column_name": "raw_amount",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "cart_line_item_adjustment",
+    "column_name": "provider_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_line_item_adjustment",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "cart_line_item_adjustment",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "cart_line_item_adjustment",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "cart_line_item_adjustment",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "cart_line_item_adjustment",
+    "column_name": "item_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_line_item_adjustment",
+    "column_name": "is_tax_inclusive",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "cart_line_item_tax_line",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_line_item_tax_line",
+    "column_name": "description",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_line_item_tax_line",
+    "column_name": "tax_rate_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_line_item_tax_line",
+    "column_name": "code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_line_item_tax_line",
+    "column_name": "rate",
+    "data_type": "real"
+  },
+  {
+    "table_name": "cart_line_item_tax_line",
+    "column_name": "provider_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_line_item_tax_line",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "cart_line_item_tax_line",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "cart_line_item_tax_line",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "cart_line_item_tax_line",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "cart_line_item_tax_line",
+    "column_name": "item_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_line_item_tax_line",
+    "column_name": "data",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "cart_payment_collection",
+    "column_name": "cart_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "cart_payment_collection",
+    "column_name": "payment_collection_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "cart_payment_collection",
+    "column_name": "id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "cart_payment_collection",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "cart_payment_collection",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "cart_payment_collection",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "cart_promotion",
+    "column_name": "cart_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "cart_promotion",
+    "column_name": "promotion_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "cart_promotion",
+    "column_name": "id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "cart_promotion",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "cart_promotion",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "cart_promotion",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "cart_shipping_method",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_shipping_method",
+    "column_name": "cart_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_shipping_method",
+    "column_name": "name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_shipping_method",
+    "column_name": "description",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "cart_shipping_method",
+    "column_name": "amount",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "cart_shipping_method",
+    "column_name": "raw_amount",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "cart_shipping_method",
+    "column_name": "is_tax_inclusive",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "cart_shipping_method",
+    "column_name": "shipping_option_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_shipping_method",
+    "column_name": "data",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "cart_shipping_method",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "cart_shipping_method",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "cart_shipping_method",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "cart_shipping_method",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "cart_shipping_method_adjustment",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_shipping_method_adjustment",
+    "column_name": "description",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_shipping_method_adjustment",
+    "column_name": "promotion_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_shipping_method_adjustment",
+    "column_name": "code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_shipping_method_adjustment",
+    "column_name": "amount",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "cart_shipping_method_adjustment",
+    "column_name": "raw_amount",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "cart_shipping_method_adjustment",
+    "column_name": "provider_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_shipping_method_adjustment",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "cart_shipping_method_adjustment",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "cart_shipping_method_adjustment",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "cart_shipping_method_adjustment",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "cart_shipping_method_adjustment",
+    "column_name": "shipping_method_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_shipping_method_tax_line",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_shipping_method_tax_line",
+    "column_name": "description",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_shipping_method_tax_line",
+    "column_name": "tax_rate_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_shipping_method_tax_line",
+    "column_name": "code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_shipping_method_tax_line",
+    "column_name": "rate",
+    "data_type": "real"
+  },
+  {
+    "table_name": "cart_shipping_method_tax_line",
+    "column_name": "provider_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_shipping_method_tax_line",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "cart_shipping_method_tax_line",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "cart_shipping_method_tax_line",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "cart_shipping_method_tax_line",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "cart_shipping_method_tax_line",
+    "column_name": "shipping_method_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "cart_shipping_method_tax_line",
+    "column_name": "data",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "credit_line",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "credit_line",
+    "column_name": "cart_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "credit_line",
+    "column_name": "reference",
+    "data_type": "text"
+  },
+  {
+    "table_name": "credit_line",
+    "column_name": "reference_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "credit_line",
+    "column_name": "amount",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "credit_line",
+    "column_name": "raw_amount",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "credit_line",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "credit_line",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "credit_line",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "credit_line",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "currency",
+    "column_name": "code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "currency",
+    "column_name": "symbol",
+    "data_type": "text"
+  },
+  {
+    "table_name": "currency",
+    "column_name": "symbol_native",
+    "data_type": "text"
+  },
+  {
+    "table_name": "currency",
+    "column_name": "decimal_digits",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "currency",
+    "column_name": "rounding",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "currency",
+    "column_name": "raw_rounding",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "currency",
+    "column_name": "name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "currency",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "currency",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "currency",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "custom_request",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "custom_request",
+    "column_name": "customer_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "custom_request",
+    "column_name": "customer_email",
+    "data_type": "text"
+  },
+  {
+    "table_name": "custom_request",
+    "column_name": "customer_name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "custom_request",
+    "column_name": "product_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "custom_request",
+    "column_name": "variant_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "custom_request",
+    "column_name": "product_title",
+    "data_type": "text"
+  },
+  {
+    "table_name": "custom_request",
+    "column_name": "thumbnail",
+    "data_type": "text"
+  },
+  {
+    "table_name": "custom_request",
+    "column_name": "description",
+    "data_type": "text"
+  },
+  {
+    "table_name": "custom_request",
+    "column_name": "color",
+    "data_type": "text"
+  },
+  {
+    "table_name": "custom_request",
+    "column_name": "size",
+    "data_type": "text"
+  },
+  {
+    "table_name": "custom_request",
+    "column_name": "quantity",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "custom_request",
+    "column_name": "status",
+    "data_type": "text"
+  },
+  {
+    "table_name": "custom_request",
+    "column_name": "quoted_price",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "custom_request",
+    "column_name": "quoted_lead_days",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "custom_request",
+    "column_name": "artisan_note",
+    "data_type": "text"
+  },
+  {
+    "table_name": "custom_request",
+    "column_name": "responded_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "custom_request",
+    "column_name": "decided_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "custom_request",
+    "column_name": "order_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "custom_request",
+    "column_name": "artisan_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "custom_request",
+    "column_name": "raw_quoted_price",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "custom_request",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "custom_request",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "custom_request",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "customer",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "customer",
+    "column_name": "company_name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "customer",
+    "column_name": "first_name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "customer",
+    "column_name": "last_name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "customer",
+    "column_name": "email",
+    "data_type": "text"
+  },
+  {
+    "table_name": "customer",
+    "column_name": "phone",
+    "data_type": "text"
+  },
+  {
+    "table_name": "customer",
+    "column_name": "has_account",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "customer",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "customer",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "customer",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "customer",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "customer",
+    "column_name": "created_by",
+    "data_type": "text"
+  },
+  {
+    "table_name": "customer_account_holder",
+    "column_name": "customer_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "customer_account_holder",
+    "column_name": "account_holder_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "customer_account_holder",
+    "column_name": "id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "customer_account_holder",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "customer_account_holder",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "customer_account_holder",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "customer_address",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "customer_address",
+    "column_name": "customer_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "customer_address",
+    "column_name": "address_name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "customer_address",
+    "column_name": "is_default_shipping",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "customer_address",
+    "column_name": "is_default_billing",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "customer_address",
+    "column_name": "company",
+    "data_type": "text"
+  },
+  {
+    "table_name": "customer_address",
+    "column_name": "first_name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "customer_address",
+    "column_name": "last_name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "customer_address",
+    "column_name": "address_1",
+    "data_type": "text"
+  },
+  {
+    "table_name": "customer_address",
+    "column_name": "address_2",
+    "data_type": "text"
+  },
+  {
+    "table_name": "customer_address",
+    "column_name": "city",
+    "data_type": "text"
+  },
+  {
+    "table_name": "customer_address",
+    "column_name": "country_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "customer_address",
+    "column_name": "province",
+    "data_type": "text"
+  },
+  {
+    "table_name": "customer_address",
+    "column_name": "postal_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "customer_address",
+    "column_name": "phone",
+    "data_type": "text"
+  },
+  {
+    "table_name": "customer_address",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "customer_address",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "customer_address",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "customer_address",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "customer_group",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "customer_group",
+    "column_name": "name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "customer_group",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "customer_group",
+    "column_name": "created_by",
+    "data_type": "text"
+  },
+  {
+    "table_name": "customer_group",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "customer_group",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "customer_group",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "customer_group_customer",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "customer_group_customer",
+    "column_name": "customer_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "customer_group_customer",
+    "column_name": "customer_group_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "customer_group_customer",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "customer_group_customer",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "customer_group_customer",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "customer_group_customer",
+    "column_name": "created_by",
+    "data_type": "text"
+  },
+  {
+    "table_name": "customer_group_customer",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "fulfillment",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "fulfillment",
+    "column_name": "location_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "fulfillment",
+    "column_name": "packed_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "fulfillment",
+    "column_name": "shipped_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "fulfillment",
+    "column_name": "delivered_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "fulfillment",
+    "column_name": "canceled_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "fulfillment",
+    "column_name": "data",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "fulfillment",
+    "column_name": "provider_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "fulfillment",
+    "column_name": "shipping_option_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "fulfillment",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "fulfillment",
+    "column_name": "delivery_address_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "fulfillment",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "fulfillment",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "fulfillment",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "fulfillment",
+    "column_name": "marked_shipped_by",
+    "data_type": "text"
+  },
+  {
+    "table_name": "fulfillment",
+    "column_name": "created_by",
+    "data_type": "text"
+  },
+  {
+    "table_name": "fulfillment",
+    "column_name": "requires_shipping",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "fulfillment_address",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "fulfillment_address",
+    "column_name": "company",
+    "data_type": "text"
+  },
+  {
+    "table_name": "fulfillment_address",
+    "column_name": "first_name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "fulfillment_address",
+    "column_name": "last_name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "fulfillment_address",
+    "column_name": "address_1",
+    "data_type": "text"
+  },
+  {
+    "table_name": "fulfillment_address",
+    "column_name": "address_2",
+    "data_type": "text"
+  },
+  {
+    "table_name": "fulfillment_address",
+    "column_name": "city",
+    "data_type": "text"
+  },
+  {
+    "table_name": "fulfillment_address",
+    "column_name": "country_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "fulfillment_address",
+    "column_name": "province",
+    "data_type": "text"
+  },
+  {
+    "table_name": "fulfillment_address",
+    "column_name": "postal_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "fulfillment_address",
+    "column_name": "phone",
+    "data_type": "text"
+  },
+  {
+    "table_name": "fulfillment_address",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "fulfillment_address",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "fulfillment_address",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "fulfillment_address",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "fulfillment_item",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "fulfillment_item",
+    "column_name": "title",
+    "data_type": "text"
+  },
+  {
+    "table_name": "fulfillment_item",
+    "column_name": "sku",
+    "data_type": "text"
+  },
+  {
+    "table_name": "fulfillment_item",
+    "column_name": "barcode",
+    "data_type": "text"
+  },
+  {
+    "table_name": "fulfillment_item",
+    "column_name": "quantity",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "fulfillment_item",
+    "column_name": "raw_quantity",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "fulfillment_item",
+    "column_name": "line_item_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "fulfillment_item",
+    "column_name": "inventory_item_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "fulfillment_item",
+    "column_name": "fulfillment_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "fulfillment_item",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "fulfillment_item",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "fulfillment_item",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "fulfillment_label",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "fulfillment_label",
+    "column_name": "tracking_number",
+    "data_type": "text"
+  },
+  {
+    "table_name": "fulfillment_label",
+    "column_name": "tracking_url",
+    "data_type": "text"
+  },
+  {
+    "table_name": "fulfillment_label",
+    "column_name": "label_url",
+    "data_type": "text"
+  },
+  {
+    "table_name": "fulfillment_label",
+    "column_name": "fulfillment_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "fulfillment_label",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "fulfillment_label",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "fulfillment_label",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "fulfillment_provider",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "fulfillment_provider",
+    "column_name": "is_enabled",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "fulfillment_provider",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "fulfillment_provider",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "fulfillment_provider",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "fulfillment_set",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "fulfillment_set",
+    "column_name": "name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "fulfillment_set",
+    "column_name": "type",
+    "data_type": "text"
+  },
+  {
+    "table_name": "fulfillment_set",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "fulfillment_set",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "fulfillment_set",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "fulfillment_set",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "geo_zone",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "geo_zone",
+    "column_name": "type",
+    "data_type": "text"
+  },
+  {
+    "table_name": "geo_zone",
+    "column_name": "country_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "geo_zone",
+    "column_name": "province_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "geo_zone",
+    "column_name": "city",
+    "data_type": "text"
+  },
+  {
+    "table_name": "geo_zone",
+    "column_name": "service_zone_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "geo_zone",
+    "column_name": "postal_expression",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "geo_zone",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "geo_zone",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "geo_zone",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "geo_zone",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "image",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "image",
+    "column_name": "url",
+    "data_type": "text"
+  },
+  {
+    "table_name": "image",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "image",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "image",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "image",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "image",
+    "column_name": "rank",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "image",
+    "column_name": "product_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "inventory_item",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "inventory_item",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "inventory_item",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "inventory_item",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "inventory_item",
+    "column_name": "sku",
+    "data_type": "text"
+  },
+  {
+    "table_name": "inventory_item",
+    "column_name": "origin_country",
+    "data_type": "text"
+  },
+  {
+    "table_name": "inventory_item",
+    "column_name": "hs_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "inventory_item",
+    "column_name": "mid_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "inventory_item",
+    "column_name": "material",
+    "data_type": "text"
+  },
+  {
+    "table_name": "inventory_item",
+    "column_name": "weight",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "inventory_item",
+    "column_name": "length",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "inventory_item",
+    "column_name": "height",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "inventory_item",
+    "column_name": "width",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "inventory_item",
+    "column_name": "requires_shipping",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "inventory_item",
+    "column_name": "description",
+    "data_type": "text"
+  },
+  {
+    "table_name": "inventory_item",
+    "column_name": "title",
+    "data_type": "text"
+  },
+  {
+    "table_name": "inventory_item",
+    "column_name": "thumbnail",
+    "data_type": "text"
+  },
+  {
+    "table_name": "inventory_item",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "inventory_item",
+    "column_name": "unit_of_measure",
+    "data_type": "text"
+  },
+  {
+    "table_name": "inventory_level",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "inventory_level",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "inventory_level",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "inventory_level",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "inventory_level",
+    "column_name": "inventory_item_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "inventory_level",
+    "column_name": "location_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "inventory_level",
+    "column_name": "stocked_quantity",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "inventory_level",
+    "column_name": "reserved_quantity",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "inventory_level",
+    "column_name": "incoming_quantity",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "inventory_level",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "inventory_level",
+    "column_name": "raw_stocked_quantity",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "inventory_level",
+    "column_name": "raw_reserved_quantity",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "inventory_level",
+    "column_name": "raw_incoming_quantity",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "invite",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "invite",
+    "column_name": "email",
+    "data_type": "text"
+  },
+  {
+    "table_name": "invite",
+    "column_name": "accepted",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "invite",
+    "column_name": "token",
+    "data_type": "text"
+  },
+  {
+    "table_name": "invite",
+    "column_name": "expires_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "invite",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "invite",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "invite",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "invite",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "invite_rbac_role",
+    "column_name": "invite_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "invite_rbac_role",
+    "column_name": "rbac_role_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "invite_rbac_role",
+    "column_name": "id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "invite_rbac_role",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "invite_rbac_role",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "invite_rbac_role",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "layout_configuration",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "layout_configuration",
+    "column_name": "zone",
+    "data_type": "text"
+  },
+  {
+    "table_name": "layout_configuration",
+    "column_name": "user_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "layout_configuration",
+    "column_name": "is_system_default",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "layout_configuration",
+    "column_name": "configuration",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "layout_configuration",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "layout_configuration",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "layout_configuration",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "link_module_migrations",
+    "column_name": "id",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "link_module_migrations",
+    "column_name": "table_name",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "link_module_migrations",
+    "column_name": "link_descriptor",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "link_module_migrations",
+    "column_name": "created_at",
+    "data_type": "timestamp without time zone"
+  },
+  {
+    "table_name": "location_fulfillment_provider",
+    "column_name": "stock_location_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "location_fulfillment_provider",
+    "column_name": "fulfillment_provider_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "location_fulfillment_provider",
+    "column_name": "id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "location_fulfillment_provider",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "location_fulfillment_provider",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "location_fulfillment_provider",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "location_fulfillment_set",
+    "column_name": "stock_location_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "location_fulfillment_set",
+    "column_name": "fulfillment_set_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "location_fulfillment_set",
+    "column_name": "id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "location_fulfillment_set",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "location_fulfillment_set",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "location_fulfillment_set",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "marketplace_artisan_product_product",
+    "column_name": "artisan_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "marketplace_artisan_product_product",
+    "column_name": "product_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "marketplace_artisan_product_product",
+    "column_name": "id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "marketplace_artisan_product_product",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "marketplace_artisan_product_product",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "marketplace_artisan_product_product",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "marketplace_order",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "marketplace_order",
+    "column_name": "order_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "marketplace_order",
+    "column_name": "display_id",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "marketplace_order",
+    "column_name": "customer_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "marketplace_order",
+    "column_name": "email",
+    "data_type": "text"
+  },
+  {
+    "table_name": "marketplace_order",
+    "column_name": "currency_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "marketplace_order",
+    "column_name": "items_total",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "marketplace_order",
+    "column_name": "payment_method",
+    "data_type": "text"
+  },
+  {
+    "table_name": "marketplace_order",
+    "column_name": "payment_status",
+    "data_type": "text"
+  },
+  {
+    "table_name": "marketplace_order",
+    "column_name": "payment_deadline",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "marketplace_order",
+    "column_name": "transfer_submitted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "marketplace_order",
+    "column_name": "paid_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "marketplace_order",
+    "column_name": "raw_items_total",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "marketplace_order",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "marketplace_order",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "marketplace_order",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "marketplace_setting",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "marketplace_setting",
+    "column_name": "platform_fee_percent",
+    "data_type": "real"
+  },
+  {
+    "table_name": "marketplace_setting",
+    "column_name": "admin_email",
+    "data_type": "text"
+  },
+  {
+    "table_name": "marketplace_setting",
+    "column_name": "bank_name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "marketplace_setting",
+    "column_name": "bank_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "marketplace_setting",
+    "column_name": "bank_account_number",
+    "data_type": "text"
+  },
+  {
+    "table_name": "marketplace_setting",
+    "column_name": "bank_account_name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "marketplace_setting",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "marketplace_setting",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "marketplace_setting",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "mikro_orm_migrations",
+    "column_name": "id",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "mikro_orm_migrations",
+    "column_name": "name",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "mikro_orm_migrations",
+    "column_name": "executed_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "notification",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "notification",
+    "column_name": "to",
+    "data_type": "text"
+  },
+  {
+    "table_name": "notification",
+    "column_name": "channel",
+    "data_type": "text"
+  },
+  {
+    "table_name": "notification",
+    "column_name": "template",
+    "data_type": "text"
+  },
+  {
+    "table_name": "notification",
+    "column_name": "data",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "notification",
+    "column_name": "trigger_type",
+    "data_type": "text"
+  },
+  {
+    "table_name": "notification",
+    "column_name": "resource_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "notification",
+    "column_name": "resource_type",
+    "data_type": "text"
+  },
+  {
+    "table_name": "notification",
+    "column_name": "receiver_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "notification",
+    "column_name": "original_notification_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "notification",
+    "column_name": "idempotency_key",
+    "data_type": "text"
+  },
+  {
+    "table_name": "notification",
+    "column_name": "external_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "notification",
+    "column_name": "provider_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "notification",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "notification",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "notification",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "notification",
+    "column_name": "status",
+    "data_type": "text"
+  },
+  {
+    "table_name": "notification",
+    "column_name": "from",
+    "data_type": "text"
+  },
+  {
+    "table_name": "notification",
+    "column_name": "provider_data",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "notification_provider",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "notification_provider",
+    "column_name": "handle",
+    "data_type": "text"
+  },
+  {
+    "table_name": "notification_provider",
+    "column_name": "name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "notification_provider",
+    "column_name": "is_enabled",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "notification_provider",
+    "column_name": "channels",
+    "data_type": "ARRAY"
+  },
+  {
+    "table_name": "notification_provider",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "notification_provider",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "notification_provider",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order",
+    "column_name": "region_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order",
+    "column_name": "display_id",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "order",
+    "column_name": "customer_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order",
+    "column_name": "version",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "order",
+    "column_name": "sales_channel_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order",
+    "column_name": "status",
+    "data_type": "USER-DEFINED"
+  },
+  {
+    "table_name": "order",
+    "column_name": "is_draft_order",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "order",
+    "column_name": "email",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order",
+    "column_name": "currency_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order",
+    "column_name": "shipping_address_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order",
+    "column_name": "billing_address_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order",
+    "column_name": "no_notification",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "order",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order",
+    "column_name": "canceled_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order",
+    "column_name": "custom_display_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order",
+    "column_name": "locale",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_address",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_address",
+    "column_name": "customer_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_address",
+    "column_name": "company",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_address",
+    "column_name": "first_name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_address",
+    "column_name": "last_name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_address",
+    "column_name": "address_1",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_address",
+    "column_name": "address_2",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_address",
+    "column_name": "city",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_address",
+    "column_name": "country_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_address",
+    "column_name": "province",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_address",
+    "column_name": "postal_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_address",
+    "column_name": "phone",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_address",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_address",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_address",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_address",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_cart",
+    "column_name": "order_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "order_cart",
+    "column_name": "cart_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "order_cart",
+    "column_name": "id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "order_cart",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_cart",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_cart",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_change",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_change",
+    "column_name": "order_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_change",
+    "column_name": "version",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "order_change",
+    "column_name": "description",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_change",
+    "column_name": "status",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_change",
+    "column_name": "internal_note",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_change",
+    "column_name": "created_by",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_change",
+    "column_name": "requested_by",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_change",
+    "column_name": "requested_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_change",
+    "column_name": "confirmed_by",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_change",
+    "column_name": "confirmed_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_change",
+    "column_name": "declined_by",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_change",
+    "column_name": "declined_reason",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_change",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_change",
+    "column_name": "declined_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_change",
+    "column_name": "canceled_by",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_change",
+    "column_name": "canceled_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_change",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_change",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_change",
+    "column_name": "change_type",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_change",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_change",
+    "column_name": "return_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_change",
+    "column_name": "claim_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_change",
+    "column_name": "exchange_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_change",
+    "column_name": "carry_over_promotions",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "order_change",
+    "column_name": "no_notification",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "order_change_action",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_change_action",
+    "column_name": "order_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_change_action",
+    "column_name": "version",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "order_change_action",
+    "column_name": "ordering",
+    "data_type": "bigint"
+  },
+  {
+    "table_name": "order_change_action",
+    "column_name": "order_change_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_change_action",
+    "column_name": "reference",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_change_action",
+    "column_name": "reference_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_change_action",
+    "column_name": "action",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_change_action",
+    "column_name": "details",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_change_action",
+    "column_name": "amount",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "order_change_action",
+    "column_name": "raw_amount",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_change_action",
+    "column_name": "internal_note",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_change_action",
+    "column_name": "applied",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "order_change_action",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_change_action",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_change_action",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_change_action",
+    "column_name": "return_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_change_action",
+    "column_name": "claim_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_change_action",
+    "column_name": "exchange_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_claim",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_claim",
+    "column_name": "order_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_claim",
+    "column_name": "return_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_claim",
+    "column_name": "order_version",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "order_claim",
+    "column_name": "display_id",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "order_claim",
+    "column_name": "type",
+    "data_type": "USER-DEFINED"
+  },
+  {
+    "table_name": "order_claim",
+    "column_name": "no_notification",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "order_claim",
+    "column_name": "refund_amount",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "order_claim",
+    "column_name": "raw_refund_amount",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_claim",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_claim",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_claim",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_claim",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_claim",
+    "column_name": "canceled_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_claim",
+    "column_name": "created_by",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_claim_item",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_claim_item",
+    "column_name": "claim_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_claim_item",
+    "column_name": "item_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_claim_item",
+    "column_name": "is_additional_item",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "order_claim_item",
+    "column_name": "reason",
+    "data_type": "USER-DEFINED"
+  },
+  {
+    "table_name": "order_claim_item",
+    "column_name": "quantity",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "order_claim_item",
+    "column_name": "raw_quantity",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_claim_item",
+    "column_name": "note",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_claim_item",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_claim_item",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_claim_item",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_claim_item",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_claim_item_image",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_claim_item_image",
+    "column_name": "claim_item_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_claim_item_image",
+    "column_name": "url",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_claim_item_image",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_claim_item_image",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_claim_item_image",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_claim_item_image",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_credit_line",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_credit_line",
+    "column_name": "order_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_credit_line",
+    "column_name": "reference",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_credit_line",
+    "column_name": "reference_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_credit_line",
+    "column_name": "amount",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "order_credit_line",
+    "column_name": "raw_amount",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_credit_line",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_credit_line",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_credit_line",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_credit_line",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_credit_line",
+    "column_name": "version",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "order_exchange",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_exchange",
+    "column_name": "order_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_exchange",
+    "column_name": "return_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_exchange",
+    "column_name": "order_version",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "order_exchange",
+    "column_name": "display_id",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "order_exchange",
+    "column_name": "no_notification",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "order_exchange",
+    "column_name": "allow_backorder",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "order_exchange",
+    "column_name": "difference_due",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "order_exchange",
+    "column_name": "raw_difference_due",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_exchange",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_exchange",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_exchange",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_exchange",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_exchange",
+    "column_name": "canceled_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_exchange",
+    "column_name": "created_by",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_exchange_item",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_exchange_item",
+    "column_name": "exchange_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_exchange_item",
+    "column_name": "item_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_exchange_item",
+    "column_name": "quantity",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "order_exchange_item",
+    "column_name": "raw_quantity",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_exchange_item",
+    "column_name": "note",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_exchange_item",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_exchange_item",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_exchange_item",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_exchange_item",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_fulfillment",
+    "column_name": "order_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "order_fulfillment",
+    "column_name": "fulfillment_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "order_fulfillment",
+    "column_name": "id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "order_fulfillment",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_fulfillment",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_fulfillment",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_item",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_item",
+    "column_name": "order_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_item",
+    "column_name": "version",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "order_item",
+    "column_name": "item_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_item",
+    "column_name": "quantity",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "order_item",
+    "column_name": "raw_quantity",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_item",
+    "column_name": "fulfilled_quantity",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "order_item",
+    "column_name": "raw_fulfilled_quantity",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_item",
+    "column_name": "shipped_quantity",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "order_item",
+    "column_name": "raw_shipped_quantity",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_item",
+    "column_name": "return_requested_quantity",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "order_item",
+    "column_name": "raw_return_requested_quantity",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_item",
+    "column_name": "return_received_quantity",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "order_item",
+    "column_name": "raw_return_received_quantity",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_item",
+    "column_name": "return_dismissed_quantity",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "order_item",
+    "column_name": "raw_return_dismissed_quantity",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_item",
+    "column_name": "written_off_quantity",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "order_item",
+    "column_name": "raw_written_off_quantity",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_item",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_item",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_item",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_item",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_item",
+    "column_name": "delivered_quantity",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "order_item",
+    "column_name": "raw_delivered_quantity",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_item",
+    "column_name": "unit_price",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "order_item",
+    "column_name": "raw_unit_price",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_item",
+    "column_name": "compare_at_unit_price",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "order_item",
+    "column_name": "raw_compare_at_unit_price",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_line_item",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_line_item",
+    "column_name": "totals_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_line_item",
+    "column_name": "title",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_line_item",
+    "column_name": "subtitle",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_line_item",
+    "column_name": "thumbnail",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_line_item",
+    "column_name": "variant_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_line_item",
+    "column_name": "product_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_line_item",
+    "column_name": "product_title",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_line_item",
+    "column_name": "product_description",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_line_item",
+    "column_name": "product_subtitle",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_line_item",
+    "column_name": "product_type",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_line_item",
+    "column_name": "product_collection",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_line_item",
+    "column_name": "product_handle",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_line_item",
+    "column_name": "variant_sku",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_line_item",
+    "column_name": "variant_barcode",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_line_item",
+    "column_name": "variant_title",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_line_item",
+    "column_name": "variant_option_values",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_line_item",
+    "column_name": "requires_shipping",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "order_line_item",
+    "column_name": "is_discountable",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "order_line_item",
+    "column_name": "is_tax_inclusive",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "order_line_item",
+    "column_name": "compare_at_unit_price",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "order_line_item",
+    "column_name": "raw_compare_at_unit_price",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_line_item",
+    "column_name": "unit_price",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "order_line_item",
+    "column_name": "raw_unit_price",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_line_item",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_line_item",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_line_item",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_line_item",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_line_item",
+    "column_name": "is_custom_price",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "order_line_item",
+    "column_name": "product_type_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_line_item",
+    "column_name": "is_giftcard",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "order_line_item_adjustment",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_line_item_adjustment",
+    "column_name": "description",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_line_item_adjustment",
+    "column_name": "promotion_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_line_item_adjustment",
+    "column_name": "code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_line_item_adjustment",
+    "column_name": "amount",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "order_line_item_adjustment",
+    "column_name": "raw_amount",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_line_item_adjustment",
+    "column_name": "provider_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_line_item_adjustment",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_line_item_adjustment",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_line_item_adjustment",
+    "column_name": "item_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_line_item_adjustment",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_line_item_adjustment",
+    "column_name": "is_tax_inclusive",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "order_line_item_adjustment",
+    "column_name": "version",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "order_line_item_tax_line",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_line_item_tax_line",
+    "column_name": "description",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_line_item_tax_line",
+    "column_name": "tax_rate_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_line_item_tax_line",
+    "column_name": "code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_line_item_tax_line",
+    "column_name": "rate",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "order_line_item_tax_line",
+    "column_name": "raw_rate",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_line_item_tax_line",
+    "column_name": "provider_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_line_item_tax_line",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_line_item_tax_line",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_line_item_tax_line",
+    "column_name": "item_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_line_item_tax_line",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_line_item_tax_line",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_line_item_tax_line",
+    "column_name": "data",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_payment_collection",
+    "column_name": "order_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "order_payment_collection",
+    "column_name": "payment_collection_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "order_payment_collection",
+    "column_name": "id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "order_payment_collection",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_payment_collection",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_payment_collection",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_promotion",
+    "column_name": "order_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "order_promotion",
+    "column_name": "promotion_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "order_promotion",
+    "column_name": "id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "order_promotion",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_promotion",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_promotion",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_shipping",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_shipping",
+    "column_name": "order_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_shipping",
+    "column_name": "version",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "order_shipping",
+    "column_name": "shipping_method_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_shipping",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_shipping",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_shipping",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_shipping",
+    "column_name": "return_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_shipping",
+    "column_name": "claim_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_shipping",
+    "column_name": "exchange_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_shipping_method",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_shipping_method",
+    "column_name": "name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_shipping_method",
+    "column_name": "description",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_shipping_method",
+    "column_name": "amount",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "order_shipping_method",
+    "column_name": "raw_amount",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_shipping_method",
+    "column_name": "is_tax_inclusive",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "order_shipping_method",
+    "column_name": "shipping_option_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_shipping_method",
+    "column_name": "data",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_shipping_method",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_shipping_method",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_shipping_method",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_shipping_method",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_shipping_method",
+    "column_name": "is_custom_amount",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "order_shipping_method_adjustment",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_shipping_method_adjustment",
+    "column_name": "description",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_shipping_method_adjustment",
+    "column_name": "promotion_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_shipping_method_adjustment",
+    "column_name": "code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_shipping_method_adjustment",
+    "column_name": "amount",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "order_shipping_method_adjustment",
+    "column_name": "raw_amount",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_shipping_method_adjustment",
+    "column_name": "provider_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_shipping_method_adjustment",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_shipping_method_adjustment",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_shipping_method_adjustment",
+    "column_name": "shipping_method_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_shipping_method_adjustment",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_shipping_method_adjustment",
+    "column_name": "version",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "order_shipping_method_tax_line",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_shipping_method_tax_line",
+    "column_name": "description",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_shipping_method_tax_line",
+    "column_name": "tax_rate_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_shipping_method_tax_line",
+    "column_name": "code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_shipping_method_tax_line",
+    "column_name": "rate",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "order_shipping_method_tax_line",
+    "column_name": "raw_rate",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_shipping_method_tax_line",
+    "column_name": "provider_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_shipping_method_tax_line",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_shipping_method_tax_line",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_shipping_method_tax_line",
+    "column_name": "shipping_method_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_shipping_method_tax_line",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_shipping_method_tax_line",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_shipping_method_tax_line",
+    "column_name": "data",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_summary",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_summary",
+    "column_name": "order_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_summary",
+    "column_name": "version",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "order_summary",
+    "column_name": "totals",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_summary",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_summary",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_summary",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_transaction",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_transaction",
+    "column_name": "order_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_transaction",
+    "column_name": "version",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "order_transaction",
+    "column_name": "amount",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "order_transaction",
+    "column_name": "raw_amount",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "order_transaction",
+    "column_name": "currency_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_transaction",
+    "column_name": "reference",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_transaction",
+    "column_name": "reference_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_transaction",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_transaction",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_transaction",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "order_transaction",
+    "column_name": "return_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_transaction",
+    "column_name": "claim_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "order_transaction",
+    "column_name": "exchange_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "payment",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "payment",
+    "column_name": "amount",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "payment",
+    "column_name": "raw_amount",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "payment",
+    "column_name": "currency_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "payment",
+    "column_name": "provider_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "payment",
+    "column_name": "data",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "payment",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "payment",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "payment",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "payment",
+    "column_name": "captured_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "payment",
+    "column_name": "canceled_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "payment",
+    "column_name": "payment_collection_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "payment",
+    "column_name": "payment_session_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "payment",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "payment_collection",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "payment_collection",
+    "column_name": "currency_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "payment_collection",
+    "column_name": "amount",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "payment_collection",
+    "column_name": "raw_amount",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "payment_collection",
+    "column_name": "authorized_amount",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "payment_collection",
+    "column_name": "raw_authorized_amount",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "payment_collection",
+    "column_name": "captured_amount",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "payment_collection",
+    "column_name": "raw_captured_amount",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "payment_collection",
+    "column_name": "refunded_amount",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "payment_collection",
+    "column_name": "raw_refunded_amount",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "payment_collection",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "payment_collection",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "payment_collection",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "payment_collection",
+    "column_name": "completed_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "payment_collection",
+    "column_name": "status",
+    "data_type": "text"
+  },
+  {
+    "table_name": "payment_collection",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "payment_collection_payment_providers",
+    "column_name": "payment_collection_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "payment_collection_payment_providers",
+    "column_name": "payment_provider_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "payment_provider",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "payment_provider",
+    "column_name": "is_enabled",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "payment_provider",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "payment_provider",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "payment_provider",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "payment_session",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "payment_session",
+    "column_name": "currency_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "payment_session",
+    "column_name": "amount",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "payment_session",
+    "column_name": "raw_amount",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "payment_session",
+    "column_name": "provider_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "payment_session",
+    "column_name": "data",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "payment_session",
+    "column_name": "context",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "payment_session",
+    "column_name": "status",
+    "data_type": "text"
+  },
+  {
+    "table_name": "payment_session",
+    "column_name": "authorized_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "payment_session",
+    "column_name": "payment_collection_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "payment_session",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "payment_session",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "payment_session",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "payment_session",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "payout",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "payout",
+    "column_name": "period_start",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "payout",
+    "column_name": "period_end",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "payout",
+    "column_name": "sub_order_count",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "payout",
+    "column_name": "gross_amount",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "payout",
+    "column_name": "fee_percent",
+    "data_type": "real"
+  },
+  {
+    "table_name": "payout",
+    "column_name": "fee_amount",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "payout",
+    "column_name": "net_amount",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "payout",
+    "column_name": "bank_name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "payout",
+    "column_name": "bank_account_number",
+    "data_type": "text"
+  },
+  {
+    "table_name": "payout",
+    "column_name": "bank_account_name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "payout",
+    "column_name": "status",
+    "data_type": "text"
+  },
+  {
+    "table_name": "payout",
+    "column_name": "transaction_ref",
+    "data_type": "text"
+  },
+  {
+    "table_name": "payout",
+    "column_name": "paid_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "payout",
+    "column_name": "artisan_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "payout",
+    "column_name": "raw_gross_amount",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "payout",
+    "column_name": "raw_fee_amount",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "payout",
+    "column_name": "raw_net_amount",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "payout",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "payout",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "payout",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "price",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "price",
+    "column_name": "title",
+    "data_type": "text"
+  },
+  {
+    "table_name": "price",
+    "column_name": "price_set_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "price",
+    "column_name": "currency_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "price",
+    "column_name": "raw_amount",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "price",
+    "column_name": "rules_count",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "price",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "price",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "price",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "price",
+    "column_name": "price_list_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "price",
+    "column_name": "amount",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "price",
+    "column_name": "min_quantity",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "price",
+    "column_name": "max_quantity",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "price",
+    "column_name": "raw_min_quantity",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "price",
+    "column_name": "raw_max_quantity",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "price_list",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "price_list",
+    "column_name": "status",
+    "data_type": "text"
+  },
+  {
+    "table_name": "price_list",
+    "column_name": "starts_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "price_list",
+    "column_name": "ends_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "price_list",
+    "column_name": "rules_count",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "price_list",
+    "column_name": "title",
+    "data_type": "text"
+  },
+  {
+    "table_name": "price_list",
+    "column_name": "description",
+    "data_type": "text"
+  },
+  {
+    "table_name": "price_list",
+    "column_name": "type",
+    "data_type": "text"
+  },
+  {
+    "table_name": "price_list",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "price_list",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "price_list",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "price_list",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "price_list_rule",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "price_list_rule",
+    "column_name": "price_list_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "price_list_rule",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "price_list_rule",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "price_list_rule",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "price_list_rule",
+    "column_name": "value",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "price_list_rule",
+    "column_name": "attribute",
+    "data_type": "text"
+  },
+  {
+    "table_name": "price_preference",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "price_preference",
+    "column_name": "attribute",
+    "data_type": "text"
+  },
+  {
+    "table_name": "price_preference",
+    "column_name": "value",
+    "data_type": "text"
+  },
+  {
+    "table_name": "price_preference",
+    "column_name": "is_tax_inclusive",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "price_preference",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "price_preference",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "price_preference",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "price_rule",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "price_rule",
+    "column_name": "value",
+    "data_type": "text"
+  },
+  {
+    "table_name": "price_rule",
+    "column_name": "priority",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "price_rule",
+    "column_name": "price_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "price_rule",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "price_rule",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "price_rule",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "price_rule",
+    "column_name": "attribute",
+    "data_type": "text"
+  },
+  {
+    "table_name": "price_rule",
+    "column_name": "operator",
+    "data_type": "text"
+  },
+  {
+    "table_name": "price_set",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "price_set",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "price_set",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "price_set",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product",
+    "column_name": "title",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product",
+    "column_name": "handle",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product",
+    "column_name": "subtitle",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product",
+    "column_name": "description",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product",
+    "column_name": "is_giftcard",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "product",
+    "column_name": "status",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product",
+    "column_name": "thumbnail",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product",
+    "column_name": "weight",
+    "data_type": "real"
+  },
+  {
+    "table_name": "product",
+    "column_name": "length",
+    "data_type": "real"
+  },
+  {
+    "table_name": "product",
+    "column_name": "height",
+    "data_type": "real"
+  },
+  {
+    "table_name": "product",
+    "column_name": "width",
+    "data_type": "real"
+  },
+  {
+    "table_name": "product",
+    "column_name": "origin_country",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product",
+    "column_name": "hs_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product",
+    "column_name": "mid_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product",
+    "column_name": "material",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product",
+    "column_name": "collection_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product",
+    "column_name": "type_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product",
+    "column_name": "discountable",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "product",
+    "column_name": "external_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "product_category",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_category",
+    "column_name": "name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_category",
+    "column_name": "description",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_category",
+    "column_name": "handle",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_category",
+    "column_name": "mpath",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_category",
+    "column_name": "is_active",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "product_category",
+    "column_name": "is_internal",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "product_category",
+    "column_name": "rank",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "product_category",
+    "column_name": "parent_category_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_category",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_category",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_category",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_category",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "product_category",
+    "column_name": "external_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_category_product",
+    "column_name": "product_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_category_product",
+    "column_name": "product_category_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_collection",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_collection",
+    "column_name": "title",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_collection",
+    "column_name": "handle",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_collection",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "product_collection",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_collection",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_collection",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_collection",
+    "column_name": "external_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_option",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_option",
+    "column_name": "title",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_option",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "product_option",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_option",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_option",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_option",
+    "column_name": "is_exclusive",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "product_option_value",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_option_value",
+    "column_name": "value",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_option_value",
+    "column_name": "option_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_option_value",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "product_option_value",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_option_value",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_option_value",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_option_value",
+    "column_name": "rank",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "product_product_option",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_product_option",
+    "column_name": "product_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_product_option",
+    "column_name": "product_option_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_product_option",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_product_option",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_product_option",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_product_option_value",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_product_option_value",
+    "column_name": "product_product_option_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_product_option_value",
+    "column_name": "product_option_value_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_product_option_value",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_product_option_value",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_product_option_value",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_sales_channel",
+    "column_name": "product_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "product_sales_channel",
+    "column_name": "sales_channel_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "product_sales_channel",
+    "column_name": "id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "product_sales_channel",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_sales_channel",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_sales_channel",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_shipping_profile",
+    "column_name": "product_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "product_shipping_profile",
+    "column_name": "shipping_profile_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "product_shipping_profile",
+    "column_name": "id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "product_shipping_profile",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_shipping_profile",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_shipping_profile",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_tag",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_tag",
+    "column_name": "value",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_tag",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "product_tag",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_tag",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_tag",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_tag",
+    "column_name": "external_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_tags",
+    "column_name": "product_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_tags",
+    "column_name": "product_tag_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_type",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_type",
+    "column_name": "value",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_type",
+    "column_name": "metadata",
+    "data_type": "json"
+  },
+  {
+    "table_name": "product_type",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_type",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_type",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_type",
+    "column_name": "external_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_variant",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_variant",
+    "column_name": "title",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_variant",
+    "column_name": "sku",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_variant",
+    "column_name": "barcode",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_variant",
+    "column_name": "ean",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_variant",
+    "column_name": "upc",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_variant",
+    "column_name": "allow_backorder",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "product_variant",
+    "column_name": "manage_inventory",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "product_variant",
+    "column_name": "hs_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_variant",
+    "column_name": "origin_country",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_variant",
+    "column_name": "mid_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_variant",
+    "column_name": "material",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_variant",
+    "column_name": "weight",
+    "data_type": "real"
+  },
+  {
+    "table_name": "product_variant",
+    "column_name": "length",
+    "data_type": "real"
+  },
+  {
+    "table_name": "product_variant",
+    "column_name": "height",
+    "data_type": "real"
+  },
+  {
+    "table_name": "product_variant",
+    "column_name": "width",
+    "data_type": "real"
+  },
+  {
+    "table_name": "product_variant",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "product_variant",
+    "column_name": "variant_rank",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "product_variant",
+    "column_name": "product_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_variant",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_variant",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_variant",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_variant",
+    "column_name": "thumbnail",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_variant_inventory_item",
+    "column_name": "variant_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "product_variant_inventory_item",
+    "column_name": "inventory_item_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "product_variant_inventory_item",
+    "column_name": "id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "product_variant_inventory_item",
+    "column_name": "required_quantity",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "product_variant_inventory_item",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_variant_inventory_item",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_variant_inventory_item",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_variant_option",
+    "column_name": "variant_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_variant_option",
+    "column_name": "option_value_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_variant_price_set",
+    "column_name": "variant_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "product_variant_price_set",
+    "column_name": "price_set_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "product_variant_price_set",
+    "column_name": "id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "product_variant_price_set",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_variant_price_set",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_variant_price_set",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_variant_product_image",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_variant_product_image",
+    "column_name": "variant_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_variant_product_image",
+    "column_name": "image_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "product_variant_product_image",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_variant_product_image",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "product_variant_product_image",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "promotion",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "promotion",
+    "column_name": "code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "promotion",
+    "column_name": "campaign_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "promotion",
+    "column_name": "is_automatic",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "promotion",
+    "column_name": "type",
+    "data_type": "text"
+  },
+  {
+    "table_name": "promotion",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "promotion",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "promotion",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "promotion",
+    "column_name": "status",
+    "data_type": "text"
+  },
+  {
+    "table_name": "promotion",
+    "column_name": "is_tax_inclusive",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "promotion",
+    "column_name": "limit",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "promotion",
+    "column_name": "used",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "promotion",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "promotion_application_method",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "promotion_application_method",
+    "column_name": "value",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "promotion_application_method",
+    "column_name": "raw_value",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "promotion_application_method",
+    "column_name": "max_quantity",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "promotion_application_method",
+    "column_name": "apply_to_quantity",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "promotion_application_method",
+    "column_name": "buy_rules_min_quantity",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "promotion_application_method",
+    "column_name": "type",
+    "data_type": "text"
+  },
+  {
+    "table_name": "promotion_application_method",
+    "column_name": "target_type",
+    "data_type": "text"
+  },
+  {
+    "table_name": "promotion_application_method",
+    "column_name": "allocation",
+    "data_type": "text"
+  },
+  {
+    "table_name": "promotion_application_method",
+    "column_name": "promotion_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "promotion_application_method",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "promotion_application_method",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "promotion_application_method",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "promotion_application_method",
+    "column_name": "currency_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "promotion_campaign",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "promotion_campaign",
+    "column_name": "name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "promotion_campaign",
+    "column_name": "description",
+    "data_type": "text"
+  },
+  {
+    "table_name": "promotion_campaign",
+    "column_name": "campaign_identifier",
+    "data_type": "text"
+  },
+  {
+    "table_name": "promotion_campaign",
+    "column_name": "starts_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "promotion_campaign",
+    "column_name": "ends_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "promotion_campaign",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "promotion_campaign",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "promotion_campaign",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "promotion_campaign_budget",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "promotion_campaign_budget",
+    "column_name": "type",
+    "data_type": "text"
+  },
+  {
+    "table_name": "promotion_campaign_budget",
+    "column_name": "campaign_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "promotion_campaign_budget",
+    "column_name": "limit",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "promotion_campaign_budget",
+    "column_name": "raw_limit",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "promotion_campaign_budget",
+    "column_name": "used",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "promotion_campaign_budget",
+    "column_name": "raw_used",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "promotion_campaign_budget",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "promotion_campaign_budget",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "promotion_campaign_budget",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "promotion_campaign_budget",
+    "column_name": "currency_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "promotion_campaign_budget",
+    "column_name": "attribute",
+    "data_type": "text"
+  },
+  {
+    "table_name": "promotion_campaign_budget_usage",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "promotion_campaign_budget_usage",
+    "column_name": "attribute_value",
+    "data_type": "text"
+  },
+  {
+    "table_name": "promotion_campaign_budget_usage",
+    "column_name": "used",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "promotion_campaign_budget_usage",
+    "column_name": "budget_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "promotion_campaign_budget_usage",
+    "column_name": "raw_used",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "promotion_campaign_budget_usage",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "promotion_campaign_budget_usage",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "promotion_campaign_budget_usage",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "promotion_promotion_rule",
+    "column_name": "promotion_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "promotion_promotion_rule",
+    "column_name": "promotion_rule_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "promotion_rule",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "promotion_rule",
+    "column_name": "description",
+    "data_type": "text"
+  },
+  {
+    "table_name": "promotion_rule",
+    "column_name": "attribute",
+    "data_type": "text"
+  },
+  {
+    "table_name": "promotion_rule",
+    "column_name": "operator",
+    "data_type": "text"
+  },
+  {
+    "table_name": "promotion_rule",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "promotion_rule",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "promotion_rule",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "promotion_rule_value",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "promotion_rule_value",
+    "column_name": "promotion_rule_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "promotion_rule_value",
+    "column_name": "value",
+    "data_type": "text"
+  },
+  {
+    "table_name": "promotion_rule_value",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "promotion_rule_value",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "promotion_rule_value",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "property_label",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "property_label",
+    "column_name": "entity",
+    "data_type": "text"
+  },
+  {
+    "table_name": "property_label",
+    "column_name": "property",
+    "data_type": "text"
+  },
+  {
+    "table_name": "property_label",
+    "column_name": "label",
+    "data_type": "text"
+  },
+  {
+    "table_name": "property_label",
+    "column_name": "description",
+    "data_type": "text"
+  },
+  {
+    "table_name": "property_label",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "property_label",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "property_label",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "provider_identity",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "provider_identity",
+    "column_name": "entity_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "provider_identity",
+    "column_name": "provider",
+    "data_type": "text"
+  },
+  {
+    "table_name": "provider_identity",
+    "column_name": "auth_identity_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "provider_identity",
+    "column_name": "user_metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "provider_identity",
+    "column_name": "provider_metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "provider_identity",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "provider_identity",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "provider_identity",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "publishable_api_key_sales_channel",
+    "column_name": "publishable_key_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "publishable_api_key_sales_channel",
+    "column_name": "sales_channel_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "publishable_api_key_sales_channel",
+    "column_name": "id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "publishable_api_key_sales_channel",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "publishable_api_key_sales_channel",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "publishable_api_key_sales_channel",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "refund",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "refund",
+    "column_name": "amount",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "refund",
+    "column_name": "raw_amount",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "refund",
+    "column_name": "payment_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "refund",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "refund",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "refund",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "refund",
+    "column_name": "created_by",
+    "data_type": "text"
+  },
+  {
+    "table_name": "refund",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "refund",
+    "column_name": "refund_reason_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "refund",
+    "column_name": "note",
+    "data_type": "text"
+  },
+  {
+    "table_name": "refund_reason",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "refund_reason",
+    "column_name": "label",
+    "data_type": "text"
+  },
+  {
+    "table_name": "refund_reason",
+    "column_name": "description",
+    "data_type": "text"
+  },
+  {
+    "table_name": "refund_reason",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "refund_reason",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "refund_reason",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "refund_reason",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "refund_reason",
+    "column_name": "code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "region",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "region",
+    "column_name": "name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "region",
+    "column_name": "currency_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "region",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "region",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "region",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "region",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "region",
+    "column_name": "automatic_taxes",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "region_country",
+    "column_name": "iso_2",
+    "data_type": "text"
+  },
+  {
+    "table_name": "region_country",
+    "column_name": "iso_3",
+    "data_type": "text"
+  },
+  {
+    "table_name": "region_country",
+    "column_name": "num_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "region_country",
+    "column_name": "name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "region_country",
+    "column_name": "display_name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "region_country",
+    "column_name": "region_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "region_country",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "region_country",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "region_country",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "region_country",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "region_payment_provider",
+    "column_name": "region_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "region_payment_provider",
+    "column_name": "payment_provider_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "region_payment_provider",
+    "column_name": "id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "region_payment_provider",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "region_payment_provider",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "region_payment_provider",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "reservation_item",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "reservation_item",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "reservation_item",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "reservation_item",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "reservation_item",
+    "column_name": "line_item_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "reservation_item",
+    "column_name": "location_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "reservation_item",
+    "column_name": "quantity",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "reservation_item",
+    "column_name": "external_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "reservation_item",
+    "column_name": "description",
+    "data_type": "text"
+  },
+  {
+    "table_name": "reservation_item",
+    "column_name": "created_by",
+    "data_type": "text"
+  },
+  {
+    "table_name": "reservation_item",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "reservation_item",
+    "column_name": "inventory_item_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "reservation_item",
+    "column_name": "allow_backorder",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "reservation_item",
+    "column_name": "raw_quantity",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "return",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "return",
+    "column_name": "order_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "return",
+    "column_name": "claim_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "return",
+    "column_name": "exchange_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "return",
+    "column_name": "order_version",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "return",
+    "column_name": "display_id",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "return",
+    "column_name": "status",
+    "data_type": "USER-DEFINED"
+  },
+  {
+    "table_name": "return",
+    "column_name": "no_notification",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "return",
+    "column_name": "refund_amount",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "return",
+    "column_name": "raw_refund_amount",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "return",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "return",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "return",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "return",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "return",
+    "column_name": "received_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "return",
+    "column_name": "canceled_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "return",
+    "column_name": "location_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "return",
+    "column_name": "requested_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "return",
+    "column_name": "created_by",
+    "data_type": "text"
+  },
+  {
+    "table_name": "return_fulfillment",
+    "column_name": "return_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "return_fulfillment",
+    "column_name": "fulfillment_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "return_fulfillment",
+    "column_name": "id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "return_fulfillment",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "return_fulfillment",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "return_fulfillment",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "return_item",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "return_item",
+    "column_name": "return_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "return_item",
+    "column_name": "reason_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "return_item",
+    "column_name": "item_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "return_item",
+    "column_name": "quantity",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "return_item",
+    "column_name": "raw_quantity",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "return_item",
+    "column_name": "received_quantity",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "return_item",
+    "column_name": "raw_received_quantity",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "return_item",
+    "column_name": "note",
+    "data_type": "text"
+  },
+  {
+    "table_name": "return_item",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "return_item",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "return_item",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "return_item",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "return_item",
+    "column_name": "damaged_quantity",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "return_item",
+    "column_name": "raw_damaged_quantity",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "return_reason",
+    "column_name": "id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "return_reason",
+    "column_name": "value",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "return_reason",
+    "column_name": "label",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "return_reason",
+    "column_name": "description",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "return_reason",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "return_reason",
+    "column_name": "parent_return_reason_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "return_reason",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "return_reason",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "return_reason",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "sales_channel",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "sales_channel",
+    "column_name": "name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "sales_channel",
+    "column_name": "description",
+    "data_type": "text"
+  },
+  {
+    "table_name": "sales_channel",
+    "column_name": "is_disabled",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "sales_channel",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "sales_channel",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "sales_channel",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "sales_channel",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "sales_channel_stock_location",
+    "column_name": "sales_channel_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "sales_channel_stock_location",
+    "column_name": "stock_location_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "sales_channel_stock_location",
+    "column_name": "id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "sales_channel_stock_location",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "sales_channel_stock_location",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "sales_channel_stock_location",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "script_migrations",
+    "column_name": "id",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "script_migrations",
+    "column_name": "script_name",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "script_migrations",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "script_migrations",
+    "column_name": "finished_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "search_index",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "search_index",
+    "column_name": "name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "search_index",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "search_index",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "search_index",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "search_index",
+    "column_name": "active_version",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "search_index_sync",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "search_index_sync",
+    "column_name": "job_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "search_index_sync",
+    "column_name": "status",
+    "data_type": "text"
+  },
+  {
+    "table_name": "search_index_sync",
+    "column_name": "filters",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "search_index_sync",
+    "column_name": "last_key",
+    "data_type": "text"
+  },
+  {
+    "table_name": "search_index_sync",
+    "column_name": "documents_synced",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "search_index_sync",
+    "column_name": "started_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "search_index_sync",
+    "column_name": "completed_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "search_index_sync",
+    "column_name": "error",
+    "data_type": "text"
+  },
+  {
+    "table_name": "search_index_sync",
+    "column_name": "search_index_version_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "search_index_sync",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "search_index_sync",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "search_index_sync",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "search_index_sync",
+    "column_name": "resumable",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "search_index_version",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "search_index_version",
+    "column_name": "version",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "search_index_version",
+    "column_name": "provider",
+    "data_type": "text"
+  },
+  {
+    "table_name": "search_index_version",
+    "column_name": "physical_name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "search_index_version",
+    "column_name": "definition_hash",
+    "data_type": "text"
+  },
+  {
+    "table_name": "search_index_version",
+    "column_name": "status",
+    "data_type": "text"
+  },
+  {
+    "table_name": "search_index_version",
+    "column_name": "search_index_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "search_index_version",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "search_index_version",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "search_index_version",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "search_pg_product_v3",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "search_pg_product_v3",
+    "column_name": "document",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "search_pg_product_v3",
+    "column_name": "indexed",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "search_pg_product_v3",
+    "column_name": "search_vector",
+    "data_type": "tsvector"
+  },
+  {
+    "table_name": "search_pg_product_v3",
+    "column_name": "search_text",
+    "data_type": "text"
+  },
+  {
+    "table_name": "search_pg_product_v3",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "search_pg_product_v3",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "search_pg_product_v4",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "search_pg_product_v4",
+    "column_name": "document",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "search_pg_product_v4",
+    "column_name": "indexed",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "search_pg_product_v4",
+    "column_name": "search_vector",
+    "data_type": "tsvector"
+  },
+  {
+    "table_name": "search_pg_product_v4",
+    "column_name": "search_text",
+    "data_type": "text"
+  },
+  {
+    "table_name": "search_pg_product_v4",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "search_pg_product_v4",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "search_postgres_index",
+    "column_name": "name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "search_postgres_index",
+    "column_name": "table_name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "search_postgres_index",
+    "column_name": "schema_hash",
+    "data_type": "text"
+  },
+  {
+    "table_name": "search_postgres_index",
+    "column_name": "plan",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "search_postgres_index",
+    "column_name": "document_count",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "search_postgres_index",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "search_postgres_index",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "service_zone",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "service_zone",
+    "column_name": "name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "service_zone",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "service_zone",
+    "column_name": "fulfillment_set_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "service_zone",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "service_zone",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "service_zone",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "shipping_option",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "shipping_option",
+    "column_name": "name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "shipping_option",
+    "column_name": "price_type",
+    "data_type": "text"
+  },
+  {
+    "table_name": "shipping_option",
+    "column_name": "service_zone_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "shipping_option",
+    "column_name": "shipping_profile_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "shipping_option",
+    "column_name": "provider_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "shipping_option",
+    "column_name": "data",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "shipping_option",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "shipping_option",
+    "column_name": "shipping_option_type_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "shipping_option",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "shipping_option",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "shipping_option",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "shipping_option_price_set",
+    "column_name": "shipping_option_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "shipping_option_price_set",
+    "column_name": "price_set_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "shipping_option_price_set",
+    "column_name": "id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "shipping_option_price_set",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "shipping_option_price_set",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "shipping_option_price_set",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "shipping_option_rule",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "shipping_option_rule",
+    "column_name": "attribute",
+    "data_type": "text"
+  },
+  {
+    "table_name": "shipping_option_rule",
+    "column_name": "operator",
+    "data_type": "text"
+  },
+  {
+    "table_name": "shipping_option_rule",
+    "column_name": "value",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "shipping_option_rule",
+    "column_name": "shipping_option_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "shipping_option_rule",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "shipping_option_rule",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "shipping_option_rule",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "shipping_option_type",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "shipping_option_type",
+    "column_name": "label",
+    "data_type": "text"
+  },
+  {
+    "table_name": "shipping_option_type",
+    "column_name": "description",
+    "data_type": "text"
+  },
+  {
+    "table_name": "shipping_option_type",
+    "column_name": "code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "shipping_option_type",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "shipping_option_type",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "shipping_option_type",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "shipping_profile",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "shipping_profile",
+    "column_name": "name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "shipping_profile",
+    "column_name": "type",
+    "data_type": "text"
+  },
+  {
+    "table_name": "shipping_profile",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "shipping_profile",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "shipping_profile",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "shipping_profile",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "stock_location",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "stock_location",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "stock_location",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "stock_location",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "stock_location",
+    "column_name": "name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "stock_location",
+    "column_name": "address_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "stock_location",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "stock_location_address",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "stock_location_address",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "stock_location_address",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "stock_location_address",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "stock_location_address",
+    "column_name": "address_1",
+    "data_type": "text"
+  },
+  {
+    "table_name": "stock_location_address",
+    "column_name": "address_2",
+    "data_type": "text"
+  },
+  {
+    "table_name": "stock_location_address",
+    "column_name": "company",
+    "data_type": "text"
+  },
+  {
+    "table_name": "stock_location_address",
+    "column_name": "city",
+    "data_type": "text"
+  },
+  {
+    "table_name": "stock_location_address",
+    "column_name": "country_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "stock_location_address",
+    "column_name": "phone",
+    "data_type": "text"
+  },
+  {
+    "table_name": "stock_location_address",
+    "column_name": "province",
+    "data_type": "text"
+  },
+  {
+    "table_name": "stock_location_address",
+    "column_name": "postal_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "stock_location_address",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "store",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "store",
+    "column_name": "name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "store",
+    "column_name": "default_sales_channel_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "store",
+    "column_name": "default_region_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "store",
+    "column_name": "default_location_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "store",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "store",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "store",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "store",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "store_currency",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "store_currency",
+    "column_name": "currency_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "store_currency",
+    "column_name": "is_default",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "store_currency",
+    "column_name": "store_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "store_currency",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "store_currency",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "store_currency",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "store_locale",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "store_locale",
+    "column_name": "locale_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "store_locale",
+    "column_name": "store_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "store_locale",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "store_locale",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "store_locale",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "status",
+    "data_type": "text"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "is_custom",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "custom_request_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "made_to_order",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "lead_days",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "subtotal",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "shipping_name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "shipping_phone",
+    "data_type": "text"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "shipping_address",
+    "data_type": "text"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "accept_deadline",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "accepted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "due_date",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "ready_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "carrier",
+    "data_type": "text"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "tracking_number",
+    "data_type": "text"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "shipped_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "delivered_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "complete_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "completed_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "canceled_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "canceled_by",
+    "data_type": "text"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "cancel_reason",
+    "data_type": "text"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "refund_status",
+    "data_type": "text"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "refunded_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "payout_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "artisan_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "marketplace_order_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "raw_subtotal",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "shipping_fee",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "expected_delivery_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "carrier_status",
+    "data_type": "text"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "raw_shipping_fee",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "shipping_charged",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "sub_order",
+    "column_name": "raw_shipping_charged",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "sub_order_item",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "sub_order_item",
+    "column_name": "line_item_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "sub_order_item",
+    "column_name": "product_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "sub_order_item",
+    "column_name": "variant_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "sub_order_item",
+    "column_name": "title",
+    "data_type": "text"
+  },
+  {
+    "table_name": "sub_order_item",
+    "column_name": "variant_title",
+    "data_type": "text"
+  },
+  {
+    "table_name": "sub_order_item",
+    "column_name": "thumbnail",
+    "data_type": "text"
+  },
+  {
+    "table_name": "sub_order_item",
+    "column_name": "made_to_order",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "sub_order_item",
+    "column_name": "quantity",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "sub_order_item",
+    "column_name": "unit_price",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "sub_order_item",
+    "column_name": "total",
+    "data_type": "numeric"
+  },
+  {
+    "table_name": "sub_order_item",
+    "column_name": "sub_order_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "sub_order_item",
+    "column_name": "raw_unit_price",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "sub_order_item",
+    "column_name": "raw_total",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "sub_order_item",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "sub_order_item",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "sub_order_item",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "tax_provider",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "tax_provider",
+    "column_name": "is_enabled",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "tax_provider",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "tax_provider",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "tax_provider",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "tax_rate",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "tax_rate",
+    "column_name": "rate",
+    "data_type": "real"
+  },
+  {
+    "table_name": "tax_rate",
+    "column_name": "code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "tax_rate",
+    "column_name": "name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "tax_rate",
+    "column_name": "is_default",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "tax_rate",
+    "column_name": "is_combinable",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "tax_rate",
+    "column_name": "tax_region_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "tax_rate",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "tax_rate",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "tax_rate",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "tax_rate",
+    "column_name": "created_by",
+    "data_type": "text"
+  },
+  {
+    "table_name": "tax_rate",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "tax_rate_rule",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "tax_rate_rule",
+    "column_name": "tax_rate_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "tax_rate_rule",
+    "column_name": "reference_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "tax_rate_rule",
+    "column_name": "reference",
+    "data_type": "text"
+  },
+  {
+    "table_name": "tax_rate_rule",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "tax_rate_rule",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "tax_rate_rule",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "tax_rate_rule",
+    "column_name": "created_by",
+    "data_type": "text"
+  },
+  {
+    "table_name": "tax_rate_rule",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "tax_region",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "tax_region",
+    "column_name": "provider_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "tax_region",
+    "column_name": "country_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "tax_region",
+    "column_name": "province_code",
+    "data_type": "text"
+  },
+  {
+    "table_name": "tax_region",
+    "column_name": "parent_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "tax_region",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "tax_region",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "tax_region",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "tax_region",
+    "column_name": "created_by",
+    "data_type": "text"
+  },
+  {
+    "table_name": "tax_region",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "user",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "user",
+    "column_name": "first_name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "user",
+    "column_name": "last_name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "user",
+    "column_name": "email",
+    "data_type": "text"
+  },
+  {
+    "table_name": "user",
+    "column_name": "avatar_url",
+    "data_type": "text"
+  },
+  {
+    "table_name": "user",
+    "column_name": "metadata",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "user",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "user",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "user",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "user_preference",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "user_preference",
+    "column_name": "user_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "user_preference",
+    "column_name": "key",
+    "data_type": "text"
+  },
+  {
+    "table_name": "user_preference",
+    "column_name": "value",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "user_preference",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "user_preference",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "user_preference",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "user_rbac_role",
+    "column_name": "user_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "user_rbac_role",
+    "column_name": "rbac_role_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "user_rbac_role",
+    "column_name": "id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "user_rbac_role",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "user_rbac_role",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "user_rbac_role",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "view_configuration",
+    "column_name": "id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "view_configuration",
+    "column_name": "entity",
+    "data_type": "text"
+  },
+  {
+    "table_name": "view_configuration",
+    "column_name": "name",
+    "data_type": "text"
+  },
+  {
+    "table_name": "view_configuration",
+    "column_name": "user_id",
+    "data_type": "text"
+  },
+  {
+    "table_name": "view_configuration",
+    "column_name": "is_system_default",
+    "data_type": "boolean"
+  },
+  {
+    "table_name": "view_configuration",
+    "column_name": "configuration",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "view_configuration",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "view_configuration",
+    "column_name": "updated_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "view_configuration",
+    "column_name": "deleted_at",
+    "data_type": "timestamp with time zone"
+  },
+  {
+    "table_name": "workflow_execution",
+    "column_name": "id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "workflow_execution",
+    "column_name": "workflow_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "workflow_execution",
+    "column_name": "transaction_id",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "workflow_execution",
+    "column_name": "execution",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "workflow_execution",
+    "column_name": "context",
+    "data_type": "jsonb"
+  },
+  {
+    "table_name": "workflow_execution",
+    "column_name": "state",
+    "data_type": "character varying"
+  },
+  {
+    "table_name": "workflow_execution",
+    "column_name": "created_at",
+    "data_type": "timestamp without time zone"
+  },
+  {
+    "table_name": "workflow_execution",
+    "column_name": "updated_at",
+    "data_type": "timestamp without time zone"
+  },
+  {
+    "table_name": "workflow_execution",
+    "column_name": "deleted_at",
+    "data_type": "timestamp without time zone"
+  },
+  {
+    "table_name": "workflow_execution",
+    "column_name": "retention_time",
+    "data_type": "integer"
+  },
+  {
+    "table_name": "workflow_execution",
+    "column_name": "run_id",
+    "data_type": "text"
+  }
+]

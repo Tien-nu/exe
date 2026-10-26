@@ -30,11 +30,11 @@ export const paymentInfoMap: Record<
     icon: <PayPal />,
   },
   manual_cod: {
-    title: "Thanh toán khi nhận hàng (COD)",
+    title: "Cash on delivery (COD)",
     icon: <CreditCard />,
   },
   manual_bank: {
-    title: "Chuyển khoản ngân hàng (Bank Transfer)",
+    title: "Bank transfer",
     icon: <CreditCard />,
   },
   pp_system_default: {

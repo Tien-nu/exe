@@ -24,3 +24,5 @@ build
 !.yarn/versions
 
 .medusa
+# Reproducible localized dashboard output; release is in storefront/public/app.
+admin-build-english/

@@ -1,7 +1,9 @@
 import { HttpTypes } from "@medusajs/types"
 import { NextRequest, NextResponse } from "next/server"
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL
+import { backendUrl } from "./lib/backend-url"
+
+const BACKEND_URL = backendUrl()
 const PUBLISHABLE_API_KEY = process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY
 const DEFAULT_REGION = process.env.NEXT_PUBLIC_DEFAULT_REGION || "vn"
 
@@ -11,6 +13,9 @@ const regionMapCache = {
 }
 
 async function getRegionMap(cacheId: string) {
+  // This migration serves the Vietnam/VND market. Do not call a protected
+  // Vercel deployment over HTTP from its own Edge middleware.
+  if (process.env.NEXT_PUBLIC_YARNLY_BACKEND_MODE === "mongodb") return new Map<string, number>([[DEFAULT_REGION, 1]])
   const { regionMap, regionMapUpdated } = regionMapCache
 
   if (!BACKEND_URL) {
@@ -145,7 +150,7 @@ function dropExpiredLogins(request: NextRequest) {
  * Middleware to handle region selection and onboarding status.
  */
 export async function middleware(request: NextRequest) {
-  if (request.nextUrl.pathname.includes(".")) {
+  if (request.nextUrl.pathname === "/admin" || request.nextUrl.pathname.startsWith("/admin/") || request.nextUrl.pathname === "/auth" || request.nextUrl.pathname.startsWith("/auth/") || request.nextUrl.pathname === "/app" || request.nextUrl.pathname.startsWith("/app/") || request.nextUrl.pathname.includes(".")) {
     return NextResponse.next()
   }
 

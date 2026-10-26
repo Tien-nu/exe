@@ -10,7 +10,7 @@ export default async function MarketplaceOrderPanel({ orderId }: { orderId: stri
   if (!order) {
     return (
       <p className="txt-medium text-ui-fg-subtle">
-        Đơn hàng đang được chia cho các nghệ nhân, vui lòng tải lại trang sau giây lát.
+        Your order is being split between artisans. Reload the page in a moment.
       </p>
     )
   }
@@ -24,8 +24,8 @@ export default async function MarketplaceOrderPanel({ orderId }: { orderId: stri
       <BankTransferBox order={order} />
       <Heading level="h2" className="text-2xl-regular">
         {order.sub_orders.length > 1
-          ? `Đơn gồm ${order.sub_orders.length} gói từ ${shops}, giao riêng từng gói`
-          : "Tình trạng đơn hàng"}
+          ? `This order contains ${order.sub_orders.length} parcels from ${shops}, delivered separately`
+          : "Order status"}
       </Heading>
       <SubOrderList subOrders={order.sub_orders} />
     </div>

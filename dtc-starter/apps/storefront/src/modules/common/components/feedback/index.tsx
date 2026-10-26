@@ -161,7 +161,7 @@ export function FeedbackProvider({ children }: { children: React.ReactNode }) {
                 onClick={() => close(false)}
                 className="h-10 rounded-md border border-gray-200 bg-white px-4 txt-medium hover:bg-gray-50"
               >
-                {options?.cancelText ?? "Huỷ"}
+                {options?.cancelText ?? "Cancel"}
               </button>
               <button
                 type="submit"
@@ -172,7 +172,7 @@ export function FeedbackProvider({ children }: { children: React.ReactNode }) {
                   options?.tone === "danger" ? "bg-red-600 hover:bg-red-700" : "bg-black hover:bg-gray-800"
                 )}
               >
-                {options?.confirmText ?? "Đồng ý"}
+                {options?.confirmText ?? "Agree"}
               </button>
             </div>
           </DialogPanel>

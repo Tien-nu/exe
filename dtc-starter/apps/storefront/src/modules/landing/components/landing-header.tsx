@@ -27,33 +27,33 @@ export default function LandingHeader() {
         >
           Yarnly
         </LocalizedClientLink>
-        <nav className={styles.desktopNav} aria-label="Điều hướng Yarnly">
+        <nav className={styles.desktopNav} aria-label="Yarnly navigation">
           <div className={styles.navGroup}>
-            <span>Cùng Yarnly</span>
-            <a href="#kham-pha">Khám phá</a>
-            <a href="#lam-rieng">Đặt riêng</a>
-            <a href="#nghe-nhan">Nghệ nhân</a>
+            <span>With Yarnly</span>
+            <a href="#kham-pha">Explore</a>
+            <a href="#lam-rieng">Custom made</a>
+            <a href="#nghe-nhan">Artisans</a>
           </div>
           <a href="#bat-dau" className={styles.navGlass}>
-            Bắt đầu
+            Get started
           </a>
           <LocalizedClientLink href="/account" className={styles.navGlass}>
-            Tài khoản
+            Account
           </LocalizedClientLink>
         </nav>
         <LocalizedClientLink href="/home" className={styles.headerCta}>
-          Vào Yarnly <span aria-hidden="true">↗</span>
+          Enter Yarnly <span aria-hidden="true">↗</span>
         </LocalizedClientLink>
         <details className={styles.mobileMenu}>
-          <summary aria-label="Mở menu">
+          <summary aria-label="Open menu">
             <span />
             <span />
           </summary>
-          <nav aria-label="Điều hướng trên điện thoại">
-            <a href="#kham-pha">Khám phá</a>
-            <a href="#lam-rieng">Đặt làm riêng</a>
-            <a href="#nghe-nhan">Dành cho nghệ nhân</a>
-            <LocalizedClientLink href="/account">Tài khoản</LocalizedClientLink>
+          <nav aria-label="Mobile navigation">
+            <a href="#kham-pha">Explore</a>
+            <a href="#lam-rieng">Custom made</a>
+            <a href="#nghe-nhan">For artisans</a>
+            <LocalizedClientLink href="/account">Account</LocalizedClientLink>
           </nav>
         </details>
       </div>

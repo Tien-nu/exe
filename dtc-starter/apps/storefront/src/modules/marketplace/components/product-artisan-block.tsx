@@ -32,11 +32,11 @@ export default async function ProductArtisanBlock({ productId }: { productId: st
         }`}
       >
         {info.fulfillment_type === "made_to_order"
-          ? `Làm theo đơn · khoảng ${info.lead_days} ngày`
-          : "Hàng có sẵn"}
+          ? `Made to order · about ${info.lead_days} days`
+          : "Ready to ship"}
       </span>
       <p className="txt-small text-ui-fg-subtle">
-        {info.artisan.shop_name} xác nhận đơn trong 12 tiếng. Phí ship GHN tính khi thanh toán.
+        {info.artisan.shop_name} confirms orders within 12 hours. Per parcel: 18,000 VND within the origin province, 22,000 VND to another province.
       </p>
       <CustomRequestForm
         productId={productId}

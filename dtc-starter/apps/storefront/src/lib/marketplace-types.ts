@@ -89,6 +89,8 @@ export type ArtisanSubOrder = SubOrderBase & {
 }
 
 export type MarketplaceOrder = {
+  payment_mode?: "bank" | "simulation"
+  qr_payment_token?: string | null
   id: string
   order_id: string
   display_id: number
@@ -213,10 +215,10 @@ export type Payout = {
 }
 
 export const CUSTOM_REQUEST_LABELS: Record<CustomRequestStatus, string> = {
-  pending: "Chờ nghệ nhân trả lời",
-  quoted: "Nghệ nhân đã báo giá",
-  artisan_declined: "Nghệ nhân từ chối",
-  accepted: "Đã đồng ý – trong giỏ hàng",
-  customer_declined: "Bạn đã từ chối",
-  ordered: "Đã đặt hàng",
+  pending: "Awaiting artisan response",
+  quoted: "Quote received",
+  artisan_declined: "Declined by artisan",
+  accepted: "Accepted — in your cart",
+  customer_declined: "You declined",
+  ordered: "Order placed",
 }

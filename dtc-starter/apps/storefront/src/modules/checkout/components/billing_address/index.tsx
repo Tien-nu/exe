@@ -1,3 +1,5 @@
+import WardSelect from "@modules/common/components/ward-select"
+import { VIETNAM_PROVINCES, provinceName } from "@lib/vietnam-provinces"
 import { HttpTypes } from "@medusajs/types"
 import Input from "@modules/common/components/input"
 import React, { useEffect, useState } from "react"
@@ -14,58 +16,20 @@ const BillingAddress = ({ cart }: { cart: HttpTypes.StoreCart | null }) => {
     "billing_address.phone": cart?.billing_address?.phone || "",
   })
 
-  // Vietnam Administrative Units State
-  const [provinces, setProvinces] = useState<any[]>([])
-  const [districts, setDistricts] = useState<any[]>([])
-  const [wards, setWards] = useState<any[]>([])
-
   const addressParts = (cart?.billing_address?.address_1 || "").split(", ")
   const initialWard = addressParts.length >= 2 ? addressParts.pop() || "" : ""
   const initialStreet = addressParts.join(", ")
 
-  const [selectedProvince, setSelectedProvince] = useState<string>(cart?.billing_address?.province || "")
-  const [selectedDistrict, setSelectedDistrict] = useState<string>(cart?.billing_address?.city || "")
+  const [selectedProvince, setSelectedProvince] = useState<string>(
+    cart?.billing_address?.province || ""
+  )
+  const [selectedDistrict, setSelectedDistrict] = useState<string>(
+    cart?.billing_address?.city || ""
+  )
   const [selectedWard, setSelectedWard] = useState<string>(initialWard)
   const [streetAddress, setStreetAddress] = useState<string>(initialStreet)
 
   const [isInitialized, setIsInitialized] = useState(false)
-
-  useEffect(() => {
-    fetch("https://provinces.open-api.vn/api/p/")
-      .then(res => res.json())
-      .then(data => setProvinces(data))
-      .catch(console.error)
-  }, [])
-
-  useEffect(() => {
-    if (selectedProvince) {
-      const province = provinces.find(p => p.name === selectedProvince)
-      if (province) {
-        fetch(`https://provinces.open-api.vn/api/p/${province.code}?depth=2`)
-          .then(res => res.json())
-          .then(data => setDistricts(data.districts))
-          .catch(console.error)
-      }
-    } else {
-      setDistricts([])
-      setSelectedDistrict("")
-    }
-  }, [selectedProvince, provinces])
-
-  useEffect(() => {
-    if (selectedDistrict) {
-      const district = districts.find(d => d.name === selectedDistrict)
-      if (district) {
-        fetch(`https://provinces.open-api.vn/api/d/${district.code}?depth=2`)
-          .then(res => res.json())
-          .then(data => setWards(data.wards))
-          .catch(console.error)
-      }
-    } else {
-      setWards([])
-      setSelectedWard("")
-    }
-  }, [selectedDistrict, districts])
 
   useEffect(() => {
     if (!isInitialized) {
@@ -73,13 +37,19 @@ const BillingAddress = ({ cart }: { cart: HttpTypes.StoreCart | null }) => {
       return
     }
     const fullAddress = [streetAddress, selectedWard].filter(Boolean).join(", ")
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       "billing_address.province": selectedProvince,
       "billing_address.city": selectedDistrict,
-      "billing_address.address_1": fullAddress
+      "billing_address.address_1": fullAddress,
     }))
-  }, [selectedProvince, selectedDistrict, selectedWard, streetAddress, isInitialized])
+  }, [
+    selectedProvince,
+    selectedDistrict,
+    selectedWard,
+    streetAddress,
+    isInitialized,
+  ])
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -96,7 +66,7 @@ const BillingAddress = ({ cart }: { cart: HttpTypes.StoreCart | null }) => {
     <>
       <div className="grid grid-cols-2 gap-4">
         <Input
-          label="Tên"
+          label="First name"
           name="billing_address.first_name"
           autoComplete="given-name"
           value={formData["billing_address.first_name"]}
@@ -105,7 +75,7 @@ const BillingAddress = ({ cart }: { cart: HttpTypes.StoreCart | null }) => {
           data-testid="billing-first-name-input"
         />
         <Input
-          label="Họ"
+          label="Last name"
           name="billing_address.last_name"
           autoComplete="family-name"
           value={formData["billing_address.last_name"]}
@@ -114,7 +84,7 @@ const BillingAddress = ({ cart }: { cart: HttpTypes.StoreCart | null }) => {
           data-testid="billing-last-name-input"
         />
         <Input
-          label="Số điện thoại"
+          label="Phone number"
           name="billing_address.phone"
           autoComplete="tel"
           value={formData["billing_address.phone"]}
@@ -123,7 +93,7 @@ const BillingAddress = ({ cart }: { cart: HttpTypes.StoreCart | null }) => {
           required
         />
         <Input
-          label="Công ty (tuỳ chọn)"
+          label="Company (optional)"
           name="billing_address.company"
           value={formData["billing_address.company"]}
           onChange={handleChange}
@@ -133,40 +103,46 @@ const BillingAddress = ({ cart }: { cart: HttpTypes.StoreCart | null }) => {
       </div>
 
       <div className="grid grid-cols-1 gap-4 mt-4">
-        <div className="grid grid-cols-3 gap-4">
-          <select 
-            className="flex items-center justify-between px-4 py-2 border rounded-md text-sm border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-900 bg-white"
-            value={selectedProvince} 
-            onChange={(e) => setSelectedProvince(e.target.value)}
+        <label className="block text-sm">
+          Province / City
+          <select
+            aria-label="Billing province / city"
+            className="mt-1 min-h-11 w-full rounded-md border border-gray-300 bg-white px-4 py-2"
+            value={provinceName(selectedProvince) ?? ""}
+            onChange={(event) => {
+              setSelectedProvince(event.target.value)
+              setSelectedWard("")
+              setSelectedDistrict("")
+            }}
             required
           >
-            <option value="">Chọn Tỉnh / Thành phố</option>
-            {provinces.map(p => <option key={p.code} value={p.name}>{p.name}</option>)}
+            <option value="">Select a province / city</option>
+            {VIETNAM_PROVINCES.map((province) => (
+              <option key={province.code} value={province.name}>
+                {province.name}
+              </option>
+            ))}
           </select>
-          <select 
-            className="flex items-center justify-between px-4 py-2 border rounded-md text-sm border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-900 bg-white disabled:bg-gray-100"
-            value={selectedDistrict} 
-            onChange={(e) => setSelectedDistrict(e.target.value)}
-            disabled={!selectedProvince}
-            required
-          >
-            <option value="">Chọn Quận / Huyện</option>
-            {districts.map(d => <option key={d.code} value={d.name}>{d.name}</option>)}
-          </select>
-          <select 
-            className="flex items-center justify-between px-4 py-2 border rounded-md text-sm border-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-900 bg-white disabled:bg-gray-100"
-            value={selectedWard} 
-            onChange={(e) => setSelectedWard(e.target.value)}
-            disabled={!selectedDistrict}
-            required
-          >
-            <option value="">Chọn Phường / Xã</option>
-            {wards.map(w => <option key={w.code} value={w.name}>{w.name}</option>)}
-          </select>
+        </label>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <WardSelect
+            labelPlacement="inside"
+            label="Billing ward / commune"
+            province={selectedProvince}
+            value={selectedWard}
+            name="billing_ward_name"
+            onChange={(name) => setSelectedWard(name)}
+          />
+          <Input
+            label="District (if applicable)"
+            name="billing_district_name"
+            value={selectedDistrict}
+            onChange={(event) => setSelectedDistrict(event.target.value)}
+          />
         </div>
 
         <Input
-          label="Số nhà, tên đường (VD: 123 Lê Lợi)"
+          label="House number and street (e.g. 123 Le Loi)"
           name="billing_street_address"
           value={streetAddress}
           onChange={(e) => setStreetAddress(e.target.value)}
@@ -174,11 +150,7 @@ const BillingAddress = ({ cart }: { cart: HttpTypes.StoreCart | null }) => {
         />
       </div>
 
-      <input
-        type="hidden"
-        name="billing_address.country_code"
-        value="vn"
-      />
+      <input type="hidden" name="billing_address.country_code" value="vn" />
       <input
         type="hidden"
         name="billing_address.province"

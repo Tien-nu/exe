@@ -13,6 +13,9 @@ const S3_PATHNAME = process.env.MEDUSA_CLOUD_S3_PATHNAME
  */
 const nextConfig = {
   reactStrictMode: true,
+  outputFileTracingIncludes: {
+    "/app/[[...path]]": ["./public/app/index.html"],
+  },
   experimental: {
     // Artisans upload product photos through a server action.
     serverActions: {
@@ -28,7 +31,7 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   typescript: {
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: false,
   },
   images: {
     unoptimized: true,

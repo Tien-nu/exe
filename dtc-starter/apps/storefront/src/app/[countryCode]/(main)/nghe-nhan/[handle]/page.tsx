@@ -14,7 +14,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   const shop = await getArtisanShop(handle)
 
   return {
-    title: shop ? `${shop.artisan.shop_name} | Yarnly` : "Gian hàng | Yarnly",
+    title: shop ? `${shop.artisan.shop_name} | Yarnly` : "Shop | Yarnly",
     description: shop?.artisan.description ?? undefined,
   }
 }
@@ -48,7 +48,7 @@ export default async function ArtisanShopPage(props: Props) {
           {shop.artisan.description && (
             <p className="txt-medium text-ui-fg-subtle">{shop.artisan.description}</p>
           )}
-          <p className="txt-small text-ui-fg-subtle">{products.length} sản phẩm</p>
+          <p className="txt-small text-ui-fg-subtle">{products.length} products</p>
         </div>
       </div>
       {products.length ? (
@@ -60,7 +60,7 @@ export default async function ArtisanShopPage(props: Props) {
           ))}
         </ul>
       ) : (
-        <p className="txt-medium text-ui-fg-subtle">Gian hàng chưa có sản phẩm.</p>
+        <p className="txt-medium text-ui-fg-subtle">This shop has no products yet.</p>
       )}
     </div>
   )

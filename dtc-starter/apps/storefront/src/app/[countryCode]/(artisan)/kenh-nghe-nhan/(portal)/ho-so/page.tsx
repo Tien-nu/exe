@@ -13,12 +13,12 @@ export default async function ArtisanProfilePage() {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <h1 className="text-2xl-semi">Hồ sơ gian hàng</h1>
+        <h1 className="text-2xl-semi">Shop profile</h1>
         <LocalizedClientLink
           href={`/nghe-nhan/${artisan.handle}`}
           className="txt-small text-violet-700 underline"
         >
-          Xem gian hàng của bạn
+          View your shop
         </LocalizedClientLink>
       </div>
       <Card>

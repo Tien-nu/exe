@@ -20,9 +20,9 @@ export default async function Orders() {
       <div className="w-full" data-testid="orders-page-wrapper">
         <h1 className="text-2xl-semi mb-4">Orders</h1>
         <p className="text-base-regular">
-          Không tải được đơn hàng – có thể phiên đăng nhập đã hết hạn.{" "}
+          Unable to load orders. Your session may have expired.{" "}
           <LocalizedClientLink href="/account" className="text-violet-700 underline">
-            Đăng nhập lại
+            Sign in again
           </LocalizedClientLink>
         </p>
       </div>

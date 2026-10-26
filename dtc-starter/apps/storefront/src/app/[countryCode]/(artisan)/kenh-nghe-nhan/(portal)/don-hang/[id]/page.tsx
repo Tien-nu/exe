@@ -15,22 +15,22 @@ export default async function ArtisanOrderPage(props: { params: Promise<{ id: st
   }
 
   const timeline = [
-    ["Đặt hàng", subOrder.created_at],
-    ["Nhận đơn", subOrder.accepted_at],
-    ["Làm xong", subOrder.ready_at],
-    ["Giao cho vận chuyển", subOrder.shipped_at],
-    ["Đã giao", subOrder.delivered_at],
-    ["Hoàn thành", subOrder.completed_at],
-    ["Huỷ", subOrder.canceled_at],
+    ["Order placed", subOrder.created_at],
+    ["Accepted", subOrder.accepted_at],
+    ["Ready", subOrder.ready_at],
+    ["Handed to carrier", subOrder.shipped_at],
+    ["Delivered", subOrder.delivered_at],
+    ["Completed", subOrder.completed_at],
+    ["Cancel", subOrder.canceled_at],
   ].filter(([, date]) => date) as [string, string][]
 
   return (
     <div className="flex flex-col gap-4">
       <LocalizedClientLink href="/kenh-nghe-nhan/don-hang" className="txt-small text-ui-fg-subtle">
-        ← Đơn hàng
+        ← Orders
       </LocalizedClientLink>
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <h1 className="text-2xl-semi">Đơn {subOrder.code}</h1>
+        <h1 className="text-2xl-semi">Order {subOrder.code}</h1>
         <span className={`rounded-full px-3 py-1 txt-small-plus ${SUB_ORDER_BADGE[subOrder.status]}`}>
           {subOrder.status_label}
         </span>
@@ -41,17 +41,17 @@ export default async function ArtisanOrderPage(props: { params: Promise<{ id: st
       <SubOrderActions subOrder={subOrder} />
 
       {subOrder.custom_request && (
-        <Card title="Yêu cầu làm riêng đã thống nhất">
+        <Card title="Agreed custom order details">
           <p className="txt-medium">{subOrder.custom_request.description}</p>
           <p className="txt-small text-ui-fg-subtle">
-            {subOrder.custom_request.color && `Màu: ${subOrder.custom_request.color} · `}
-            {subOrder.custom_request.size && `Kích thước: ${subOrder.custom_request.size} · `}
-            Giá đã báo {formatVnd(subOrder.custom_request.quoted_price)}/cái · {subOrder.custom_request.quoted_lead_days} ngày
+            {subOrder.custom_request.color && `Color: ${subOrder.custom_request.color} · `}
+            {subOrder.custom_request.size && `Size: ${subOrder.custom_request.size} · `}
+            Quoted price {formatVnd(subOrder.custom_request.quoted_price)}/item · {subOrder.custom_request.quoted_lead_days} days
           </p>
         </Card>
       )}
 
-      <Card title="Sản phẩm">
+      <Card title="Products">
         <ul className="flex flex-col gap-3">
           {subOrder.items.map((item) => (
             <li key={item.id} className="flex items-center gap-3">
@@ -62,7 +62,7 @@ export default async function ArtisanOrderPage(props: { params: Promise<{ id: st
               <div className="flex-1">
                 <p className="txt-medium-plus">{item.title}</p>
                 <p className="txt-small text-ui-fg-subtle">
-                  {item.variant_title} · {item.made_to_order ? "Làm theo đơn" : "Hàng có sẵn"}
+                  {item.variant_title} · {item.made_to_order ? "Made to order" : "Ready to ship"}
                 </p>
               </div>
               <p className="txt-medium">
@@ -71,16 +71,16 @@ export default async function ArtisanOrderPage(props: { params: Promise<{ id: st
             </li>
           ))}
         </ul>
-        <p className="mt-4 text-right txt-medium-plus">Tiền hàng: {formatVnd(subOrder.subtotal)}</p>
+        <p className="mt-4 text-right txt-medium-plus">Items: {formatVnd(subOrder.subtotal)}</p>
         <p className="text-right txt-small text-ui-fg-subtle">
           {subOrder.payment_method === "cod"
-            ? "Khách trả khi nhận hàng (COD)"
-            : "Khách đã chuyển khoản cho Yarnly"}{" "}
-          · Yarnly chuyển tiền cho bạn thứ Hai sau khi đơn hoàn thành
+            ? "Customer pays on delivery (COD)"
+            : "Customer has paid Yarnly by bank transfer"}{" "}
+          · Yarnly pays you on the Monday after the order is completed
         </p>
       </Card>
 
-      <Card title="Lịch sử">
+      <Card title="History">
         <ul className="flex flex-col gap-1 txt-medium">
           {timeline.map(([label, date]) => (
             <li key={label} className="flex justify-between">

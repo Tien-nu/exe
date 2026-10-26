@@ -48,14 +48,14 @@ export default async function Nav() {
               href="/nghe-nhan"
               data-testid="nav-artisans-link"
             >
-              Nghệ nhân
+              Artisans
             </LocalizedClientLink>
             <LocalizedClientLink
               className="hover:text-ui-fg-base"
               href="/account"
               data-testid="nav-account-link"
             >
-              Tài khoản
+              Account
             </LocalizedClientLink>
           </div>
           <Suspense

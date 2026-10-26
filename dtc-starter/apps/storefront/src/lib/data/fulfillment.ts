@@ -4,7 +4,7 @@ import { sdk } from "@lib/config"
 import { HttpTypes } from "@medusajs/types"
 import { getAuthHeaders, getCacheOptions } from "./cookies"
 
-export const listCartShippingMethods = async (cartId: string) => {
+export const listCartShippingMethods = async (cartId: string, strict = false) => {
   const headers = {
     ...(await getAuthHeaders()),
   }
@@ -27,7 +27,8 @@ export const listCartShippingMethods = async (cartId: string) => {
       }
     )
     .then(({ shipping_options }) => shipping_options)
-    .catch(() => {
+    .catch((error) => {
+      if (strict) throw error
       return null
     })
 }

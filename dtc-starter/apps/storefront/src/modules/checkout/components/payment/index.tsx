@@ -22,10 +22,18 @@ import { useCallback, useEffect, useMemo, useState } from "react"
 const Payment = ({
   cart,
   availablePaymentMethods,
+  qrPayment = false,
 }: {
   cart: HttpTypes.StoreCart
+  qrPayment?: boolean
   availablePaymentMethods: { id: string }[]
 }) => {
+  const displayedPaymentInfo = qrPayment
+    ? {
+        ...paymentInfoMap,
+        manual_bank: { ...paymentInfoMap.manual_bank, title: "QR payment" },
+      }
+    : paymentInfoMap
   const activeSession = cart.payment_collection?.payment_sessions?.find(
     (paymentSession) => paymentSession.status === "pending"
   )
@@ -34,9 +42,8 @@ const Payment = ({
   const [error, setError] = useState<string | null>(null)
   const [paymentComplete, setPaymentComplete] = useState(false)
   // Fallback to metadata if available, otherwise activeSession
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(
-    (cart.metadata?.payment_method as string) || activeSession?.provider_id || ""
-  )
+  const [selectedPaymentMethod, setSelectedPaymentMethod] =
+    useState("manual_bank")
 
   const searchParams = useSearchParams()
   const router = useRouter()
@@ -45,7 +52,7 @@ const Payment = ({
   const isOpen = searchParams.get("step") === "payment"
 
   const actualProviderId = (methodId: string) => {
-    if (methodId === "manual_cod" || methodId === "manual_bank") return "pp_system_default"
+    if (methodId === "manual_bank") return "pp_system_default"
     return methodId
   }
 
@@ -59,37 +66,26 @@ const Payment = ({
     }
   }
 
-  // Custom-made items are made for this customer only: bank transfer only.
-  const hasCustomItem = !!cart.items?.some((item) => item.metadata?.custom_request_id)
-
-  const virtualPaymentMethods = useMemo(() => {
-    const methods: { id: string }[] = []
-    for (const method of availablePaymentMethods) {
-      if (method.id === "pp_system_default") {
-        if (!hasCustomItem) {
-          methods.push({ id: "manual_cod" })
-        }
-        methods.push({ id: "manual_bank" })
-      } else {
-        methods.push(method)
-      }
-    }
-    return methods
-  }, [availablePaymentMethods, hasCustomItem])
-
-  // A COD choice saved before a custom item was added is no longer allowed.
-  useEffect(() => {
-    if (hasCustomItem && selectedPaymentMethod === "manual_cod") {
-      setSelectedPaymentMethod("")
-    }
-  }, [hasCustomItem, selectedPaymentMethod])
+  const virtualPaymentMethods = useMemo(
+    () =>
+      availablePaymentMethods.some(
+        (method) => method.id === "pp_system_default"
+      )
+        ? [{ id: "manual_bank" }]
+        : [],
+    [availablePaymentMethods]
+  )
 
   const paidByGiftcard = !!(
-    (cart as unknown as Record<string, unknown>)?.gift_cards && ((cart as unknown as Record<string, unknown>)?.gift_cards as unknown[])?.length > 0 && cart?.total === 0
+    (cart as unknown as Record<string, unknown>)?.gift_cards &&
+    ((cart as unknown as Record<string, unknown>)?.gift_cards as unknown[])
+      ?.length > 0 &&
+    cart?.total === 0
   )
 
   const paymentReady =
-    (activeSession && (cart?.shipping_methods?.length ?? 0) !== 0) || paidByGiftcard
+    (activeSession && (cart?.shipping_methods?.length ?? 0) !== 0) ||
+    paidByGiftcard
 
   const createQueryString = useCallback(
     (name: string, value: string) => {
@@ -107,7 +103,13 @@ const Payment = ({
     })
   }
 
+  const hasShipping = (cart.shipping_methods?.length ?? 0) > 0
+
   const handleSubmit = async () => {
+    if (!hasShipping) {
+      setError("Unable to calculate shipping. Please check your address.")
+      return
+    }
     setIsLoading(true)
     try {
       const shouldInputPaymentDetails =
@@ -122,9 +124,11 @@ const Payment = ({
         })
       }
 
-      // Save user's specific choice (COD vs Bank) in metadata
-      if (selectedPaymentMethod === "manual_cod" || selectedPaymentMethod === "manual_bank") {
-        await updateCart({ metadata: { payment_method: selectedPaymentMethod } })
+      // Every new order requires bank transfer.
+      if (selectedPaymentMethod === "manual_bank") {
+        await updateCart({
+          metadata: { payment_method: selectedPaymentMethod },
+        })
       }
 
       if (!shouldInputPaymentDetails) {
@@ -188,39 +192,53 @@ const Payment = ({
                       <StripePaymentContainer
                         paymentProviderId={paymentMethod.id}
                         selectedPaymentOptionId={selectedPaymentMethod}
-                        paymentInfoMap={paymentInfoMap}
+                        paymentInfoMap={displayedPaymentInfo}
                         setError={setError}
                         setPaymentComplete={setPaymentComplete}
                       />
                     ) : (
                       <div className="flex flex-col">
                         <PaymentContainer
-                          paymentInfoMap={paymentInfoMap}
+                          paymentInfoMap={displayedPaymentInfo}
                           paymentProviderId={paymentMethod.id}
                           selectedPaymentOptionId={selectedPaymentMethod}
                         />
-                        {paymentMethod.id === "manual_bank" && selectedPaymentMethod === "manual_bank" && (
-                          <div className="mt-4 p-4 bg-amber-50 rounded-md border border-amber-200">
-                            <Text className="txt-medium">
-                              Sau khi đặt hàng, mã <strong>VietQR</strong> sẽ hiện ra.
-                              Hệ thống sẽ <strong>tự động xác nhận</strong> khi nhận được tiền hàng. 
-                              Bạn có <strong>10 phút</strong> để chuyển khoản, nếu không đơn sẽ tự huỷ.
-                            </Text>
-                            <Text className="txt-medium mt-2 text-ui-fg-subtle">
-                              Số tiền chuyển gồm tiền hàng và phí ship.
-                            </Text>
-                          </div>
-                        )}
+                        {paymentMethod.id === "manual_bank" &&
+                          selectedPaymentMethod === "manual_bank" && (
+                            <div className="mt-4 p-4 bg-amber-50 rounded-md border border-amber-200">
+                              <Text className="txt-medium">
+                                {qrPayment ? (
+                                  "After placing your order, scan the payment QR with your phone camera and open the link. Payment is confirmed automatically. You have 10 minutes to complete payment."
+                                ) : (
+                                  <>
+                                    After placing your order, the code{" "}
+                                    <strong>VietQR</strong> will appear. The
+                                    system will{" "}
+                                    <strong>automatically confirm</strong> once
+                                    payment is received. You have{" "}
+                                    <strong>10 minutes</strong> to transfer
+                                    payment before the order is automatically
+                                    canceled.
+                                  </>
+                                )}
+                              </Text>
+                              <Text className="txt-medium mt-2 text-ui-fg-subtle">
+                                The transfer amount includes items and shipping.
+                              </Text>
+                            </div>
+                          )}
                       </div>
                     )}
                   </div>
                 ))}
               </RadioGroup>
-              {hasCustomItem && (
+              {
                 <Text className="txt-small mt-2 text-ui-fg-subtle">
-                  Đơn có hàng làm riêng chỉ thanh toán bằng chuyển khoản.
+                  {qrPayment
+                    ? "Complete payment by scanning your order QR."
+                    : "All orders require bank transfer."}
                 </Text>
-              )}
+              }
             </>
           )}
 
@@ -238,6 +256,27 @@ const Payment = ({
             </div>
           )}
 
+          {!hasShipping && (
+            <div
+              role="alert"
+              className="mt-4 rounded-md border border-amber-200 bg-amber-50 p-4 text-amber-900"
+            >
+              <p>
+                Unable to calculate shipping. Check your address before
+                continuing.
+              </p>
+              <button
+                type="button"
+                className="mt-2 min-h-11 underline"
+                onClick={() =>
+                  router.push(pathname + "?step=address", { scroll: false })
+                }
+              >
+                Check address and recalculate shipping
+              </button>
+            </div>
+          )}
+
           <ErrorMessage
             error={error}
             data-testid="payment-method-error-message"
@@ -249,6 +288,7 @@ const Payment = ({
             onClick={handleSubmit}
             isLoading={isLoading}
             disabled={
+              !hasShipping ||
               (isStripeLike(selectedPaymentMethod) && !paymentComplete) ||
               (!selectedPaymentMethod && !paidByGiftcard)
             }

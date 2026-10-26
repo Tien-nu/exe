@@ -37,17 +37,17 @@ const Review = ({ cart }: { cart: HttpTypes.StoreCart }) => {
           <div className="flex items-start gap-x-1 w-full mb-6">
             <div className="w-full flex flex-col gap-y-4">
               <div className="bg-gray-50 p-4 rounded-md border border-gray-200">
-                <Text className="txt-medium-plus font-semibold mb-2">Trạng thái giao hàng</Text>
+                <Text className="txt-medium-plus font-semibold mb-2">Delivery status</Text>
                 <Text className="txt-medium text-ui-fg-subtle">
-                  Phương thức: <span className="text-black font-medium">{cart.shipping_methods?.[0]?.name || "Tiêu chuẩn"}</span>
+                  Method: <span className="text-black font-medium">{cart.shipping_methods?.[0]?.name || "Standard"}</span>
                 </Text>
                 <Text className="txt-medium text-ui-fg-subtle mt-1">
-                  Giao đến: <span className="text-black font-medium">{cart.shipping_address?.address_1}, {cart.shipping_address?.city}, {cart.shipping_address?.province}</span>
+                  Deliver to: <span className="text-black font-medium">{cart.shipping_address?.address_1}, {cart.shipping_address?.city}, {cart.shipping_address?.province}</span>
                 </Text>
               </div>
 
               <div className="bg-gray-50 p-4 rounded-md border border-gray-200">
-                <Text className="txt-medium-plus font-semibold mb-3">Sản phẩm đã đặt</Text>
+                <Text className="txt-medium-plus font-semibold mb-3">Ordered items</Text>
                 <div className="flex flex-col gap-y-3">
                   {cart.items?.map((item) => (
                     <div key={item.id} className="flex justify-between items-center text-sm">
@@ -61,7 +61,7 @@ const Review = ({ cart }: { cart: HttpTypes.StoreCart }) => {
               </div>
 
               <Text className="txt-medium text-ui-fg-subtle mb-1 mt-4">
-                Bằng việc bấm Đặt hàng, bạn đồng ý với các điều khoản dịch vụ và chính sách bảo mật của chúng tôi.
+                By placing your order, you agree to our terms of service and privacy policy.
               </Text>
             </div>
           </div>

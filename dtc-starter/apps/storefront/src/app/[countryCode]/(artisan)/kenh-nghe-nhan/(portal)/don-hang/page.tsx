@@ -4,13 +4,13 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 import { clx } from "@modules/common/components/ui"
 
 const TABS = [
-  { status: "", label: "Tất cả" },
-  { status: "pending_acceptance", label: "Chờ xác nhận" },
-  { status: "processing", label: "Đang làm" },
-  { status: "ready_to_ship", label: "Chờ giao" },
-  { status: "shipping", label: "Đang giao" },
-  { status: "completed", label: "Hoàn thành" },
-  { status: "canceled", label: "Đã huỷ" },
+  { status: "", label: "All" },
+  { status: "pending_acceptance", label: "Awaiting acceptance" },
+  { status: "processing", label: "In progress" },
+  { status: "ready_to_ship", label: "Ready to ship" },
+  { status: "shipping", label: "Shipping" },
+  { status: "completed", label: "Completed" },
+  { status: "canceled", label: "Canceled" },
 ]
 
 /** Orders for listed products; custom-made ones live in "Đơn làm riêng". */
@@ -23,11 +23,11 @@ export default async function ArtisanOrdersPage(props: {
   return (
     <div className="flex flex-col gap-4">
       <div>
-        <h1 className="text-2xl-semi">Đơn hàng có sẵn</h1>
+        <h1 className="text-2xl-semi">Ready-made orders</h1>
         <p className="txt-small text-ui-fg-subtle">
-          Đơn đặt sản phẩm đang bán. Đơn làm theo yêu cầu riêng xem ở{" "}
+          Orders for listed products. For custom requests, see{" "}
           <LocalizedClientLink href="/kenh-nghe-nhan/don-lam-rieng" className="text-violet-700 underline">
-            Đơn làm riêng
+            Custom orders
           </LocalizedClientLink>
           .
         </p>
@@ -57,7 +57,7 @@ export default async function ArtisanOrdersPage(props: {
           ))}
         </ul>
       ) : (
-        <p className="txt-medium text-ui-fg-subtle">Không có đơn nào.</p>
+        <p className="txt-medium text-ui-fg-subtle">No orders found.</p>
       )}
     </div>
   )

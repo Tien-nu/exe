@@ -35,16 +35,17 @@ type Artisan = {
 }
 
 const FIELDS: { key: string; label: string; type?: string }[] = [
-  { key: "shop_name", label: "Tên gian hàng" },
-  { key: "full_name", label: "Họ tên nghệ nhân" },
-  { key: "email", label: "Email đăng nhập", type: "email" },
-  { key: "password", label: "Mật khẩu (tối thiểu 8 ký tự)", type: "password" },
-  { key: "phone", label: "Số điện thoại" },
-  { key: "pickup_address", label: "Địa chỉ lấy hàng" },
-  { key: "bank_name", label: "Ngân hàng" },
-  { key: "bank_account_number", label: "Số tài khoản" },
-  { key: "bank_account_name", label: "Chủ tài khoản" },
-  { key: "description", label: "Giới thiệu (tuỳ chọn)" },
+  { key: "shop_name", label: "Shop name" },
+  { key: "full_name", label: "Artisan full name" },
+  { key: "email", label: "Sign-in email", type: "email" },
+  { key: "password", label: "Password (at least 8 characters)", type: "password" },
+  { key: "phone", label: "Phone number" },
+  { key: "pickup_address", label: "Pickup address" },
+  { key: "pickup_province_name", label: "Pickup province / city (required)" },
+  { key: "bank_name", label: "Bank" },
+  { key: "bank_account_number", label: "Account number" },
+  { key: "bank_account_name", label: "Account holder" },
+  { key: "description", label: "Introduction (optional)" },
 ]
 
 const CreateArtisanDrawer = () => {
@@ -55,7 +56,7 @@ const CreateArtisanDrawer = () => {
   const create = useMutation({
     mutationFn: () => api("/artisans", { method: "POST", body: form }),
     onSuccess: () => {
-      toast.success("Đã tạo gian hàng")
+      toast.success("Shop created")
       setForm({})
       setOpen(false)
       queryClient.invalidateQueries({ queryKey: ["mp-artisans"] })
@@ -66,15 +67,15 @@ const CreateArtisanDrawer = () => {
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <Drawer.Trigger asChild>
-        <Button size="small">Tạo nghệ nhân</Button>
+        <Button size="small">Create artisan</Button>
       </Drawer.Trigger>
       <Drawer.Content>
         <Drawer.Header>
-          <Drawer.Title>Tạo gian hàng cho nghệ nhân</Drawer.Title>
+          <Drawer.Title>Create an artisan shop</Drawer.Title>
         </Drawer.Header>
         <Drawer.Body className="flex flex-col gap-y-4 overflow-y-auto">
           <Text size="small" className="text-ui-fg-subtle">
-            Gian hàng được kích hoạt ngay. Hãy gửi email và mật khẩu cho nghệ nhân.
+            The shop will be activated immediately. Share the email and password with the artisan.
           </Text>
           {FIELDS.map((field) => (
             <div key={field.key} className="flex flex-col gap-y-1">
@@ -92,11 +93,11 @@ const CreateArtisanDrawer = () => {
         <Drawer.Footer>
           <Drawer.Close asChild>
             <Button variant="secondary" size="small">
-              Huỷ
+              Cancel
             </Button>
           </Drawer.Close>
           <Button size="small" isLoading={create.isPending} onClick={() => create.mutate()}>
-            Tạo
+            Create
           </Button>
         </Drawer.Footer>
       </Drawer.Content>
@@ -110,7 +111,7 @@ const ArtisanActions = ({ artisan }: { artisan: Artisan }) => {
     mutationFn: (body: { status: string; reason?: string | null }) =>
       api(`/artisans/${artisan.id}/status`, { method: "POST", body }),
     onSuccess: () => {
-      toast.success("Đã cập nhật")
+      toast.success("Updated")
       queryClient.invalidateQueries({ queryKey: ["mp-artisans"] })
     },
     onError: (error: Error) => toast.error(error.message),
@@ -122,17 +123,17 @@ const ArtisanActions = ({ artisan }: { artisan: Artisan }) => {
     const values = await ask(
       status === "rejected"
         ? {
-            title: `Từ chối gian hàng "${artisan.shop_name}"?`,
-            description: "Nghệ nhân sẽ nhận email kèm lý do.",
-            fields: [{ name: "reason", label: "Lý do từ chối", multiline: true, required: true }],
-            confirmText: "Từ chối",
+            title: `Reject shop "${artisan.shop_name}"?`,
+            description: "The artisan will receive an email explaining why.",
+            fields: [{ name: "reason", label: "Reason for declining", multiline: true, required: true }],
+            confirmText: "Decline",
             variant: "danger",
           }
         : {
-            title: `Khoá gian hàng "${artisan.shop_name}"?`,
-            description: "Toàn bộ sản phẩm của gian hàng sẽ bị ẩn khỏi sàn cho tới khi mở khoá.",
-            fields: [{ name: "reason", label: "Lý do khoá", multiline: true, required: true }],
-            confirmText: "Khoá gian hàng",
+            title: `Lock shop "${artisan.shop_name}"?`,
+            description: "All products from this shop will be hidden until the shop is unlocked.",
+            fields: [{ name: "reason", label: "Reason for locking", multiline: true, required: true }],
+            confirmText: "Lock shop",
             variant: "danger",
           }
     )
@@ -148,14 +149,14 @@ const ArtisanActions = ({ artisan }: { artisan: Artisan }) => {
       {artisan.status === "pending" && (
         <>
           <Button size="small" onClick={() => setStatus.mutate({ status: "active" })}>
-            Duyệt
+            Approve
           </Button>
           <Button
             size="small"
             variant="secondary"
             onClick={() => withReason("rejected")}
           >
-            Từ chối
+            Decline
           </Button>
         </>
       )}
@@ -165,7 +166,7 @@ const ArtisanActions = ({ artisan }: { artisan: Artisan }) => {
           variant="danger"
           onClick={() => withReason("locked")}
         >
-          Khoá
+          Lock
         </Button>
       )}
       {(artisan.status === "locked" || artisan.status === "rejected") && (
@@ -174,7 +175,7 @@ const ArtisanActions = ({ artisan }: { artisan: Artisan }) => {
           variant="secondary"
           onClick={() => setStatus.mutate({ status: "active" })}
         >
-          {artisan.status === "locked" ? "Mở khoá" : "Duyệt lại"}
+          {artisan.status === "locked" ? "Unlock" : "Review again"}
         </Button>
       )}
     </div>
@@ -189,22 +190,22 @@ const ArtisanTable = ({ status }: { status?: string }) => {
   })
 
   if (isLoading) {
-    return <Text className="p-6">Đang tải…</Text>
+    return <Text className="p-6">Loading…</Text>
   }
 
   if (!data?.artisans.length) {
-    return <Text className="p-6 text-ui-fg-subtle">Không có nghệ nhân nào.</Text>
+    return <Text className="p-6 text-ui-fg-subtle">No artisans found.</Text>
   }
 
   return (
     <Table>
       <Table.Header>
         <Table.Row>
-          <Table.HeaderCell>Gian hàng</Table.HeaderCell>
-          <Table.HeaderCell>Liên hệ</Table.HeaderCell>
-          <Table.HeaderCell>Ngân hàng nhận tiền</Table.HeaderCell>
-          <Table.HeaderCell>Trạng thái</Table.HeaderCell>
-          <Table.HeaderCell>Ngày tạo</Table.HeaderCell>
+          <Table.HeaderCell>Shop</Table.HeaderCell>
+          <Table.HeaderCell>Contact</Table.HeaderCell>
+          <Table.HeaderCell>Receiving bank</Table.HeaderCell>
+          <Table.HeaderCell>Status</Table.HeaderCell>
+          <Table.HeaderCell>Created at</Table.HeaderCell>
           <Table.HeaderCell />
         </Table.Row>
       </Table.Header>
@@ -265,19 +266,19 @@ const ArtisansPage = () => {
     <Container className="p-0">
       <div className="flex items-center justify-between px-6 py-4">
         <div>
-          <Heading>Nghệ nhân</Heading>
+          <Heading>Artisans</Heading>
           <Text size="small" className="text-ui-fg-subtle">
-            Duyệt đăng ký, tạo và khoá gian hàng.
+            Review registrations, create shops, and lock shops.
           </Text>
         </div>
         <CreateArtisanDrawer />
       </div>
       <Tabs defaultValue="pending">
         <Tabs.List className="px-6">
-          <Tabs.Trigger value="pending">Chờ duyệt</Tabs.Trigger>
-          <Tabs.Trigger value="active">Hoạt động</Tabs.Trigger>
-          <Tabs.Trigger value="locked">Bị khoá</Tabs.Trigger>
-          <Tabs.Trigger value="rejected">Từ chối</Tabs.Trigger>
+          <Tabs.Trigger value="pending">Pending approval</Tabs.Trigger>
+          <Tabs.Trigger value="active">Active</Tabs.Trigger>
+          <Tabs.Trigger value="locked">Locked</Tabs.Trigger>
+          <Tabs.Trigger value="rejected">Decline</Tabs.Trigger>
         </Tabs.List>
         {["pending", "active", "locked", "rejected"].map((status) => (
           <Tabs.Content key={status} value={status} className="pt-2">
@@ -290,7 +291,7 @@ const ArtisansPage = () => {
 }
 
 export const config = defineRouteConfig({
-  label: "Nghệ nhân",
+  label: "Artisans",
   icon: Users,
 })
 

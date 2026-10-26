@@ -3,7 +3,7 @@ import CustomerCustomRequests from "@modules/marketplace/components/customer-cus
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Yêu cầu làm riêng",
+  title: "Custom requests",
 }
 
 export default async function CustomRequestsPage() {
@@ -12,11 +12,9 @@ export default async function CustomRequestsPage() {
   return (
     <div className="w-full">
       <div className="mb-8 flex flex-col gap-y-4">
-        <h1 className="text-2xl-semi">Yêu cầu làm riêng</h1>
+        <h1 className="text-2xl-semi">Custom requests</h1>
         <p className="text-base-regular">
-          Nghệ nhân trả lời một lần bằng giá và thời gian làm. Bạn đồng ý thì món đồ được
-          thêm vào giỏ với giá đã báo; phí ship GHN được tính khi thanh toán. Hàng làm
-          riêng chỉ thanh toán bằng chuyển khoản.
+          The artisan replies once with a price and production time. Accept the quote to add the item to your cart at the agreed price. Regional shipping is calculated at checkout. Custom orders require payment by bank transfer.
         </p>
       </div>
       <CustomerCustomRequests requests={requests} />

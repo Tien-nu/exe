@@ -14,9 +14,9 @@ export default async function ArtisanLoginPage(props: {
   return (
     <div className="content-container flex justify-center py-16">
       <div className="w-full max-w-sm rounded-lg border border-gray-200 bg-white p-6">
-        <h1 className="txt-xlarge-plus mb-1">Đăng nhập Kênh nghệ nhân</h1>
+        <h1 className="txt-xlarge-plus mb-1">Sign in to the Artisan Portal</h1>
         <p className="txt-small text-ui-fg-subtle mb-6">
-          Quản lý sản phẩm, nhận đơn và theo dõi thu nhập.
+          Manage products, accept orders, and track your earnings.
         </p>
         <ArtisanLoginForm />
       </div>

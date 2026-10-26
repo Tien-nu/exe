@@ -12,9 +12,9 @@ export default function SubOrderCard({ subOrder }: { subOrder: ArtisanSubOrder }
     >
       <div className="flex flex-wrap items-center justify-between gap-2">
         <span className="txt-medium-plus">
-          Đơn {subOrder.code}
+          Order {subOrder.code}
           {subOrder.is_custom && (
-            <span className="ml-2 txt-small text-violet-700">Làm riêng</span>
+            <span className="ml-2 txt-small text-violet-700">Custom-made</span>
           )}
         </span>
         <span className={`rounded-full px-3 py-1 txt-small-plus ${SUB_ORDER_BADGE[subOrder.status]}`}>
@@ -30,7 +30,7 @@ export default function SubOrderCard({ subOrder }: { subOrder: ArtisanSubOrder }
         </span>
         <span>
           {formatVnd(subOrder.subtotal)} ·{" "}
-          {subOrder.payment_method === "cod" ? "COD" : "Đã chuyển khoản"} ·{" "}
+          {subOrder.payment_method === "cod" ? "COD" : "Paid by bank transfer"} ·{" "}
           {formatDateTime(subOrder.created_at)}
         </span>
       </div>

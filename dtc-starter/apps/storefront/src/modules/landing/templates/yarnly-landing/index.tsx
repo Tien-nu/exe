@@ -9,56 +9,56 @@ import styles from "./yarnly-landing.module.css"
 import shell from "./landing-shell.module.css"
 
 const categories = [
-  { name: "Thú bông", icon: "heart" as const },
-  { name: "Phụ kiện", icon: "yarn" as const },
-  { name: "Hoa len", icon: "flower" as const },
-  { name: "Quà làm riêng", icon: "gift" as const },
+  { name: "Plush toys", icon: "heart" as const },
+  { name: "Accessories", icon: "yarn" as const },
+  { name: "Crochet flowers", icon: "flower" as const },
+  { name: "Custom gifts", icon: "gift" as const },
 ]
 
 const products = [
   {
-    name: "Gấu bông len",
+    name: "Crochet teddy bear",
     image: "/images/crochet_bear.png",
-    note: "Nhỏ xinh, mềm mại",
+    note: "Small, soft, and sweet",
   },
   {
-    name: "Hoa len thủ công",
+    name: "Handmade crochet flowers",
     image: "/images/cuu_hoa_len.jpg",
-    note: "Một món quà bền lâu",
+    note: "A lasting gift",
   },
   {
-    name: "Móc khóa hoa",
+    name: "Flower keychain",
     image: "/images/moc_khoa.jpg",
-    note: "Mang theo chút dịu dàng",
+    note: "A little gentleness to carry",
   },
 ]
 
 const chapters = [
   {
     number: "01",
-    name: "Tìm món đồ",
-    note: "Khám phá đồ len handmade",
+    name: "Find a piece",
+    note: "Explore handmade crochet",
     href: "/store",
     icon: "yarn" as const,
   },
   {
     number: "02",
-    name: "Gặp người làm",
-    note: "Ghé thăm các gian hàng",
+    name: "Meet the makers",
+    note: "Visit the shops",
     href: "/nghe-nhan",
     icon: "heart" as const,
   },
   {
     number: "03",
-    name: "Đặt món riêng",
-    note: "Gửi ý tưởng của bạn",
+    name: "Create a custom piece",
+    note: "Share your idea",
     href: "/account/yeu-cau-lam-rieng",
     icon: "gift" as const,
   },
   {
     number: "04",
-    name: "Mở gian hàng",
-    note: "Kể câu chuyện bằng len",
+    name: "Open a shop",
+    note: "Tell your story in yarn",
     href: "/kenh-nghe-nhan/dang-ky",
     icon: "flower" as const,
   },
@@ -90,20 +90,19 @@ export default function YarnlyLanding() {
         <div className={shell.heroShade} />
         <div className={shell.heroInner}>
           <h1 id="landing-title">
-            Yarnly kết nối bạn với
-            <br className={styles.desktopBreak} /> thế giới len thủ công.
+            Yarnly connects you to
+            <br className={styles.desktopBreak} /> a world of handmade crochet.
           </h1>
           <p>
-            Từ một món đồ bạn yêu, đến người nghệ nhân làm ra nó.
-            <br className={styles.desktopBreak} /> Khám phá, gặp gỡ và cùng tạo
-            nên điều đặc biệt.
+            From a piece you love to the artisan who made it.
+            <br className={styles.desktopBreak} /> Explore, connect, and create something special together.
           </p>
           <div className={styles.actions}>
             <LocalizedClientLink href="/home" className={styles.lightButton}>
-              Khám phá Yarnly <span aria-hidden="true">↗</span>
+              Explore Yarnly <span aria-hidden="true">↗</span>
             </LocalizedClientLink>
             <a href="#cau-chuyen" className={styles.glassButton}>
-              Câu chuyện của chúng mình
+              Our story
             </a>
           </div>
         </div>
@@ -112,7 +111,7 @@ export default function YarnlyLanding() {
 
       <section
         className={styles.categoryStrip}
-        aria-label="Các món đồ trên Yarnly"
+        aria-label="The pieces on Yarnly"
       >
         <div className={styles.categoryGrid}>
           {categories.map((category) => (
@@ -126,7 +125,7 @@ export default function YarnlyLanding() {
             </LocalizedClientLink>
           ))}
         </div>
-        <p>Những món len nhỏ. Những câu chuyện rất riêng.</p>
+        <p>Little crochet pieces. Stories of their own.</p>
       </section>
 
       <section
@@ -135,23 +134,23 @@ export default function YarnlyLanding() {
         aria-labelledby="overview-title"
       >
         <h2 id="overview-title" className={styles.centerHeading}>
-          Yarnly là nơi người yêu đồ thủ công
+          Yarnly is where handmade lovers
           <br />
-          <span>gặp những đôi tay làm nên điều đặc biệt.</span>
+          <span>meet the hands behind something special.</span>
         </h2>
         <div className={styles.workspace}>
           <div className={styles.workspaceBar}>
             <span className={styles.miniBrand}>Yarnly</span>
-            <span>Một góc thế giới handmade</span>
+            <span>A corner of the handmade world</span>
             <LocalizedClientLink href="/store">
-              Khám phá tất cả ↗
+              Explore all ↗
             </LocalizedClientLink>
           </div>
           <div className={styles.workspaceBody}>
             <div className={styles.productGallery}>
               <div className={styles.galleryHeading}>
-                <span>Được làm bằng đôi tay thật</span>
-                <span>Thú bông · Hoa · Phụ kiện</span>
+                <span>Made by real hands</span>
+                <span>Plush toys · Flowers · Accessories</span>
               </div>
               <div className={styles.productGrid}>
                 {products.map((product) => (
@@ -177,16 +176,15 @@ export default function YarnlyLanding() {
             <aside className={styles.makerNote}>
               <PixelIcon kind="flower" />
               <p>
-                Mỗi sản phẩm bắt đầu
+                Every product starts
                 <br />
-                từ một người yêu nghề.
+                with a passionate maker.
               </p>
               <span>
-                Tìm hiểu gian hàng, khám phá phong cách và chọn món đồ mang dấu
-                ấn người làm.
+                Discover the shops, explore their styles, and choose a piece with its maker's personal touch.
               </span>
               <LocalizedClientLink href="/nghe-nhan">
-                Gặp gỡ nghệ nhân <span aria-hidden="true">↗</span>
+                Meet the artisans <span aria-hidden="true">↗</span>
               </LocalizedClientLink>
             </aside>
           </div>
@@ -195,46 +193,42 @@ export default function YarnlyLanding() {
           <p>
             <PixelIcon kind="yarn" />
             <span>
-              <strong>Thủ công từng món</strong> — Những mũi len mang theo thời
-              gian, sự kiên nhẫn và cá tính của người làm.
+              <strong>Handmade, piece by piece</strong> — Every stitch holds time, patience, and the maker's personality.
             </span>
           </p>
           <p>
             <PixelIcon kind="heart" />
             <span>
-              <strong>Kết nối gần hơn</strong> — Biết ai đứng sau sản phẩm và
-              ghé thăm gian hàng của người nghệ nhân.
+              <strong>A closer connection</strong> — Meet the person behind the product and visit their shop.
             </span>
           </p>
           <p>
             <PixelIcon kind="gift" />
             <span>
-              <strong>Dành riêng cho bạn</strong> — Trao đổi ý tưởng, màu sắc và
-              chi tiết để tạo nên món quà của riêng mình.
+              <strong>Made just for you</strong> — Share ideas, colors, and details to create a gift of your own.
             </span>
           </p>
         </div>
         <div className={styles.smallCta}>
-          <h3>Bắt đầu bằng một món đồ bạn yêu.</h3>
-          <p>Ghé Yarnly và tìm một chút dịu dàng cho ngày thường.</p>
+          <h3>Start with a piece you love.</h3>
+          <p>Visit Yarnly and find a little gentleness for everyday life.</p>
           <LocalizedClientLink href="/home" className={styles.darkButton}>
-            Vào Yarnly <span aria-hidden="true">↗</span>
+            Enter Yarnly <span aria-hidden="true">↗</span>
           </LocalizedClientLink>
         </div>
       </section>
 
       <section className={styles.capabilities}>
         <div className={styles.sectionIntro}>
-          <p className={styles.eyebrow}>YARNLY MANG ĐẾN ĐIỀU GÌ</p>
+          <p className={styles.eyebrow}>WHAT YARNLY BRINGS YOU</p>
           <h2>
-            Tìm món đồ bạn yêu.
+            Find a piece you love.
             <br />
-            <span>Gặp người làm nên món đồ ấy.</span>
+            <span>Meet the person who made it.</span>
           </h2>
           <p>
-            Từ khám phá sản phẩm đến đặt làm riêng, mỗi bước đều giúp bạn
-            <br className={styles.desktopBreak} /> đến gần hơn với thế giới đồ
-            len thủ công.
+            From exploring products to custom requests, every step brings you
+            <br className={styles.desktopBreak} /> closer to the world of handmade crochet.
           </p>
         </div>
         <FeatureSections />
@@ -242,10 +236,10 @@ export default function YarnlyLanding() {
 
       <section id="bat-dau" className={styles.chaptersSection}>
         <div className={styles.sectionIntro}>
-          <h2>Bắt đầu với điều bạn yêu.</h2>
-          <p>Một món quà, một cuộc gặp, hay một gian hàng của riêng mình.</p>
+          <h2>Start with what you love.</h2>
+          <p>A gift, a connection, or a shop of your own.</p>
           <LocalizedClientLink href="/home" className={styles.darkButton}>
-            Cùng khám phá <span aria-hidden="true">↗</span>
+            Explore together <span aria-hidden="true">↗</span>
           </LocalizedClientLink>
         </div>
         <div className={styles.chapterGrid}>
@@ -256,7 +250,7 @@ export default function YarnlyLanding() {
               className={styles.chapterCard}
             >
               <div className={styles.chapterTop}>
-                <span>CHƯƠNG {chapter.number}</span>
+                <span>CHAPTER {chapter.number}</span>
                 <span>YARNLY</span>
               </div>
               <h3>{chapter.name}</h3>
@@ -272,41 +266,37 @@ export default function YarnlyLanding() {
 
       <section className={styles.craftSection}>
         <div className={styles.craftCopy}>
-          <p className={styles.eyebrow}>THÊM MỘT CHÚT CHẬM RÃI</p>
+          <p className={styles.eyebrow}>TAKE A LITTLE MORE TIME</p>
           <h2>
-            Đẹp vì có người
+            Beautiful because someone
             <br />
-            làm ra nó.
+            made it.
           </h2>
           <p>
-            Đồ thủ công lưu lại cả hành trình. Từng vòng len, lần đổi màu và
-            chút chăm chút cuối cùng đều trở thành một phần câu chuyện.
+            Handmade pieces hold their entire journey. Every loop, color change, and finishing touch becomes part of the story.
           </p>
           <details open>
             <summary>
-              Nhìn thấy sự chăm chút<span aria-hidden="true">+</span>
+              See the care<span aria-hidden="true">+</span>
             </summary>
             <p>
-              Một món đồ có thể nhỏ, nhưng cần nhiều thời gian và sự kiên nhẫn
-              để hoàn thiện.
+              A piece may be small, but finishing it takes time and patience.
             </p>
           </details>
           <details>
             <summary>
-              Trân trọng người làm nghề<span aria-hidden="true">+</span>
+              Appreciate the makers<span aria-hidden="true">+</span>
             </summary>
             <p>
-              Ghé thăm các gian hàng và khám phá dấu ấn riêng của từng nghệ
-              nhân.
+              Visit the shops and discover each artisan's distinctive touch.
             </p>
           </details>
           <details>
             <summary>
-              Giữ lại một món quà lâu hơn<span aria-hidden="true">+</span>
+              Keep a gift for longer<span aria-hidden="true">+</span>
             </summary>
             <p>
-              Chọn món đồ gắn với câu chuyện, sở thích hoặc người mà bạn muốn
-              gửi tặng.
+              Choose a piece connected to a story, a favorite thing, or someone you want to surprise.
             </p>
           </details>
         </div>
@@ -319,16 +309,16 @@ export default function YarnlyLanding() {
             playsInline
             preload="metadata"
             poster="/images/crochet_bear.png"
-            aria-label="Quá trình móc len bằng tay"
+            aria-label="Crocheting by hand"
           >
             <source
               src="https://videos.pexels.com/video-files/7578126/7578126-hd_1080_1920_24fps.mp4"
               type="video/mp4"
             />
-            Trình duyệt không hỗ trợ video.
+            Your browser does not support video.
           </video>
           <figcaption>
-            Một chút yên bình trong từng mũi móc.
+            A little peace in every stitch.
             <a
               href="https://www.pexels.com/video/woman-doing-crochet-7578126/"
               target="_blank"
@@ -341,11 +331,11 @@ export default function YarnlyLanding() {
       </section>
 
       <section className={styles.wordSection}>
-        <h2>Len thủ công cho những điều rất đời thường.</h2>
+        <h2>Handmade crochet for everyday moments.</h2>
         <p>
-          Món quà nhỏ, phụ kiện xinh hay một người bạn bằng len.
+          A little gift, a lovely accessory, or a crochet companion.
           <br />
-          Luôn có một câu chuyện bắt đầu từ đây.
+          A story can always start here.
         </p>
         <div className={styles.wordGrid} aria-hidden="true">
           {[
@@ -384,12 +374,12 @@ export default function YarnlyLanding() {
         <PixelEdge top />
         <div className={shell.footerInner}>
           <h2>
-            Một món len nhỏ.
+            A little crochet piece.
             <br />
-            Một câu chuyện của bạn.
+            A story of your own.
           </h2>
           <LocalizedClientLink href="/home" className={styles.lightButton}>
-            Khám phá Yarnly <span aria-hidden="true">↗</span>
+            Explore Yarnly <span aria-hidden="true">↗</span>
           </LocalizedClientLink>
           <div className={shell.footerBottom}>
             <div>
@@ -397,28 +387,28 @@ export default function YarnlyLanding() {
                 Yarnly
               </LocalizedClientLink>
               <p>
-                Nơi người yêu đồ len thủ công
+                Where handmade crochet lovers
                 <br />
-                gặp những nghệ nhân Việt.
+                meet Vietnamese artisans.
               </p>
             </div>
-            <nav aria-label="Liên kết cuối trang">
-              <LocalizedClientLink href="/home">Trang chủ</LocalizedClientLink>
-              <LocalizedClientLink href="/store">Sản phẩm</LocalizedClientLink>
+            <nav aria-label="Footer links">
+              <LocalizedClientLink href="/home">Home</LocalizedClientLink>
+              <LocalizedClientLink href="/store">Products</LocalizedClientLink>
               <LocalizedClientLink href="/nghe-nhan">
-                Nghệ nhân
+                Artisans
               </LocalizedClientLink>
               <LocalizedClientLink href="/kenh-nghe-nhan/dang-ky">
-                Mở gian hàng
+                Open a shop
               </LocalizedClientLink>
               <LocalizedClientLink href="/account">
-                Tài khoản
+                Account
               </LocalizedClientLink>
             </nav>
           </div>
           <div className={shell.copyright}>
             <span>© {new Date().getFullYear()} Yarnly</span>
-            <span>Được kết nối bằng những mũi len.</span>
+            <span>Connected by stitches.</span>
           </div>
         </div>
       </footer>

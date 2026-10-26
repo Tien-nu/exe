@@ -4,6 +4,8 @@ import {
   deleteArtisanProduct,
   saveArtisanProduct,
   uploadArtisanImages,
+  requestArtisanImageUpload,
+  completeArtisanImageUpload,
 } from "@lib/data/artisan-portal"
 import type { ArtisanProduct } from "@lib/marketplace-types"
 import { shrinkImage } from "@lib/util/shrink-image"
@@ -54,8 +56,25 @@ export default function ProductForm({ product, categories }: Props) {
     const urls: string[] = []
     let error: string | null = null
     for (const file of Array.from(files)) {
+      const image = await shrinkImage(file)
+      if (process.env.NEXT_PUBLIC_YARNLY_BACKEND_MODE === "mongodb") {
+        try {
+          const signed = await requestArtisanImageUpload({ filename: image.name, mime_type: image.type, size: image.size })
+          if (!signed.upload) throw new Error(signed.error ?? "Unable to create an image upload session")
+          const response = await fetch(signed.upload.upload_url, { method: "PUT", headers: signed.upload.headers,
+            body: image, signal: AbortSignal.timeout(120_000) })
+          if (!response.ok) throw new Error("Upload failed. Please try again.")
+          const completed = await completeArtisanImageUpload(signed.upload.id)
+          if (!completed.url) throw new Error(completed.error ?? "Unable to verify the uploaded image")
+          urls.push(completed.url)
+        } catch (failure) {
+          error = failure instanceof Error ? failure.message : "Unable to upload the image. Please try again."
+          break
+        }
+        continue
+      }
       const formData = new FormData()
-      formData.append("files", await shrinkImage(file))
+      formData.append("files", image)
       const result = await uploadArtisanImages(formData)
       if (result.error) {
         error = result.error
@@ -65,7 +84,7 @@ export default function ProductForm({ product, categories }: Props) {
     }
     setUploading(false)
     if (error) toast.error(error)
-    else toast.success(`Đã tải lên ${urls.length} ảnh – nhớ bấm Lưu`)
+    else toast.success(`Uploaded ${urls.length} images — remember to save`)
     setImages((previous) => [...previous, ...urls])
   }
 
@@ -96,7 +115,7 @@ export default function ProductForm({ product, categories }: Props) {
       if (result.error) {
         toast.error(result.error)
       } else {
-        toast.success(product ? "Đã lưu thay đổi" : "Đã đăng sản phẩm")
+        toast.success(product ? "Changes saved" : "Product published")
         if (!product && result.id) {
           router.push(`/${countryCode}/kenh-nghe-nhan/san-pham/${result.id}`)
         } else {
@@ -109,13 +128,13 @@ export default function ProductForm({ product, categories }: Props) {
     <div className="flex flex-col gap-4">
       {product?.hidden_by_lock && (
         <p className="rounded-md bg-amber-50 p-3 txt-small">
-          Sản phẩm đang bị ẩn vì gian hàng bị khoá.
+          This product is hidden because the shop is suspended.
         </p>
       )}
-      <Field label="Tên sản phẩm">
+      <Field label="Product name">
         <input value={title} onChange={(event) => setTitle(event.target.value)} className={fieldClass} />
       </Field>
-      <Field label="Mô tả">
+      <Field label="Description">
         <textarea
           rows={4}
           value={description}
@@ -125,11 +144,11 @@ export default function ProductForm({ product, categories }: Props) {
       </Field>
 
       <div className="flex flex-col gap-2">
-        <span className="txt-small-plus">Loại hàng</span>
+        <span className="txt-small-plus">Fulfillment type</span>
         <div className="flex flex-wrap gap-4 txt-medium">
           <label className="flex items-center gap-2">
             <input type="radio" checked={type === "ready"} onChange={() => setType("ready")} />
-            Hàng có sẵn (bán theo tồn kho)
+            Ready-made (sold from stock)
           </label>
           <label className="flex items-center gap-2">
             <input
@@ -137,11 +156,11 @@ export default function ProductForm({ product, categories }: Props) {
               checked={type === "made_to_order"}
               onChange={() => setType("made_to_order")}
             />
-            Làm theo đơn
+            Made to order
           </label>
         </div>
         {type === "made_to_order" && (
-          <Field label="Số ngày làm" hint="Tính từ lúc bạn nhận đơn" className="max-w-xs">
+          <Field label="Production time (days)" hint="From the time you accept the order" className="max-w-xs">
             <input
               type="number"
               min={1}
@@ -155,13 +174,13 @@ export default function ProductForm({ product, categories }: Props) {
 
       {product ? (
         <div className="flex flex-col gap-2">
-          <span className="txt-small-plus">Giá{type === "ready" ? " và tồn kho" : ""} theo phân loại</span>
+          <span className="txt-small-plus">Price{type === "ready" ? " and stock" : ""} by variant</span>
           <table className="w-full txt-medium">
             <thead className="text-left txt-small text-ui-fg-subtle">
               <tr>
-                <th className="pb-1 font-normal">Phân loại</th>
-                <th className="pb-1 font-normal">Giá (₫)</th>
-                {type === "ready" && <th className="pb-1 font-normal">Tồn kho</th>}
+                <th className="pb-1 font-normal">Variant</th>
+                <th className="pb-1 font-normal">Price (VND)</th>
+                {type === "ready" && <th className="pb-1 font-normal">Stock</th>}
               </tr>
             </thead>
             <tbody>
@@ -180,7 +199,7 @@ export default function ProductForm({ product, categories }: Props) {
                         )
                       }
                       className={fieldClass}
-                      aria-label="Giá"
+                      aria-label="Price"
                     />
                   </td>
                   {type === "ready" && (
@@ -195,10 +214,10 @@ export default function ProductForm({ product, categories }: Props) {
                           )
                         }
                         className={fieldClass}
-                        aria-label="Tồn kho"
+                        aria-label="Stock"
                       />
                       {variant.reserved > 0 && (
-                        <span className="txt-small text-ui-fg-subtle">Đang giữ cho đơn: {variant.reserved}</span>
+                        <span className="txt-small text-ui-fg-subtle">Reserved for orders: {variant.reserved}</span>
                       )}
                     </td>
                   )}
@@ -209,7 +228,7 @@ export default function ProductForm({ product, categories }: Props) {
         </div>
       ) : (
         <div className="grid grid-cols-1 gap-4 small:grid-cols-2">
-          <Field label="Giá (₫)">
+          <Field label="Price (VND)">
             <input
               type="number"
               min={1000}
@@ -220,7 +239,7 @@ export default function ProductForm({ product, categories }: Props) {
             />
           </Field>
           {type === "ready" && (
-            <Field label="Tồn kho">
+            <Field label="Stock">
               <input
                 type="number"
                 min={0}
@@ -234,7 +253,7 @@ export default function ProductForm({ product, categories }: Props) {
       )}
 
       <div className="flex flex-col gap-2">
-        <span className="txt-small-plus">Ảnh sản phẩm</span>
+        <span className="txt-small-plus">Product images</span>
         <div className="flex flex-wrap gap-2">
           {images.map((url) => (
             <div key={url} className="relative">
@@ -244,7 +263,7 @@ export default function ProductForm({ product, categories }: Props) {
                 type="button"
                 onClick={() => setImages((previous) => previous.filter((image) => image !== url))}
                 className="absolute right-1 top-1 rounded-full bg-white/90 px-2 txt-small"
-                aria-label="Xoá ảnh"
+                aria-label="Remove image"
               >
                 ×
               </button>
@@ -259,12 +278,12 @@ export default function ProductForm({ product, categories }: Props) {
           onChange={(event) => upload(event.target.files)}
           className="txt-small"
         />
-        {uploading && <span className="txt-small text-ui-fg-subtle">Đang tải ảnh…</span>}
+        {uploading && <span className="txt-small text-ui-fg-subtle">Uploading images…</span>}
       </div>
 
       {categories.length > 0 && (
         <div className="flex flex-col gap-2">
-          <span className="txt-small-plus">Danh mục</span>
+          <span className="txt-small-plus">Categories</span>
           <div className="flex flex-wrap gap-3 txt-medium">
             {categories.map((category) => (
               <label key={category.id} className="flex items-center gap-2">
@@ -288,12 +307,12 @@ export default function ProductForm({ product, categories }: Props) {
 
       <label className="flex items-center gap-2 txt-medium">
         <input type="checkbox" checked={visible} onChange={(event) => setVisible(event.target.checked)} />
-        Hiển thị trên sàn
+        Publish on marketplace
       </label>
 
       <div className="flex gap-2">
         <Button onClick={save} isLoading={pending} disabled={uploading}>
-          {product ? "Lưu thay đổi" : "Đăng sản phẩm"}
+          {product ? "Save changes" : "Publish product"}
         </Button>
         {product && (
           <Button
@@ -301,9 +320,9 @@ export default function ProductForm({ product, categories }: Props) {
             disabled={pending}
             onClick={async () => {
               const ok = await confirm({
-                title: "Xoá sản phẩm này?",
-                description: `"${product.title}" sẽ biến mất khỏi gian hàng và không khôi phục được. Muốn tạm ẩn thì bỏ chọn "Hiển thị trên sàn".`,
-                confirmText: "Xoá sản phẩm",
+                title: "Delete this product?",
+                description: `"${product.title}" will be removed from your shop and cannot be restored here. To hide it temporarily, turn off "Publish on marketplace".`,
+                confirmText: "Delete product",
                 tone: "danger",
               })
               if (!ok) return
@@ -313,12 +332,12 @@ export default function ProductForm({ product, categories }: Props) {
                   toast.error(result.error)
                   return
                 }
-                toast.success("Đã xoá sản phẩm")
+                toast.success("Product deleted")
                 router.push(`/${countryCode}/kenh-nghe-nhan/san-pham`)
               })
             }}
           >
-            Xoá
+            Delete
           </Button>
         )}
       </div>

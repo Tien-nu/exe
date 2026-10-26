@@ -1,9 +1,9 @@
 export const formatVnd = (amount: number | null | undefined) =>
-  `${new Intl.NumberFormat("vi-VN").format(Number(amount ?? 0))}₫`
+  `${new Intl.NumberFormat("en-US").format(Number(amount ?? 0))}₫`
 
 export const formatDateTime = (value: string | null | undefined) =>
   value
-    ? new Date(value).toLocaleString("vi-VN", {
+    ? new Date(value).toLocaleString("en-US", {
         timeZone: "Asia/Ho_Chi_Minh",
         hour: "2-digit",
         minute: "2-digit",
@@ -15,7 +15,7 @@ export const formatDateTime = (value: string | null | undefined) =>
 
 export const formatDate = (value: string | null | undefined) =>
   value
-    ? new Date(value).toLocaleDateString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" })
+    ? new Date(value).toLocaleDateString("en-US", { timeZone: "Asia/Ho_Chi_Minh" })
     : ""
 
 /** Tailwind classes per sub-order status, shared by customer and artisan pages. */

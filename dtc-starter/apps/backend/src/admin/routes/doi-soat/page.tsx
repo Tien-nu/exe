@@ -46,7 +46,7 @@ const PayoutsSection = () => {
     mutationFn: () => api<{ created: number }>("/payouts", { method: "POST", body: {} }),
     onSuccess: ({ created }) => {
       toast.success(
-        created ? `Đã tạo ${created} khoản cần chuyển` : "Không có đơn hoàn thành nào mới"
+        created ? `Created ${created} payouts` : "No new completed orders"
       )
       refresh()
     },
@@ -57,7 +57,7 @@ const PayoutsSection = () => {
     mutationFn: ({ id, transaction_ref }: { id: string; transaction_ref: string }) =>
       api(`/payouts/${id}/paid`, { method: "POST", body: { transaction_ref } }),
     onSuccess: () => {
-      toast.success("Đã đánh dấu đã chuyển")
+      toast.success("Marked as paid")
       refresh()
     },
     onError: (error: Error) => toast.error(error.message),
@@ -70,10 +70,9 @@ const PayoutsSection = () => {
       {dialog}
       <div className="flex items-center justify-between px-6 py-4">
         <div>
-          <Heading>Chuyển tiền cho nghệ nhân</Heading>
+          <Heading>Artisan payouts</Heading>
           <Text size="small" className="text-ui-fg-subtle">
-            Mỗi thứ Hai hệ thống tự tổng hợp các đơn hoàn thành tuần trước. Chuyển khoản rồi
-            bấm "Đã chuyển".
+            Every Monday, the system summarizes orders completed in the previous week. Transfer the funds, then select "Mark paid".
           </Text>
         </div>
         <Button
@@ -82,24 +81,24 @@ const PayoutsSection = () => {
           isLoading={generate.isPending}
           onClick={() => generate.mutate()}
         >
-          Tổng hợp tuần trước
+          Summarize previous week
         </Button>
       </div>
       {isLoading ? (
-        <Text className="p-6">Đang tải…</Text>
+        <Text className="p-6">Loading…</Text>
       ) : !data?.payouts.length ? (
-        <Text className="p-6 text-ui-fg-subtle">Chưa có kỳ chuyển tiền nào.</Text>
+        <Text className="p-6 text-ui-fg-subtle">No payouts yet.</Text>
       ) : (
         <Table>
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell>Nghệ nhân</Table.HeaderCell>
-              <Table.HeaderCell>Kỳ</Table.HeaderCell>
-              <Table.HeaderCell>Số đơn</Table.HeaderCell>
-              <Table.HeaderCell>Tiền hàng</Table.HeaderCell>
-              <Table.HeaderCell>Phí sàn</Table.HeaderCell>
-              <Table.HeaderCell>Cần chuyển</Table.HeaderCell>
-              <Table.HeaderCell>Tài khoản</Table.HeaderCell>
+              <Table.HeaderCell>Artisans</Table.HeaderCell>
+              <Table.HeaderCell>Period</Table.HeaderCell>
+              <Table.HeaderCell>Orders</Table.HeaderCell>
+              <Table.HeaderCell>Item total</Table.HeaderCell>
+              <Table.HeaderCell>Platform fee</Table.HeaderCell>
+              <Table.HeaderCell>To pay</Table.HeaderCell>
+              <Table.HeaderCell>Account</Table.HeaderCell>
               <Table.HeaderCell />
             </Table.Row>
           </Table.Header>
@@ -129,7 +128,7 @@ const PayoutsSection = () => {
                 <Table.Cell>
                   {payout.status === "paid" ? (
                     <div>
-                      <StatusBadge color="green">Đã chuyển</StatusBadge>
+                      <StatusBadge color="green">Paid</StatusBadge>
                       <Text size="xsmall" className="text-ui-fg-subtle">
                         {payout.transaction_ref}
                       </Text>
@@ -139,19 +138,19 @@ const PayoutsSection = () => {
                       size="small"
                       onClick={async () => {
                         const values = await ask({
-                          title: `Đã chuyển ${formatVnd(payout.net_amount)} cho ${payout.artisan.shop_name}?`,
-                          description: `Tài khoản nhận: ${payout.bank_name} ${payout.bank_account_number} – ${payout.bank_account_name}. Nghệ nhân sẽ nhận email kèm mã giao dịch.`,
+                          title: `Transferred ${formatVnd(payout.net_amount)} cho ${payout.artisan.shop_name}?`,
+                          description: `Recipient account: ${payout.bank_name} ${payout.bank_account_number} – ${payout.bank_account_name}. The artisan will receive an email with the transaction reference.`,
                           fields: [
-                            { name: "ref", label: "Mã giao dịch ngân hàng", placeholder: "VD: FT26271234567", required: true },
+                            { name: "ref", label: "Bank transaction reference", placeholder: "VD: FT26271234567", required: true },
                           ],
-                          confirmText: "Đánh dấu đã chuyển",
+                          confirmText: "Mark paid",
                         })
                         if (values) {
                           markPaid.mutate({ id: payout.id, transaction_ref: values.ref })
                         }
                       }}
                     >
-                      Đã chuyển
+                      Paid
                     </Button>
                   )}
                 </Table.Cell>
@@ -165,12 +164,12 @@ const PayoutsSection = () => {
 }
 
 const SETTINGS_FIELDS: { key: string; label: string; hint?: string }[] = [
-  { key: "platform_fee_percent", label: "Phí sàn (%)", hint: "Hiện tại 0%. Áp dụng cho các kỳ chuyển tiền tạo sau khi đổi." },
-  { key: "admin_email", label: "Gmail nhận thông báo Admin", hint: "Nhận email khi nghệ nhân làm xong, khách báo đã chuyển khoản…" },
-  { key: "bank_name", label: "Ngân hàng nhận tiền của Yarnly" },
-  { key: "bank_code", label: "Mã ngân hàng VietQR", hint: "VD: mb, vcb, tcb, acb hoặc mã BIN" },
-  { key: "bank_account_number", label: "Số tài khoản" },
-  { key: "bank_account_name", label: "Chủ tài khoản" },
+  { key: "platform_fee_percent", label: "Marketplace fee (%)", hint: "Currently 0%. Changes apply to payouts generated after saving." },
+  { key: "admin_email", label: "Admin notification email", hint: "Receive emails when artisans finish orders, customers report transfers, and more." },
+  { key: "bank_name", label: "Yarnly receiving bank" },
+  { key: "bank_code", label: "VietQR bank code", hint: "e.g. mb, vcb, tcb, acb, or a BIN code" },
+  { key: "bank_account_number", label: "Account number" },
+  { key: "bank_account_name", label: "Account holder" },
 ]
 
 const SettingsSection = () => {
@@ -194,7 +193,7 @@ const SettingsSection = () => {
   const save = useMutation({
     mutationFn: () => api("/settings", { method: "POST", body: form }),
     onSuccess: () => {
-      toast.success("Đã lưu cài đặt")
+      toast.success("Settings saved")
       queryClient.invalidateQueries({ queryKey: ["mp-settings"] })
     },
     onError: (error: Error) => toast.error(error.message),
@@ -203,9 +202,9 @@ const SettingsSection = () => {
   return (
     <Container className="flex flex-col gap-y-4 px-6 py-4">
       <div>
-        <Heading>Cài đặt sàn</Heading>
+        <Heading>Marketplace settings</Heading>
         <Text size="small" className="text-ui-fg-subtle">
-          Tài khoản ngân hàng dùng để tạo mã VietQR khi khách chuyển khoản.
+          This bank account is used to generate VietQR codes for customer transfers.
         </Text>
       </div>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -228,7 +227,7 @@ const SettingsSection = () => {
       </div>
       <div>
         <Button size="small" isLoading={save.isPending} onClick={() => save.mutate()}>
-          Lưu
+          Save
         </Button>
       </div>
     </Container>
@@ -243,7 +242,7 @@ const PayoutsPage = () => (
 )
 
 export const config = defineRouteConfig({
-  label: "Đối soát",
+  label: "Payouts",
   icon: CurrencyDollar,
 })
 

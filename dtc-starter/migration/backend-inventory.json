@@ -1,0 +1,532 @@
+{
+  "baseline": "Yarnly_deploy/dtc-starter",
+  "note": "Custom routes only. Medusa built-in APIs and the admin UI must be tested separately. migrated=false is deliberate until integration tests pass.",
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/admin/custom",
+      "source": "apps/backend/src/api/admin/custom/route.ts",
+      "sha256": "b91decad25963549edaf66214e2427bd67feab9fb0f45c98bdb494960851ad9b",
+      "migrated": false
+    },
+    {
+      "method": "POST",
+      "path": "/admin/marketplace/artisans/:id/status",
+      "source": "apps/backend/src/api/admin/marketplace/artisans/[id]/status/route.ts",
+      "sha256": "57605b6be171378c8784c8ddc2611d848cc25abc7fae843e9a6f113c10f153de",
+      "migrated": false
+    },
+    {
+      "method": "GET",
+      "path": "/admin/marketplace/artisans",
+      "source": "apps/backend/src/api/admin/marketplace/artisans/route.ts",
+      "sha256": "a2f0ed5ca9b4d78f6fe20fed35628ac795e3a684d0e3ed8503aef188a1ee3a67",
+      "migrated": false
+    },
+    {
+      "method": "POST",
+      "path": "/admin/marketplace/artisans",
+      "source": "apps/backend/src/api/admin/marketplace/artisans/route.ts",
+      "sha256": "a2f0ed5ca9b4d78f6fe20fed35628ac795e3a684d0e3ed8503aef188a1ee3a67",
+      "migrated": false
+    },
+    {
+      "method": "POST",
+      "path": "/admin/marketplace/orders/:id/confirm-payment",
+      "source": "apps/backend/src/api/admin/marketplace/orders/[id]/confirm-payment/route.ts",
+      "sha256": "1898625dd175a0c39ca999ac3f4ec99e270916bd2aa534238985da74a3166eee",
+      "migrated": false
+    },
+    {
+      "method": "POST",
+      "path": "/admin/marketplace/orders/:id/reject-payment",
+      "source": "apps/backend/src/api/admin/marketplace/orders/[id]/reject-payment/route.ts",
+      "sha256": "bfdfe70c145971f28ae4a12b1c08a0d340b0d0e59446b01b9ca9e39e529065cc",
+      "migrated": false
+    },
+    {
+      "method": "GET",
+      "path": "/admin/marketplace/orders",
+      "source": "apps/backend/src/api/admin/marketplace/orders/route.ts",
+      "sha256": "e782037cbfff6f3396c6687598bb3c59dfc4a2fe0a7a9cbabe413c12c2cd3f35",
+      "migrated": false
+    },
+    {
+      "method": "POST",
+      "path": "/admin/marketplace/payouts/:id/paid",
+      "source": "apps/backend/src/api/admin/marketplace/payouts/[id]/paid/route.ts",
+      "sha256": "273ddda43cabae3d68b3eaaad279b23a6288043021ed9f50f90ae1cb7a411244",
+      "migrated": false
+    },
+    {
+      "method": "GET",
+      "path": "/admin/marketplace/payouts",
+      "source": "apps/backend/src/api/admin/marketplace/payouts/route.ts",
+      "sha256": "c0c31ac103d6c2e8d73eb63a55a7b777fb758d63fe6023ba7e09502ee8325148",
+      "migrated": false
+    },
+    {
+      "method": "POST",
+      "path": "/admin/marketplace/payouts",
+      "source": "apps/backend/src/api/admin/marketplace/payouts/route.ts",
+      "sha256": "c0c31ac103d6c2e8d73eb63a55a7b777fb758d63fe6023ba7e09502ee8325148",
+      "migrated": false
+    },
+    {
+      "method": "GET",
+      "path": "/admin/marketplace/settings",
+      "source": "apps/backend/src/api/admin/marketplace/settings/route.ts",
+      "sha256": "9025d733bbae2bdbfe11cd92f3256a42165b74fb45854f7aeb5407502b95aeca",
+      "migrated": false
+    },
+    {
+      "method": "POST",
+      "path": "/admin/marketplace/settings",
+      "source": "apps/backend/src/api/admin/marketplace/settings/route.ts",
+      "sha256": "9025d733bbae2bdbfe11cd92f3256a42165b74fb45854f7aeb5407502b95aeca",
+      "migrated": false
+    },
+    {
+      "method": "POST",
+      "path": "/admin/marketplace/sub-orders/:id/cancel",
+      "source": "apps/backend/src/api/admin/marketplace/sub-orders/[id]/cancel/route.ts",
+      "sha256": "9c07d65074e59b2fc5ed84b5a0e61e33713aecf63148302acf1f36a052f98c95",
+      "migrated": false
+    },
+    {
+      "method": "POST",
+      "path": "/admin/marketplace/sub-orders/:id/deliver",
+      "source": "apps/backend/src/api/admin/marketplace/sub-orders/[id]/deliver/route.ts",
+      "sha256": "477640b80a8c94e3a2e49f733d04975b59b3e8fb332c1ecd89a94f64454bebf1",
+      "migrated": false
+    },
+    {
+      "method": "POST",
+      "path": "/admin/marketplace/sub-orders/:id/ghn-cancel",
+      "source": "apps/backend/src/api/admin/marketplace/sub-orders/[id]/ghn-cancel/route.ts",
+      "sha256": "fcdf57f3c72a20807685684f687914deae9283cf8be107b49b5fec0c98252d40",
+      "migrated": false
+    },
+    {
+      "method": "POST",
+      "path": "/admin/marketplace/sub-orders/:id/ghn-quote",
+      "source": "apps/backend/src/api/admin/marketplace/sub-orders/[id]/ghn-quote/route.ts",
+      "sha256": "f95281f54426077a7b6f9c76da2e1b04df96a0c306f7e90bdb71c7a6388d8547",
+      "migrated": false
+    },
+    {
+      "method": "POST",
+      "path": "/admin/marketplace/sub-orders/:id/ghn",
+      "source": "apps/backend/src/api/admin/marketplace/sub-orders/[id]/ghn/route.ts",
+      "sha256": "2eda95c9f9840b9426d48e76c1f4e47ee14a2c04cd3398bcb4d5725e4f8dcaaf",
+      "migrated": false
+    },
+    {
+      "method": "POST",
+      "path": "/admin/marketplace/sub-orders/:id/refunded",
+      "source": "apps/backend/src/api/admin/marketplace/sub-orders/[id]/refunded/route.ts",
+      "sha256": "11adcbfacf7c3ceec19c19af8519b9e289d623b27acb4583f4c81ebb8e0d38a3",
+      "migrated": false
+    },
+    {
+      "method": "POST",
+      "path": "/admin/marketplace/sub-orders/:id/ship",
+      "source": "apps/backend/src/api/admin/marketplace/sub-orders/[id]/ship/route.ts",
+      "sha256": "67b6069aa5433bfd0063e490f11292256648c75c416483ffa303f4e495af85e9",
+      "migrated": false
+    },
+    {
+      "method": "GET",
+      "path": "/admin/marketplace/sub-orders",
+      "source": "apps/backend/src/api/admin/marketplace/sub-orders/route.ts",
+      "sha256": "c763821073bce7952725a9a4e8388db6eb729e2fdd4e705a9d2d2d027b3fb3ec",
+      "migrated": false
+    },
+    {
+      "method": "GET",
+      "path": "/artisan/categories",
+      "source": "apps/backend/src/api/artisan/categories/route.ts",
+      "sha256": "73b840ca17384379a9dd700a03d9e494b261494ce5cf4274620fbec0c48fd636",
+      "migrated": false
+    },
+    {
+      "method": "POST",
+      "path": "/artisan/custom-requests/:id/respond",
+      "source": "apps/backend/src/api/artisan/custom-requests/[id]/respond/route.ts",
+      "sha256": "26f797a4905655fd526480ed196a572f58b1dde7416379b90300651802408619",
+      "migrated": false
+    },
+    {
+      "method": "GET",
+      "path": "/artisan/custom-requests",
+      "source": "apps/backend/src/api/artisan/custom-requests/route.ts",
+      "sha256": "6c3b07273149275bf36334680057cb5d3461f11ede198a5bd3921aef45e830d2",
+      "migrated": false
+    },
+    {
+      "method": "GET",
+      "path": "/artisan/dashboard",
+      "source": "apps/backend/src/api/artisan/dashboard/route.ts",
+      "sha256": "f298784998e85200a708b7e6520195b7b6db0ad99c7451ce44bdb67694de8d0d",
+      "migrated": false
+    },
+    {
+      "method": "GET",
+      "path": "/artisan/me",
+      "source": "apps/backend/src/api/artisan/me/route.ts",
+      "sha256": "0f672b563c52b9a607b286215b930541d20857df18fadda09d8607e41a145de6",
+      "migrated": false
+    },
+    {
+      "method": "POST",
+      "path": "/artisan/me",
+      "source": "apps/backend/src/api/artisan/me/route.ts",
+      "sha256": "0f672b563c52b9a607b286215b930541d20857df18fadda09d8607e41a145de6",
+      "migrated": false
+    },
+    {
+      "method": "GET",
+      "path": "/artisan/payouts",
+      "source": "apps/backend/src/api/artisan/payouts/route.ts",
+      "sha256": "0789501e6d86daf76e6cb1c96e89987220b814f3a95983003c0629b36c93758c",
+      "migrated": false
+    },
+    {
+      "method": "GET",
+      "path": "/artisan/products/:id",
+      "source": "apps/backend/src/api/artisan/products/[id]/route.ts",
+      "sha256": "06062a680b56fee789d8d655ceec3b86fc8309d84554ee26ecd762a88e4d5fac",
+      "migrated": false
+    },
+    {
+      "method": "POST",
+      "path": "/artisan/products/:id",
+      "source": "apps/backend/src/api/artisan/products/[id]/route.ts",
+      "sha256": "06062a680b56fee789d8d655ceec3b86fc8309d84554ee26ecd762a88e4d5fac",
+      "migrated": false
+    },
+    {
+      "method": "DELETE",
+      "path": "/artisan/products/:id",
+      "source": "apps/backend/src/api/artisan/products/[id]/route.ts",
+      "sha256": "06062a680b56fee789d8d655ceec3b86fc8309d84554ee26ecd762a88e4d5fac",
+      "migrated": false
+    },
+    {
+      "method": "GET",
+      "path": "/artisan/products",
+      "source": "apps/backend/src/api/artisan/products/route.ts",
+      "sha256": "3e0d71faada5db106267e9e9ce7b0a07ee566856822b2511649379755ed6c474",
+      "migrated": false
+    },
+    {
+      "method": "POST",
+      "path": "/artisan/products",
+      "source": "apps/backend/src/api/artisan/products/route.ts",
+      "sha256": "3e0d71faada5db106267e9e9ce7b0a07ee566856822b2511649379755ed6c474",
+      "migrated": false
+    },
+    {
+      "method": "POST",
+      "path": "/artisan/register",
+      "source": "apps/backend/src/api/artisan/register/route.ts",
+      "sha256": "f7798e320d0a628506a85c64e5b788071bb5c53544980b8ef8a07fff6fad85e3",
+      "migrated": false
+    },
+    {
+      "method": "POST",
+      "path": "/artisan/sub-orders/:id/accept",
+      "source": "apps/backend/src/api/artisan/sub-orders/[id]/accept/route.ts",
+      "sha256": "668a4f70053dbe6961a95ff764227efa5afae3fd505fb833003b87833e9f1d85",
+      "migrated": false
+    },
+    {
+      "method": "POST",
+      "path": "/artisan/sub-orders/:id/decline",
+      "source": "apps/backend/src/api/artisan/sub-orders/[id]/decline/route.ts",
+      "sha256": "98bedc064a9949f98650048165b92e2a4b2abab94aca967e9ebd0c36a2ff050f",
+      "migrated": false
+    },
+    {
+      "method": "POST",
+      "path": "/artisan/sub-orders/:id/ready",
+      "source": "apps/backend/src/api/artisan/sub-orders/[id]/ready/route.ts",
+      "sha256": "1320e2785c56d5c83c40b0069c68eee0813984fa604fe95849056e73aee55c02",
+      "migrated": false
+    },
+    {
+      "method": "GET",
+      "path": "/artisan/sub-orders/:id",
+      "source": "apps/backend/src/api/artisan/sub-orders/[id]/route.ts",
+      "sha256": "fa0eaf5831d98e0ecb44bbf0860b23341a213c60ecc397a95ba8fe3d90164b6f",
+      "migrated": false
+    },
+    {
+      "method": "GET",
+      "path": "/artisan/sub-orders",
+      "source": "apps/backend/src/api/artisan/sub-orders/route.ts",
+      "sha256": "2d445f0fd77b60018f2b130c63dade06a72edb534aee16ec053f2c56909348e5",
+      "migrated": false
+    },
+    {
+      "method": "POST",
+      "path": "/artisan/uploads",
+      "source": "apps/backend/src/api/artisan/uploads/route.ts",
+      "sha256": "f832c242e6ff79e3f6ec9cb6bab1f23531db68de81ccc9b8ec560d2457a9571e",
+      "migrated": false
+    },
+    {
+      "method": "POST",
+      "path": "/ghn/webhook",
+      "source": "apps/backend/src/api/ghn/webhook/route.ts",
+      "sha256": "b1e41f367c267dd6baad16963b2cb751d81f92181299d0905190946e99464479",
+      "migrated": false
+    },
+    {
+      "method": "GET",
+      "path": "/store/artisans/:handle",
+      "source": "apps/backend/src/api/store/artisans/[handle]/route.ts",
+      "sha256": "9c18977b2802919eb3121d41da0027e9185757b09de058c3616bdd35746564e8",
+      "migrated": false
+    },
+    {
+      "method": "GET",
+      "path": "/store/artisans/by-product/:id",
+      "source": "apps/backend/src/api/store/artisans/by-product/[id]/route.ts",
+      "sha256": "6293b06aab5deb9d4fd5abd43070a9c5fa93cd4c0c50ae426d577d93e2cff3d6",
+      "migrated": false
+    },
+    {
+      "method": "GET",
+      "path": "/store/artisans",
+      "source": "apps/backend/src/api/store/artisans/route.ts",
+      "sha256": "ab5942bf06b189f07140f831dc37e15cdf2d06a832bd351d237a4f8b791b4540",
+      "migrated": false
+    },
+    {
+      "method": "GET",
+      "path": "/store/custom",
+      "source": "apps/backend/src/api/store/custom/route.ts",
+      "sha256": "b91decad25963549edaf66214e2427bd67feab9fb0f45c98bdb494960851ad9b",
+      "migrated": false
+    },
+    {
+      "method": "GET",
+      "path": "/store/ghn/districts",
+      "source": "apps/backend/src/api/store/ghn/districts/route.ts",
+      "sha256": "c2598169b953e646172a2aa3f99235c83c960b9803b8136a7fa56e710a950629",
+      "migrated": false
+    },
+    {
+      "method": "GET",
+      "path": "/store/ghn/provinces",
+      "source": "apps/backend/src/api/store/ghn/provinces/route.ts",
+      "sha256": "3eb815a73e2ce69f875bb3f5523990a8d7d6f07649c2c2c1d31c8dd81b5b5c35",
+      "migrated": false
+    },
+    {
+      "method": "GET",
+      "path": "/store/ghn/wards",
+      "source": "apps/backend/src/api/store/ghn/wards/route.ts",
+      "sha256": "5f5fbbe3685cf318f33254c94e72f3e7f6f8f6397be32acf6088a3c4d92cb4dd",
+      "migrated": false
+    },
+    {
+      "method": "POST",
+      "path": "/store/marketplace/custom-requests/:id/decide",
+      "source": "apps/backend/src/api/store/marketplace/custom-requests/[id]/decide/route.ts",
+      "sha256": "34d859168d236419786c035bae4c21499f6677949bc5cf153ba95256aa097466",
+      "migrated": false
+    },
+    {
+      "method": "GET",
+      "path": "/store/marketplace/custom-requests",
+      "source": "apps/backend/src/api/store/marketplace/custom-requests/route.ts",
+      "sha256": "f3a4196525c56e8cc03cb393908573388a57147fa7ee2ab7c138e37cbb8d9147",
+      "migrated": false
+    },
+    {
+      "method": "POST",
+      "path": "/store/marketplace/custom-requests",
+      "source": "apps/backend/src/api/store/marketplace/custom-requests/route.ts",
+      "sha256": "f3a4196525c56e8cc03cb393908573388a57147fa7ee2ab7c138e37cbb8d9147",
+      "migrated": false
+    },
+    {
+      "method": "GET",
+      "path": "/store/marketplace/orders/:order_id",
+      "source": "apps/backend/src/api/store/marketplace/orders/[order_id]/route.ts",
+      "sha256": "c737e0ded6cd22ede121ca8da1fa4305d8addc00be5ba488708e86a2f04597b9",
+      "migrated": false
+    },
+    {
+      "method": "POST",
+      "path": "/store/marketplace/orders/:order_id/transfer-submitted",
+      "source": "apps/backend/src/api/store/marketplace/orders/[order_id]/transfer-submitted/route.ts",
+      "sha256": "d1ffcb4a1f02caa9cf008b7d57b71e393f51e87fd3bb7692f05f76a46b64b358",
+      "migrated": false
+    },
+    {
+      "method": "GET",
+      "path": "/store/marketplace/orders",
+      "source": "apps/backend/src/api/store/marketplace/orders/route.ts",
+      "sha256": "2be50aa194fabd7154d2d026e482c6a921d638e2abd67d8362cbb6d0eb35c7cc",
+      "migrated": false
+    },
+    {
+      "method": "POST",
+      "path": "/store/marketplace/sub-orders/:id/cancel",
+      "source": "apps/backend/src/api/store/marketplace/sub-orders/[id]/cancel/route.ts",
+      "sha256": "f5b3b11be87dcd43319cef12809e0ec70a795c62780f3ae87b0a408caee2a229",
+      "migrated": false
+    }
+  ],
+  "models": [
+    {
+      "source": "apps/backend/src/modules/marketplace/models/artisan.ts",
+      "sha256": "74a4197ff8b04e35695205aff8e46541f0841b1151638cce18c8c6e1afc22046"
+    },
+    {
+      "source": "apps/backend/src/modules/marketplace/models/custom-request.ts",
+      "sha256": "64ed9c9bc3802e0256204d4f41ee8d9e13536d17d25902cb9007a06bb4353a1e"
+    },
+    {
+      "source": "apps/backend/src/modules/marketplace/models/marketplace-order.ts",
+      "sha256": "83cffdbb99044956f6749bf6467bfdc0ee4c4c4e87c7a1c5b19caf82de47a5bf"
+    },
+    {
+      "source": "apps/backend/src/modules/marketplace/models/marketplace-setting.ts",
+      "sha256": "84e97aaa331d92d6f89942cf6c78358c73d0c4dcf7ec79ed40229eafff4e33fc"
+    },
+    {
+      "source": "apps/backend/src/modules/marketplace/models/payout.ts",
+      "sha256": "fb90af2b6765048fa7210e76d18cfbad200342903520e776f9316808c964ae33"
+    },
+    {
+      "source": "apps/backend/src/modules/marketplace/models/sub-order-item.ts",
+      "sha256": "d588b3c5809cb0316de4bc9803639b15896be6fc7ecf8631bd36a9db2afb8dcb"
+    },
+    {
+      "source": "apps/backend/src/modules/marketplace/models/sub-order.ts",
+      "sha256": "ae84c4501ef4c0e3cbc41efb61c93287ea928e13d0f6be7caafbef00d12fbc5a"
+    }
+  ],
+  "sdkCalls": [
+    {
+      "call": "sdk.store.cart.create",
+      "source": "apps/storefront/src/lib/data/cart.ts"
+    },
+    {
+      "call": "sdk.store.cart.update",
+      "source": "apps/storefront/src/lib/data/cart.ts"
+    },
+    {
+      "call": "sdk.store.cart.update",
+      "source": "apps/storefront/src/lib/data/cart.ts"
+    },
+    {
+      "call": "sdk.store.cart.createLineItem",
+      "source": "apps/storefront/src/lib/data/cart.ts"
+    },
+    {
+      "call": "sdk.store.cart.createLineItem",
+      "source": "apps/storefront/src/lib/data/cart.ts"
+    },
+    {
+      "call": "sdk.store.cart.updateLineItem",
+      "source": "apps/storefront/src/lib/data/cart.ts"
+    },
+    {
+      "call": "sdk.store.cart.deleteLineItem",
+      "source": "apps/storefront/src/lib/data/cart.ts"
+    },
+    {
+      "call": "sdk.store.cart.addShippingMethod",
+      "source": "apps/storefront/src/lib/data/cart.ts"
+    },
+    {
+      "call": "sdk.store.payment.initiatePaymentSession",
+      "source": "apps/storefront/src/lib/data/cart.ts"
+    },
+    {
+      "call": "sdk.store.cart.update",
+      "source": "apps/storefront/src/lib/data/cart.ts"
+    },
+    {
+      "call": "sdk.store.cart.complete",
+      "source": "apps/storefront/src/lib/data/cart.ts"
+    },
+    {
+      "call": "sdk.auth.verification.request",
+      "source": "apps/storefront/src/lib/data/customer.ts"
+    },
+    {
+      "call": "sdk.store.customer.update",
+      "source": "apps/storefront/src/lib/data/customer.ts"
+    },
+    {
+      "call": "sdk.auth.register",
+      "source": "apps/storefront/src/lib/data/customer.ts"
+    },
+    {
+      "call": "sdk.auth.login",
+      "source": "apps/storefront/src/lib/data/customer.ts"
+    },
+    {
+      "call": "sdk.auth.login",
+      "source": "apps/storefront/src/lib/data/customer.ts"
+    },
+    {
+      "call": "sdk.store.customer.retrieve",
+      "source": "apps/storefront/src/lib/data/customer.ts"
+    },
+    {
+      "call": "sdk.store.customer.create",
+      "source": "apps/storefront/src/lib/data/customer.ts"
+    },
+    {
+      "call": "sdk.auth.login",
+      "source": "apps/storefront/src/lib/data/customer.ts"
+    },
+    {
+      "call": "sdk.auth.verification.confirm",
+      "source": "apps/storefront/src/lib/data/customer.ts"
+    },
+    {
+      "call": "sdk.auth.logout",
+      "source": "apps/storefront/src/lib/data/customer.ts"
+    },
+    {
+      "call": "sdk.store.cart.transferCart",
+      "source": "apps/storefront/src/lib/data/customer.ts"
+    },
+    {
+      "call": "sdk.store.customer.createAddress",
+      "source": "apps/storefront/src/lib/data/customer.ts"
+    },
+    {
+      "call": "sdk.store.customer.deleteAddress",
+      "source": "apps/storefront/src/lib/data/customer.ts"
+    },
+    {
+      "call": "sdk.store.customer.updateAddress",
+      "source": "apps/storefront/src/lib/data/customer.ts"
+    },
+    {
+      "call": "sdk.store.cart.update",
+      "source": "apps/storefront/src/lib/data/locale-actions.ts"
+    },
+    {
+      "call": "sdk.store.order.requestTransfer",
+      "source": "apps/storefront/src/lib/data/orders.ts"
+    },
+    {
+      "call": "sdk.store.order.acceptTransfer",
+      "source": "apps/storefront/src/lib/data/orders.ts"
+    },
+    {
+      "call": "sdk.store.order.declineTransfer",
+      "source": "apps/storefront/src/lib/data/orders.ts"
+    }
+  ]
+}

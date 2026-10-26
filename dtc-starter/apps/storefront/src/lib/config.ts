@@ -1,15 +1,12 @@
 import { getLocaleHeader } from "@lib/util/get-locale-header"
-import Medusa, { FetchArgs, FetchInput } from "@medusajs/js-sdk"
+import Medusa, { FetchArgs, FetchInput, FetchError } from "@medusajs/js-sdk"
 
-// Defaults to standard port for Medusa server
-let MEDUSA_BACKEND_URL = "http://localhost:9000"
-
-if (process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL) {
-  MEDUSA_BACKEND_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL
-}
+import qs from "qs"
+import { dispatchBackend } from "./data/backend-dispatch"
+import { backendUrl } from "./backend-url"
 
 export const sdk = new Medusa({
-  baseUrl: MEDUSA_BACKEND_URL,
+  baseUrl: backendUrl(),
   debug: process.env.NODE_ENV === "development",
   publishableKey: process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY,
 })
@@ -34,6 +31,14 @@ sdk.client.fetch = async <T>(
   init = {
     ...init,
     headers: newHeaders,
+  }
+  if (process.env.NEXT_PUBLIC_YARNLY_BACKEND_MODE === "mongodb" && typeof window === "undefined") {
+    if (typeof input !== "string") throw new Error("API path must be a string")
+    const query = qs.stringify(init.query, { arrayFormat: "brackets", skipNulls: true })
+    const pathname = query ? `${input}${input.includes("?") ? "&" : "?"}${query}` : input
+    const response = await dispatchBackend(pathname, init.method ?? "GET", newHeaders as Record<string, string>, init.body)
+    if (response.status < 200 || response.status >= 300) throw new FetchError(response.body.message, response.statusText, response.status)
+    return response.body as T
   }
   return originalFetch(input, init)
 }

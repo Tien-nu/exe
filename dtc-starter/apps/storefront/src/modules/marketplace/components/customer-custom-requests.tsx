@@ -21,11 +21,11 @@ const RequestCard = ({ request }: { request: CustomRequest }) => {
   // Statuses that name the shop answering this request.
   const label =
     request.status === "pending"
-      ? `Chờ ${shop} trả lời`
+      ? `Waiting for ${shop} to reply`
       : request.status === "quoted"
-        ? `${shop} đã báo giá`
+        ? `${shop} has sent a quote`
         : request.status === "artisan_declined"
-          ? `${shop} từ chối`
+          ? `${shop} declined`
           : CUSTOM_REQUEST_LABELS[request.status]
 
   const decide = (accept: boolean) =>
@@ -35,11 +35,11 @@ const RequestCard = ({ request }: { request: CustomRequest }) => {
       if (result.error) {
         toast.error(result.error)
       } else if (accept) {
-        toast.success(`Đã thêm "${request.product_title}" vào giỏ với giá ${shop} báo`)
+        toast.success(`Added "${request.product_title}" to your cart for ${shop} quoted`)
         router.push(`/${countryCode}/cart`)
         return
       } else {
-        toast.info("Bạn đã từ chối báo giá")
+        toast.info("You declined the quote")
       }
 
       router.refresh()
@@ -47,10 +47,10 @@ const RequestCard = ({ request }: { request: CustomRequest }) => {
 
   const decline = async () => {
     const ok = await confirm({
-      title: "Từ chối báo giá này?",
-      description: "Bạn chỉ được quyết định một lần. Sau khi từ chối, yêu cầu này sẽ kết thúc.",
-      confirmText: "Từ chối",
-      cancelText: "Suy nghĩ thêm",
+      title: "Decline this quote?",
+      description: "You can only decide once. Declining will close this request.",
+      confirmText: "Decline",
+      cancelText: "Keep considering",
       tone: "danger",
     })
     if (ok) decide(false)
@@ -62,7 +62,7 @@ const RequestCard = ({ request }: { request: CustomRequest }) => {
         <div>
           <p className="txt-medium-plus">{request.product_title}</p>
           <p className="txt-small text-ui-fg-subtle">
-            {request.artisan?.shop_name} · gửi lúc {formatDateTime(request.created_at)}
+            {request.artisan?.shop_name} · sent at {formatDateTime(request.created_at)}
           </p>
         </div>
         <span className="rounded-full bg-gray-100 px-3 py-1 txt-small-plus">
@@ -70,27 +70,27 @@ const RequestCard = ({ request }: { request: CustomRequest }) => {
         </span>
       </div>
       <p className="mt-2 txt-medium">
-        {request.quantity} cái · {request.description}
-        {request.color && ` · Màu: ${request.color}`}
-        {request.size && ` · Kích thước: ${request.size}`}
+        {request.quantity} items · {request.description}
+        {request.color && ` · Color: ${request.color}`}
+        {request.size && ` · Size: ${request.size}`}
       </p>
       {request.quoted_price !== null && (
         <div className="mt-3 rounded-md bg-violet-50 p-3 txt-medium">
-          Báo giá: <strong>{formatVnd(request.quoted_price * request.quantity)}</strong> (
-          {formatVnd(request.quoted_price)}/cái) · làm trong{" "}
-          <strong>{request.quoted_lead_days} ngày</strong>
+          Quote: <strong>{formatVnd(request.quoted_price * request.quantity)}</strong> (
+          {formatVnd(request.quoted_price)}/item) · production time{" "}
+          <strong>{request.quoted_lead_days} days</strong>
           {request.artisan_note && (
-            <p className="txt-small text-ui-fg-subtle">Lời nhắn: {request.artisan_note}</p>
+            <p className="txt-small text-ui-fg-subtle">Message: {request.artisan_note}</p>
           )}
         </div>
       )}
       {request.status === "artisan_declined" && request.artisan_note && (
-        <p className="mt-2 txt-small text-ui-fg-subtle">Lời nhắn: {request.artisan_note}</p>
+        <p className="mt-2 txt-small text-ui-fg-subtle">Message: {request.artisan_note}</p>
       )}
       {request.status === "quoted" && (
         <div className="mt-3 flex gap-2">
           <Button size="small" isLoading={pending} onClick={() => decide(true)}>
-            Đồng ý & thêm vào giỏ
+            Accept & add to cart
           </Button>
           <Button
             size="small"
@@ -98,17 +98,17 @@ const RequestCard = ({ request }: { request: CustomRequest }) => {
             disabled={pending}
             onClick={decline}
           >
-            Từ chối
+            Decline
           </Button>
         </div>
       )}
       {request.status === "accepted" && (
         <div className="mt-3 flex items-center gap-3">
           <LocalizedClientLink href="/cart" className="txt-small text-violet-700 underline">
-            Tới giỏ hàng để thanh toán
+            Go to cart to pay
           </LocalizedClientLink>
           <Button size="small" variant="secondary" isLoading={pending} onClick={() => decide(true)}>
-            Thêm lại vào giỏ
+            Add to cart again
           </Button>
         </div>
       )}
@@ -117,7 +117,7 @@ const RequestCard = ({ request }: { request: CustomRequest }) => {
           href={`/account/orders/details/${request.order_id}`}
           className="mt-3 inline-block txt-small text-violet-700 underline"
         >
-          Xem đơn hàng
+          View order
         </LocalizedClientLink>
       )}
     </div>
@@ -128,7 +128,7 @@ export default function CustomerCustomRequests({ requests }: { requests: CustomR
   if (!requests.length) {
     return (
       <p className="txt-medium text-ui-fg-subtle">
-        Bạn chưa gửi yêu cầu làm riêng nào. Vào trang sản phẩm và bấm &quot;Yêu cầu làm riêng&quot;.
+        You haven't sent any custom requests. Open a product and select &quot;Request a custom piece&quot;.
       </p>
     )
   }

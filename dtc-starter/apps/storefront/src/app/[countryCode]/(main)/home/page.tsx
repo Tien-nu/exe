@@ -8,9 +8,9 @@ import { getRegion } from "@lib/data/regions"
 import styles from "@modules/home/components/home-editorial.module.css"
 
 export const metadata: Metadata = {
-  title: "Yarnly — Chợ đồ len handmade Việt Nam",
+  title: "Yarnly — Vietnam's handmade crochet marketplace",
   description:
-    "Khám phá sản phẩm len thủ công và gặp gỡ những nghệ nhân đứng sau từng món đồ trên Yarnly.",
+    "Discover handmade crochet products and meet the artisans behind every piece on Yarnly.",
 }
 
 export default async function Home(props: {
@@ -40,15 +40,14 @@ export default async function Home(props: {
         <div className="content-container mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--yarnly-terracotta)]">
-              Chọn món mình thương
+              Find something to love
             </p>
             <h2 className="font-serif text-3xl font-medium tracking-[-0.035em] text-[var(--yarnly-ink)] md:text-5xl">
-              Đồ len cho những ngày dịu dàng.
+              Handmade comfort for gentle days.
             </h2>
           </div>
           <p className="max-w-md text-sm leading-6 text-[var(--yarnly-muted)] md:text-base">
-            Mỗi sản phẩm được làm thủ công bởi một gian hàng trên Yarnly. Tìm
-            món quà nhỏ, phụ kiện ấm áp hoặc gửi yêu cầu làm riêng.
+            Every product is handmade by a shop on Yarnly. Find a small gift, a cozy accessory, or request something made just for you.
           </p>
         </div>
         <ul className="flex flex-col gap-x-6">

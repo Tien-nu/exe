@@ -4,16 +4,16 @@ import { redirect } from "next/navigation"
 
 const STATUS_MESSAGES = {
   pending: {
-    title: "Gian hàng đang chờ duyệt",
-    body: "Yarnly sẽ duyệt đăng ký của bạn và gửi email khi xong. Sau đó bạn có thể đăng sản phẩm và nhận đơn.",
+    title: "Your shop is awaiting approval",
+    body: "Yarnly will review your registration and email you when it is approved. You can then list products and accept orders.",
   },
   rejected: {
-    title: "Đăng ký chưa được duyệt",
-    body: "Vui lòng liên hệ Yarnly để biết thêm chi tiết.",
+    title: "Registration not approved",
+    body: "Please contact Yarnly for more information.",
   },
   locked: {
-    title: "Gian hàng đã bị khoá",
-    body: "Sản phẩm của bạn đang bị ẩn khỏi sàn. Vui lòng liên hệ Yarnly.",
+    title: "Your shop has been suspended",
+    body: "Your products are hidden from the marketplace. Please contact Yarnly.",
   },
 } as const
 
@@ -41,7 +41,7 @@ export default async function PortalLayout(props: {
             <h1 className="txt-xlarge-plus mb-2">{blocked.title}</h1>
             <p className="txt-medium">{blocked.body}</p>
             {artisan.status_reason && (
-              <p className="txt-medium mt-2">Lý do: {artisan.status_reason}</p>
+              <p className="txt-medium mt-2">Reason: {artisan.status_reason}</p>
             )}
           </div>
         ) : (

@@ -26,11 +26,11 @@ export default function CustomRequestForm({
   if (!isLoggedIn) {
     return (
       <p className="txt-small text-ui-fg-subtle">
-        Muốn đặt làm riêng (màu, kích thước, chữ thêu…)?{" "}
+        Want a custom piece (color, size, embroidered text…)?{" "}
         <LocalizedClientLink href="/account" className="text-violet-700 underline">
-          Đăng nhập
+          Sign in
         </LocalizedClientLink>{" "}
-        để gửi yêu cầu cho {shopName}.
+        to send a request to {shopName}.
       </p>
     )
   }
@@ -38,9 +38,9 @@ export default function CustomRequestForm({
   if (sent) {
     return (
       <p className="rounded-md bg-emerald-50 p-3 txt-small text-emerald-800">
-        Đã gửi yêu cầu. {shopName} sẽ báo giá và thời gian làm, bạn xem trong{" "}
+        Request sent. {shopName} will quote a price and production time. View it in{" "}
         <LocalizedClientLink href="/account/yeu-cau-lam-rieng" className="underline">
-          Tài khoản → Yêu cầu làm riêng
+          Account → Custom requests
         </LocalizedClientLink>
         .
       </p>
@@ -50,7 +50,7 @@ export default function CustomRequestForm({
   if (!open) {
     return (
       <Button variant="secondary" className="w-full" onClick={() => setOpen(true)}>
-        Yêu cầu làm riêng
+        Custom requests
       </Button>
     )
   }
@@ -72,20 +72,20 @@ export default function CustomRequestForm({
         })
       }
     >
-      <p className="txt-medium-plus">Yêu cầu làm riêng</p>
+      <p className="txt-medium-plus">Custom requests</p>
       <textarea
         name="description"
         required
         rows={3}
-        placeholder="Mô tả mong muốn của bạn (hình dáng, chữ thêu, dịp tặng…)"
+        placeholder="Describe what you want (shape, embroidered text, occasion…)"
         className={fieldClass}
       />
       <div className="grid grid-cols-2 gap-2">
-        <input name="color" placeholder="Màu sắc" className={fieldClass} />
-        <input name="size" placeholder="Kích thước" className={fieldClass} />
+        <input name="color" placeholder="Color" className={fieldClass} />
+        <input name="size" placeholder="Size" className={fieldClass} />
       </div>
       <label className="flex items-center gap-2 txt-small">
-        Số lượng
+        Quantity
         <input
           name="quantity"
           type="number"
@@ -98,10 +98,10 @@ export default function CustomRequestForm({
       {error && <p className="txt-small text-red-600">{error}</p>}
       <div className="flex gap-2">
         <Button type="submit" size="small" isLoading={pending}>
-          Gửi yêu cầu
+          Send request
         </Button>
         <Button type="button" variant="secondary" size="small" onClick={() => setOpen(false)}>
-          Huỷ
+          Cancel
         </Button>
       </div>
     </form>

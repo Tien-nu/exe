@@ -9,9 +9,9 @@ export default async function NewArtisanProductPage() {
   return (
     <div className="flex flex-col gap-4">
       <LocalizedClientLink href="/kenh-nghe-nhan/san-pham" className="txt-small text-ui-fg-subtle">
-        ← Sản phẩm
+        ← Products
       </LocalizedClientLink>
-      <h1 className="text-2xl-semi">Thêm sản phẩm</h1>
+      <h1 className="text-2xl-semi">Add product</h1>
       <Card>
         <ProductForm categories={categories} />
       </Card>

@@ -40,7 +40,7 @@ const CartTotals: React.FC<CartTotalsProps> = ({ totals, paymentMethod }) => {
           <span data-testid="cart-shipping" data-value={shipping_subtotal || 0}>
             {shipping_subtotal
               ? convertToLocale({ amount: shipping_subtotal, currency_code })
-              : "Tính sau khi nhập địa chỉ"}
+              : "Calculated after entering your address"}
           </span>
         </div>
         {!!discount_subtotal && (
@@ -79,8 +79,8 @@ const CartTotals: React.FC<CartTotalsProps> = ({ totals, paymentMethod }) => {
       </div>
       <p className="txt-small text-ui-fg-subtle">
         {paymentMethod === "manual_bank"
-          ? "Chuyển khoản tổng tiền (hàng + phí ship) sau khi đặt."
-          : "Phí ship GHN tính theo từng gói: đồ của mỗi nghệ nhân (và mỗi món làm riêng) được giao riêng."}
+          ? "Transfer the full amount (items + shipping) after placing your order."
+          : "Per parcel: 18,000 VND within the origin province, 22,000 VND to another province, based on each artisan's location."}
       </p>
       <div className="h-px w-full border-b border-gray-200 mt-4" />
     </div>

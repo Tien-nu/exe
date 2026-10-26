@@ -4,10 +4,10 @@ import { Card } from "@modules/artisan-portal/ui"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 const TODO = [
-  { status: "pending_acceptance", label: "Đơn chờ bạn xác nhận", hint: "Nhận hoặc từ chối trong 12 tiếng" },
-  { status: "processing", label: "Đơn đang làm / chuẩn bị", hint: "Làm xong thì bấm “Đã làm xong”" },
-  { status: "ready_to_ship", label: "Chờ Yarnly tạo vận đơn", hint: "Đơn vị vận chuyển sẽ tới lấy hàng" },
-  { status: "shipping", label: "Đang giao", hint: "" },
+  { status: "pending_acceptance", label: "Orders awaiting your acceptance", hint: "Accept or decline within 12 hours" },
+  { status: "processing", label: "Orders in production / preparation", hint: "Mark the order Ready when it is finished" },
+  { status: "ready_to_ship", label: "Awaiting shipment from Yarnly", hint: "The carrier will collect your package" },
+  { status: "shipping", label: "Shipping", hint: "" },
 ] as const
 
 export default async function ArtisanDashboardPage() {
@@ -21,7 +21,7 @@ export default async function ArtisanDashboardPage() {
 
   return (
     <div className="flex flex-col gap-6">
-      <h1 className="text-2xl-semi">Tổng quan</h1>
+      <h1 className="text-2xl-semi">Overview</h1>
       <div className="grid grid-cols-2 gap-4 medium:grid-cols-4">
         {TODO.map((item) => (
           <LocalizedClientLink
@@ -40,25 +40,25 @@ export default async function ArtisanDashboardPage() {
           href="/kenh-nghe-nhan/don-lam-rieng"
           className="rounded-lg border border-violet-200 bg-violet-50 p-4 txt-medium"
         >
-          Bạn có <strong>{dashboard.pending_custom_requests}</strong> yêu cầu làm riêng chờ báo giá →
+          You have <strong>{dashboard.pending_custom_requests}</strong> custom requests awaiting a quote →
         </LocalizedClientLink>
       )}
-      <Card title="Thu nhập">
+      <Card title="Earnings">
         <dl className="grid grid-cols-2 gap-4 medium:grid-cols-4">
           <div>
-            <dt className="txt-small text-ui-fg-subtle">Đơn hoàn thành</dt>
+            <dt className="txt-small text-ui-fg-subtle">Completed orders</dt>
             <dd className="txt-xlarge-plus">{formatVnd(dashboard.revenue.completed_total)}</dd>
           </div>
           <div>
-            <dt className="txt-small text-ui-fg-subtle">Chờ tổng hợp (thứ Hai tới)</dt>
+            <dt className="txt-small text-ui-fg-subtle">Awaiting the next payout summary (Monday)</dt>
             <dd className="txt-xlarge-plus">{formatVnd(dashboard.revenue.awaiting_payout)}</dd>
           </div>
           <div>
-            <dt className="txt-small text-ui-fg-subtle">Chờ Yarnly chuyển</dt>
+            <dt className="txt-small text-ui-fg-subtle">Awaiting payment from Yarnly</dt>
             <dd className="txt-xlarge-plus">{formatVnd(dashboard.revenue.pending_payout)}</dd>
           </div>
           <div>
-            <dt className="txt-small text-ui-fg-subtle">Đã nhận</dt>
+            <dt className="txt-small text-ui-fg-subtle">Paid out</dt>
             <dd className="txt-xlarge-plus">{formatVnd(dashboard.revenue.paid_out)}</dd>
           </div>
         </dl>

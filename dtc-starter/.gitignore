@@ -57,3 +57,7 @@ yarn-error.log*
 ehthumbs.db
 Thumbs.db
 **/.DS_Store
+
+# Database archives contain customer data and password hashes.
+**/migration-snapshots/
+**/*.snapshot.jsonl

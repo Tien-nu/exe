@@ -18,7 +18,7 @@ export default async function EditArtisanProductPage(props: { params: Promise<{ 
   return (
     <div className="flex flex-col gap-4">
       <LocalizedClientLink href="/kenh-nghe-nhan/san-pham" className="txt-small text-ui-fg-subtle">
-        ← Sản phẩm
+        ← Products
       </LocalizedClientLink>
       <div className="flex flex-wrap items-center justify-between gap-2">
         <h1 className="text-2xl-semi">{product.title}</h1>
@@ -26,7 +26,7 @@ export default async function EditArtisanProductPage(props: { params: Promise<{ 
           href={`/products/${product.handle}`}
           className="txt-small text-violet-700 underline"
         >
-          Xem trên sàn
+          View on marketplace
         </LocalizedClientLink>
       </div>
       <Card>

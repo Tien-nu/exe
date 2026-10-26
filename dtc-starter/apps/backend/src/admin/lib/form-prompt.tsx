@@ -103,14 +103,14 @@ export function useFormPrompt(): [
           ))}
         </div>
         <Prompt.Footer>
-          <Prompt.Cancel onClick={() => finish(null)}>{state?.cancelText ?? "Huỷ"}</Prompt.Cancel>
+          <Prompt.Cancel onClick={() => finish(null)}>{state?.cancelText ?? "Cancel"}</Prompt.Cancel>
           <Prompt.Action
             disabled={!complete}
             onClick={() =>
               finish(Object.fromEntries(Object.entries(values).map(([k, v]) => [k, v.trim()])))
             }
           >
-            {state?.confirmText ?? "Xác nhận"}
+            {state?.confirmText ?? "Confirm"}
           </Prompt.Action>
         </Prompt.Footer>
       </Prompt.Content>

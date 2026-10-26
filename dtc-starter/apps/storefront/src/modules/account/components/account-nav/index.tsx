@@ -96,7 +96,7 @@ const AccountNav = ({
                   >
                     <div className="flex items-center gap-x-2">
                       <Package size={20} />
-                      <span>Yêu cầu làm riêng</span>
+                      <span>Custom requests</span>
                     </div>
                     <ChevronDown className="transform -rotate-90" />
                   </LocalizedClientLink>
@@ -169,7 +169,7 @@ const AccountNav = ({
                   route={route!}
                   data-testid="custom-requests-link"
                 >
-                  Yêu cầu làm riêng
+                  Custom requests
                 </AccountNavLink>
               </li>
               <li className="text-grey-700">

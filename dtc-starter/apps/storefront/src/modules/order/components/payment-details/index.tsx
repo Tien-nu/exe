@@ -48,15 +48,15 @@ const PaymentDetails = ({ order }: PaymentDetailsProps) => {
                   {isStripeLike(payment.provider_id) && payment.data?.card_last4
                     ? `**** **** **** ${payment.data.card_last4}`
                     : chosenMethod === "manual_bank"
-                      ? `Chuyển khoản ${convertToLocale({
+                      ? `Bank transfer ${convertToLocale({
                           amount: payment.amount,
                           currency_code: order.currency_code,
-                        })} (tiền hàng + phí ship) – xem trạng thái ở mục Tình trạng đơn hàng`
+                        })} (items + shipping) – see Order status`
                       : chosenMethod === "manual_cod"
-                        ? `Trả ${convertToLocale({
+                        ? `Pay ${convertToLocale({
                             amount: payment.amount,
                             currency_code: order.currency_code,
-                          })} (tiền hàng + phí ship) khi nhận hàng`
+                          })} (items + shipping) on delivery`
                         : `${convertToLocale({
                             amount: payment.amount,
                             currency_code: order.currency_code,

@@ -9,7 +9,7 @@ export default async function Footer() {
   })
 
   return (
-    <footer className={styles.footer} aria-label="Chân trang Yarnly">
+    <footer className={styles.footer} aria-label="Yarnly footer">
       <div className={styles.container}>
         <div className={styles.columns}>
           <div className={styles.brand}>
@@ -17,26 +17,26 @@ export default async function Footer() {
               Yarnly<span aria-hidden="true">.</span>
             </LocalizedClientLink>
             <p>
-              Nơi những mũi len nhỏ
+              Where little stitches
               <br />
-              kết nối những câu chuyện lớn.
+              connect bigger stories.
             </p>
-            <span className={styles.brandNote}>Đồ len thủ công Việt Nam</span>
+            <span className={styles.brandNote}>Handmade crochet from Vietnam</span>
           </div>
 
           <nav aria-labelledby="footer-explore-title">
             <h2 id="footer-explore-title" className={styles.heading}>
-              Khám phá
+              Explore
             </h2>
             <ul className={styles.links}>
               <li>
                 <LocalizedClientLink href="/store">
-                  Tất cả sản phẩm
+                  All products
                 </LocalizedClientLink>
               </li>
               <li>
                 <LocalizedClientLink href="/nghe-nhan">
-                  Gặp gỡ nghệ nhân
+                  Meet the artisans
                 </LocalizedClientLink>
               </li>
               {collections?.slice(0, 4).map((collection) => (
@@ -53,27 +53,27 @@ export default async function Footer() {
 
           <nav aria-labelledby="footer-yarnly-title">
             <h2 id="footer-yarnly-title" className={styles.heading}>
-              Cùng Yarnly
+              With Yarnly
             </h2>
             <ul className={styles.links}>
               <li>
                 <LocalizedClientLink href="/">
-                  Câu chuyện Yarnly
+                  The Yarnly story
                 </LocalizedClientLink>
               </li>
               <li>
                 <LocalizedClientLink href="/account">
-                  Tài khoản của bạn
+                  Your account
                 </LocalizedClientLink>
               </li>
               <li>
                 <LocalizedClientLink href="/account/yeu-cau-lam-rieng">
-                  Yêu cầu làm riêng
+                  Custom requests
                 </LocalizedClientLink>
               </li>
               <li>
                 <LocalizedClientLink href="/kenh-nghe-nhan/dang-ky">
-                  Mở gian hàng
+                  Open a shop
                 </LocalizedClientLink>
               </li>
             </ul>
@@ -82,7 +82,7 @@ export default async function Footer() {
 
         <div className={styles.bottom}>
           <p>© {new Date().getFullYear()} Yarnly.</p>
-          <p>Làm bằng đôi tay. Gửi bằng yêu thương.</p>
+          <p>Made by hand. Sent with love.</p>
         </div>
       </div>
     </footer>

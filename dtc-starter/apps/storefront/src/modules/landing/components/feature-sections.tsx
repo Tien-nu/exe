@@ -22,87 +22,87 @@ const sections: {
 }[] = [
   {
     id: "kham-pha",
-    label: "1.0 — KHÁM PHÁ",
-    title: "Tìm thấy món len bạn muốn giữ bên mình.",
-    body: "Từ một người bạn bằng len đến món phụ kiện nhỏ. Dạo qua các gian hàng và tìm thiết kế khiến bạn muốn dừng lại lâu hơn.",
+    label: "1.0 — EXPLORE",
+    title: "Find a crochet piece to keep close.",
+    body: "From crochet companions to little accessories, explore the shops and find a design that makes you pause.",
     kind: "catalog",
-    action: "Khám phá sản phẩm",
+    action: "Explore products",
     href: "/store",
     tabs: [
       {
-        title: "Thú bông len",
+        title: "Crochet plush toys",
         description:
-          "Những người bạn nhỏ được móc bằng tay, mỗi món mang một vẻ đáng yêu riêng.",
+          "Little friends crocheted by hand, each with a charm of its own.",
         image: "/images/crochet_bear.png",
       },
       {
-        title: "Hoa và quà tặng",
+        title: "Flowers and gifts",
         description:
-          "Một bông hoa không vội tàn, một món quà gửi thay điều bạn muốn nói.",
+          "A flower that lasts, a gift that says what words cannot.",
         image: "/images/cuu_hoa_len.jpg",
       },
       {
-        title: "Phụ kiện thường ngày",
+        title: "Everyday accessories",
         description:
-          "Móc khóa, túi, mũ và những chi tiết thủ công làm ngày thường thêm thú vị.",
+          "Keychains, bags, hats, and handmade details that brighten everyday life.",
         image: "/images/moc_khoa.jpg",
       },
     ],
   },
   {
     id: "lam-rieng",
-    label: "2.0 — ĐẶT LÀM RIÊNG",
-    title: "Một ý tưởng của bạn. Một món quà thật riêng.",
-    body: "Bạn đã hình dung món đồ mình muốn? Gửi yêu cầu và cùng nghệ nhân trao đổi để tìm ra màu sắc, kích thước và chi tiết phù hợp.",
+    label: "2.0 — CUSTOM MADE",
+    title: "Your idea. A truly personal gift.",
+    body: "Already imagining your perfect piece? Send a request and work with an artisan to choose the colors, size, and details.",
     kind: "custom",
-    action: "Gửi yêu cầu của bạn",
+    action: "Send your request",
     href: "/account/yeu-cau-lam-rieng",
     tabs: [
       {
-        title: "Chọn sắc màu",
+        title: "Choose your colors",
         description:
-          "Bắt đầu với màu bạn yêu hoặc bảng màu của người bạn muốn gửi tặng.",
+          "Start with a color you love or a palette for someone special.",
         image: "/images/moc_khoa.jpg",
       },
       {
-        title: "Chia sẻ ý tưởng",
+        title: "Share your idea",
         description:
-          "Mô tả hình dáng, kích thước và những chi tiết khiến món đồ trở nên đặc biệt.",
+          "Describe the shape, size, and details that make your piece special.",
         image: "/images/cuu_hoa_len.jpg",
       },
       {
-        title: "Trao đổi với nghệ nhân",
+        title: "Talk to an artisan",
         description:
-          "Cùng làm rõ yêu cầu trước khi người nghệ nhân bắt tay vào từng mũi móc.",
+          "Work out the details together before the artisan begins crocheting.",
         image: "/images/crochet_bear.png",
       },
     ],
   },
   {
     id: "nghe-nhan",
-    label: "3.0 — DÀNH CHO NGHỆ NHÂN",
-    title: "Bạn làm nên điều đặc biệt. Yarnly giúp người khác tìm thấy.",
-    body: "Mang sản phẩm, phong cách và câu chuyện của bạn đến một gian hàng riêng. Kết nối với những người trân trọng đồ thủ công.",
+    label: "3.0 — FOR ARTISANS",
+    title: "You make something special. Yarnly helps others find it.",
+    body: "Bring your products, style, and story to your own shop. Connect with people who appreciate handmade craft.",
     kind: "studio",
-    action: "Mở gian hàng Yarnly",
+    action: "Open a Yarnly shop",
     href: "/kenh-nghe-nhan/dang-ky",
     tabs: [
       {
-        title: "Giới thiệu sản phẩm",
+        title: "Showcase your products",
         description:
-          "Tạo không gian cho bộ sưu tập thủ công và những thiết kế mang dấu ấn của bạn.",
+          "Create a home for your handmade collection and signature designs.",
         image: "/images/tui_xach.jpg",
       },
       {
-        title: "Nhận yêu cầu làm riêng",
+        title: "Accept custom requests",
         description:
-          "Tìm hiểu ý tưởng của khách hàng và trao đổi về những món đồ có thể cùng tạo nên.",
+          "Discover your customers' ideas and discuss what you can create together.",
         image: "/images/moc_khoa.jpg",
       },
       {
-        title: "Theo dõi đơn hàng",
+        title: "Track orders",
         description:
-          "Quản lý sản phẩm, yêu cầu và đơn hàng trong kênh dành cho nghệ nhân.",
+          "Manage products, requests, and orders in the artisan portal.",
         image: "/images/cardigan.jpg",
       },
     ],
@@ -171,10 +171,10 @@ function FeatureRow({
           </span>
           <span>
             {section.kind === "studio"
-              ? "Gian hàng của bạn · minh họa"
+              ? "Your shop · illustration"
               : section.kind === "custom"
-              ? "Ý tưởng làm riêng · minh họa"
-              : "Một góc bộ sưu tập"}
+              ? "Custom idea · illustration"
+              : "A glimpse of the collection"}
           </span>
           <PixelIcon kind="yarn" />
         </div>
@@ -189,12 +189,12 @@ function FeatureRow({
               />
             </div>
             <div className={styles.catalogSidebar}>
-              <p>ĐỒ LEN THỦ CÔNG</p>
+              <p>HANDMADE CROCHET</p>
               <h4>{selected.title}</h4>
               <span>
-                Một chút mềm mại
+                A little softness
                 <br />
-                cho ngày của bạn.
+                for your day.
               </span>
               <div className={styles.previewThumbs}>
                 {section.tabs
@@ -205,7 +205,7 @@ function FeatureRow({
                     </div>
                   ))}
               </div>
-              <span className={styles.previewTag}>Làm bằng tay · Việt Nam</span>
+              <span className={styles.previewTag}>Handmade · Vietnam</span>
             </div>
           </div>
         )}
@@ -221,22 +221,22 @@ function FeatureRow({
             </div>
             <div className={styles.requestCard}>
               <PixelIcon kind="gift" />
-              <p className={styles.eyebrow}>MỘT MÓN QUÀ CỦA RIÊNG BẠN</p>
+              <p className={styles.eyebrow}>A GIFT OF YOUR OWN</p>
               <h4>{selected.title}</h4>
-              <p>Điều gì làm món đồ ấy trở nên đặc biệt?</p>
-              <div className={styles.colorSwatches} aria-label="Gợi ý màu len">
+              <p>What makes this piece special?</p>
+              <div className={styles.colorSwatches} aria-label="Yarn color inspiration">
                 <span style={{ background: "#e4d8bf" }} />
                 <span style={{ background: "#a6b591" }} />
                 <span style={{ background: "#d39e8d" }} />
                 <span style={{ background: "#8faabb" }} />
               </div>
               <div className={styles.notePaper}>
-                Mình muốn một món quà nhỏ,
+                I'd like a little gift,
                 <br />
-                với màu sắc người ấy thích…<span>Ví dụ ý tưởng làm riêng</span>
+                in their favorite colors…<span>Example custom idea</span>
               </div>
               <div className={styles.requestStatus}>
-                <i /> Cùng nghệ nhân trao đổi
+                <i /> Talk it through with an artisan
               </div>
             </div>
           </div>
@@ -244,14 +244,14 @@ function FeatureRow({
         {section.kind === "studio" && (
           <div className={styles.studioPreview}>
             <div className={styles.studioTitle}>
-              <span className={styles.miniBrand}>Gian hàng của bạn</span>
-              <span>Sản phẩm · Yêu cầu · Đơn hàng</span>
+              <span className={styles.miniBrand}>Your shop</span>
+              <span>Products · Requests · Orders</span>
             </div>
             <div className={styles.studioBoard}>
               {[
-                "Sản phẩm thủ công",
-                "Ý tưởng làm riêng",
-                "Kết nối khách hàng",
+                "Handmade products",
+                "Custom ideas",
+                "Connect with customers",
               ].map((label, i) => (
                 <div
                   key={label}
@@ -271,7 +271,7 @@ function FeatureRow({
                     </div>
                     <span>{section.tabs[i].title}</span>
                     <span className={styles.studioCardNote}>
-                      Một câu chuyện bằng len
+                      A story in yarn
                     </span>
                   </div>
                 </div>
@@ -279,7 +279,7 @@ function FeatureRow({
             </div>
             <div className={styles.studioFoot}>
               <PixelIcon kind="heart" />
-              <span>Bắt đầu từ những món đồ bạn tự tay làm nên.</span>
+              <span>Start with the pieces you make by hand.</span>
             </div>
           </div>
         )}

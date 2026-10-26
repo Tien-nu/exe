@@ -7,7 +7,7 @@ import { useParams } from "next/navigation"
 import { useActionState } from "react"
 import { useFormStatus } from "react-dom"
 import { Field, fieldClass } from "../ui"
-import GhnPickupFields from "./ghn-pickup-fields"
+import PickupAddressFields from "./pickup-address-fields"
 
 const Submit = ({ children }: { children: React.ReactNode }) => {
   const { pending } = useFormStatus()
@@ -35,7 +35,7 @@ export const ArtisanLoginForm = () => {
           className={fieldClass}
         />
       </Field>
-      <Field label="Mật khẩu">
+      <Field label="Password">
         <input
           name="password"
           type="password"
@@ -45,11 +45,11 @@ export const ArtisanLoginForm = () => {
         />
       </Field>
       {state?.error && <p className="txt-small text-red-600">{state.error}</p>}
-      <Submit>Đăng nhập</Submit>
+      <Submit>Sign in</Submit>
       <p className="txt-small text-center text-ui-fg-subtle">
-        Chưa có gian hàng?{" "}
+        Don't have a shop yet?{" "}
         <LocalizedClientLink href="/kenh-nghe-nhan/dang-ky" className="text-violet-700 underline">
-          Đăng ký làm nghệ nhân
+          Become an artisan
         </LocalizedClientLink>
       </p>
     </form>
@@ -63,20 +63,20 @@ const REGISTER_FIELDS: {
   hint?: string
   required?: boolean
 }[] = [
-  { name: "shop_name", label: "Tên gian hàng", required: true },
-  { name: "full_name", label: "Họ tên", required: true },
-  { name: "email", label: "Email (dùng để đăng nhập)", type: "email", required: true },
-  { name: "password", label: "Mật khẩu", type: "password", hint: "Tối thiểu 8 ký tự", required: true },
-  { name: "phone", label: "Số điện thoại", required: true },
+  { name: "shop_name", label: "Shop name", required: true },
+  { name: "full_name", label: "Full name", required: true },
+  { name: "email", label: "Email (used to sign in)", type: "email", required: true },
+  { name: "password", label: "Password", type: "password", hint: "At least 8 characters", required: true },
+  { name: "phone", label: "Phone number", required: true },
   {
     name: "pickup_address",
-    label: "Số nhà, tên đường lấy hàng",
-    hint: "Shipper GHN sẽ tới đây lấy hàng",
+    label: "Pickup street address",
+    hint: "Your shop's dispatch address",
     required: true,
   },
-  { name: "bank_name", label: "Ngân hàng nhận tiền", required: true },
-  { name: "bank_account_number", label: "Số tài khoản", required: true },
-  { name: "bank_account_name", label: "Chủ tài khoản", required: true },
+  { name: "bank_name", label: "Receiving bank", required: true },
+  { name: "bank_account_number", label: "Account number", required: true },
+  { name: "bank_account_name", label: "Account holder", required: true },
 ]
 
 export const ArtisanRegisterForm = () => {
@@ -99,8 +99,8 @@ export const ArtisanRegisterForm = () => {
           </Field>
         ))}
       </div>
-      <GhnPickupFields value={state?.values} />
-      <Field label="Giới thiệu gian hàng (tuỳ chọn)">
+      <PickupAddressFields value={state?.values} />
+      <Field label="Shop introduction (optional)">
         <textarea
           name="description"
           rows={3}
@@ -109,15 +109,14 @@ export const ArtisanRegisterForm = () => {
         />
       </Field>
       <p className="txt-small text-ui-fg-subtle">
-        Yarnly nhận tiền từ khách và chuyển cho bạn mỗi thứ Hai (phí sàn hiện tại 0%). Tài khoản
-        cần Admin duyệt trước khi bán.
+        Yarnly collects payments from customers and pays you every Monday. The current platform fee is 0%. Your account must be approved by an admin before you can sell.
       </p>
       {state?.error && <p className="txt-small text-red-600">{state.error}</p>}
-      <Submit>Đăng ký</Submit>
+      <Submit>Register</Submit>
       <p className="txt-small text-center text-ui-fg-subtle">
-        Đã có gian hàng?{" "}
+        Already have a shop?{" "}
         <LocalizedClientLink href="/kenh-nghe-nhan/dang-nhap" className="text-violet-700 underline">
-          Đăng nhập
+          Sign in
         </LocalizedClientLink>
       </p>
     </form>

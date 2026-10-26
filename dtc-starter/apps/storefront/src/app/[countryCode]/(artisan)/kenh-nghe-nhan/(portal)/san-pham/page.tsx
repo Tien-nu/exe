@@ -8,12 +8,12 @@ export default async function ArtisanProductsPage() {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl-semi">Sản phẩm</h1>
+        <h1 className="text-2xl-semi">Products</h1>
         <LocalizedClientLink
           href="/kenh-nghe-nhan/san-pham/moi"
           className="rounded-md bg-black px-4 py-2 txt-medium text-white hover:bg-gray-800"
         >
-          Thêm sản phẩm
+          Add product
         </LocalizedClientLink>
       </div>
       {products.length ? (
@@ -38,10 +38,10 @@ export default async function ArtisanProductsPage() {
                     <p className="txt-medium-plus truncate">{product.title}</p>
                     <p className="txt-small text-ui-fg-subtle">
                       {product.fulfillment_type === "made_to_order"
-                        ? `Làm theo đơn · ${product.lead_days} ngày`
-                        : `Có sẵn · tồn ${stock}`}
+                        ? `Made to order · ${product.lead_days} days`
+                        : `In stock · quantity ${stock}`}
                       {" · "}
-                      {product.variants.length} phân loại
+                      {product.variants.length} variants
                     </p>
                   </div>
                   <div className="text-right">
@@ -51,7 +51,7 @@ export default async function ArtisanProductsPage() {
                         : `${formatVnd(Math.min(...prices))} – ${formatVnd(Math.max(...prices))}`}
                     </p>
                     <p className={`txt-small ${product.status === "published" ? "text-emerald-700" : "text-ui-fg-subtle"}`}>
-                      {product.status === "published" ? "Đang bán" : "Đang ẩn"}
+                      {product.status === "published" ? "Published" : "Hidden"}
                     </p>
                   </div>
                 </LocalizedClientLink>
@@ -60,7 +60,7 @@ export default async function ArtisanProductsPage() {
           })}
         </ul>
       ) : (
-        <p className="txt-medium text-ui-fg-subtle">Bạn chưa có sản phẩm nào.</p>
+        <p className="txt-medium text-ui-fg-subtle">You have no products yet.</p>
       )}
     </div>
   )

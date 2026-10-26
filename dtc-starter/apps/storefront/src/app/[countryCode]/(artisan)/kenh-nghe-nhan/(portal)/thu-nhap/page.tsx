@@ -7,22 +7,21 @@ export default async function ArtisanPayoutsPage() {
 
   return (
     <div className="flex flex-col gap-4">
-      <h1 className="text-2xl-semi">Thu nhập</h1>
+      <h1 className="text-2xl-semi">Earnings</h1>
       <p className="txt-medium text-ui-fg-subtle">
-        Mỗi thứ Hai, Yarnly tổng hợp các đơn hoàn thành tuần trước và chuyển khoản vào tài khoản
-        trong hồ sơ của bạn. Phí sàn hiện tại: 0%.
+        Every Monday, Yarnly summarizes the previous week's completed orders and transfers your earnings to the bank account in your profile. Current platform fee: 0%.
       </p>
       <Card>
         {payouts.length ? (
           <table className="w-full txt-medium">
             <thead className="text-left txt-small text-ui-fg-subtle">
               <tr>
-                <th className="py-2">Kỳ</th>
-                <th>Số đơn</th>
-                <th>Tiền hàng</th>
-                <th>Phí sàn</th>
-                <th>Thực nhận</th>
-                <th>Trạng thái</th>
+                <th className="py-2">Period</th>
+                <th>Orders</th>
+                <th>Item total</th>
+                <th>Platform fee</th>
+                <th>Net earnings</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody>
@@ -38,12 +37,12 @@ export default async function ArtisanPayoutsPage() {
                   <td>
                     {payout.status === "paid" ? (
                       <span className="text-emerald-700">
-                        Đã chuyển {formatDateTime(payout.paid_at)}
+                        Paid {formatDateTime(payout.paid_at)}
                         <br />
-                        <span className="txt-small text-ui-fg-subtle">Mã GD: {payout.transaction_ref}</span>
+                        <span className="txt-small text-ui-fg-subtle">Transaction reference: {payout.transaction_ref}</span>
                       </span>
                     ) : (
-                      <span className="text-amber-700">Chờ Yarnly chuyển</span>
+                      <span className="text-amber-700">Awaiting payment from Yarnly</span>
                     )}
                   </td>
                 </tr>
@@ -51,7 +50,7 @@ export default async function ArtisanPayoutsPage() {
             </tbody>
           </table>
         ) : (
-          <p className="txt-medium text-ui-fg-subtle">Chưa có kỳ chuyển tiền nào.</p>
+          <p className="txt-medium text-ui-fg-subtle">No payouts yet.</p>
         )}
       </Card>
     </div>
