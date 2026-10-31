@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto"
 import type { Document } from "mongodb"
-import { artisanFor, validate } from "./artisans"
+import { artisanFor, slug, validate } from "./artisans"
 import { database, transaction } from "./mongodb"
 import { ApiError, body, pagination } from "./http"
 import { CreateArtisanProductSchema, UpdateArtisanProductSchema } from "./validators"
@@ -98,7 +98,7 @@ export async function artisanProducts(request: Request, path: string[], authoriz
           prices: [{ id: variant.prices?.[0]?.id ?? uid("price"), currency_code: "vnd", amount }], calculated_price: calculated(amount, variant.prices?.[0]?.id ?? variant.id) } : variant)
       }
     }
-    const product = { ...(current ?? {}), id: productId, artisan_id: artisan.id, handle: current?.handle ?? `${productId}-${input.title.slice(0, 20).toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
+    const product = { ...(current ?? {}), id: productId, artisan_id: artisan.id, handle: current?.handle ?? `${slug(input.title) || "product"}-${productId.slice(-8)}`,
       title: input.title, description: input.description ?? null, status: current?.metadata?.hidden_by_lock ? "draft" : input.status ?? "published",
       thumbnail: images[0] ?? null, images: images.map((url: string) => ({ id: uid("img"), url })), categories, options, variants,
       metadata: { ...current?.metadata, fulfillment_type: input.fulfillment_type, lead_days: input.fulfillment_type === "made_to_order" ? Number(input.lead_days) : null },

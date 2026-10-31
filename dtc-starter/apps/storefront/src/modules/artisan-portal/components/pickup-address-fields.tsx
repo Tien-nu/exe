@@ -25,7 +25,7 @@ export default function PickupFields({ value }: { value?: PickupValue }) {
   const [wardCode, setWardCode] = useState(value?.pickup_ward_code ?? "")
   const [district, setDistrict] = useState(value?.pickup_district_name ?? "")
   return (
-    <div className="grid gap-4 sm:grid-cols-2">
+    <div className="grid grid-cols-1 gap-4 xsmall:grid-cols-2">
       <Field label="Pickup province / city">
         <select
           aria-label="Pickup province / city"
@@ -56,9 +56,11 @@ export default function PickupFields({ value }: { value?: PickupValue }) {
           setWard(name)
           setWardCode(code)
         }}
+        labelClassName="mb-1.5 block txt-small-plus text-yarnly-ink"
+        selectClassName={fieldClass}
       />
       <input type="hidden" name="pickup_ward_code" value={wardCode} />
-      <Field label="District (if applicable)">
+      <Field label="District (if applicable)" className="xsmall:col-span-2">
         <input
           className={fieldClass}
           name="pickup_district_name"

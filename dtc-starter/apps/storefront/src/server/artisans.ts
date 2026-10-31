@@ -27,7 +27,7 @@ export async function artisanFor(request: Request, allowInactive = false) {
   return artisan
 }
 
-const slug = (name: string) => name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/đ/g, "d").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60)
+export const slug = (name: string) => name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/đ/g, "d").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60)
 
 export async function artisans(request: Request, path: string[]) {
   const method = request.method

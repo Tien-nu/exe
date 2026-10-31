@@ -10,10 +10,10 @@ import {
 import type { ArtisanProduct } from "@lib/marketplace-types"
 import { shrinkImage } from "@lib/util/shrink-image"
 import { useFeedback } from "@modules/common/components/feedback"
-import { Button } from "@modules/common/components/ui"
+import { clx } from "@modules/common/components/ui"
 import { useParams, useRouter } from "next/navigation"
 import { useState, useTransition } from "react"
-import { Field, fieldClass } from "../ui"
+import { Button, Field, Notice, fieldClass } from "../ui"
 
 type Props = {
   product?: ArtisanProduct
@@ -125,39 +125,50 @@ export default function ProductForm({ product, categories }: Props) {
     })
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-7">
       {product?.hidden_by_lock && (
-        <p className="rounded-md bg-amber-50 p-3 txt-small">
-          This product is hidden because the shop is suspended.
-        </p>
+        <Notice tone="warning">This product is hidden because the shop is suspended.</Notice>
       )}
-      <Field label="Product name">
-        <input value={title} onChange={(event) => setTitle(event.target.value)} className={fieldClass} />
-      </Field>
-      <Field label="Description">
-        <textarea
-          rows={4}
-          value={description}
-          onChange={(event) => setDescription(event.target.value)}
-          className={fieldClass}
-        />
-      </Field>
 
-      <div className="flex flex-col gap-2">
-        <span className="txt-small-plus">Fulfillment type</span>
-        <div className="flex flex-wrap gap-4 txt-medium">
-          <label className="flex items-center gap-2">
-            <input type="radio" checked={type === "ready"} onChange={() => setType("ready")} />
-            Ready-made (sold from stock)
-          </label>
-          <label className="flex items-center gap-2">
-            <input
-              type="radio"
-              checked={type === "made_to_order"}
-              onChange={() => setType("made_to_order")}
-            />
-            Made to order
-          </label>
+      <FormSection title="Details">
+        <Field label="Product name">
+          <input value={title} onChange={(event) => setTitle(event.target.value)} className={fieldClass} />
+        </Field>
+        <Field label="Description">
+          <textarea
+            rows={4}
+            value={description}
+            onChange={(event) => setDescription(event.target.value)}
+            className={fieldClass}
+          />
+        </Field>
+      </FormSection>
+
+      <FormSection title="Fulfillment type">
+        <div role="radiogroup" aria-label="Fulfillment type" className="grid grid-cols-1 gap-3 xsmall:grid-cols-2">
+          {TYPE_OPTIONS.map((option) => (
+            <label
+              key={option.value}
+              className={clx(
+                "flex cursor-pointer items-start gap-3 rounded-xl border p-4 transition-colors",
+                type === option.value
+                  ? "border-yarnly-moss bg-yarnly-sage/50"
+                  : "border-yarnly-line bg-white hover:border-yarnly-ink"
+              )}
+            >
+              <input
+                type="radio"
+                name="fulfillment_type"
+                checked={type === option.value}
+                onChange={() => setType(option.value)}
+                className="mt-1 accent-yarnly-moss"
+              />
+              <span className="flex flex-col gap-0.5">
+                <span className="txt-medium-plus">{option.label}</span>
+                <span className="txt-small text-yarnly-muted">{option.hint}</span>
+              </span>
+            </label>
+          ))}
         </div>
         {type === "made_to_order" && (
           <Field label="Production time (days)" hint="From the time you accept the order" className="max-w-xs">
@@ -170,147 +181,194 @@ export default function ProductForm({ product, categories }: Props) {
             />
           </Field>
         )}
-      </div>
+      </FormSection>
 
-      {product ? (
-        <div className="flex flex-col gap-2">
-          <span className="txt-small-plus">Price{type === "ready" ? " and stock" : ""} by variant</span>
-          <table className="w-full txt-medium">
-            <thead className="text-left txt-small text-ui-fg-subtle">
-              <tr>
-                <th className="pb-1 font-normal">Variant</th>
-                <th className="pb-1 font-normal">Price (VND)</th>
-                {type === "ready" && <th className="pb-1 font-normal">Stock</th>}
-              </tr>
-            </thead>
-            <tbody>
-              {variants.map((variant, index) => (
-                <tr key={variant.id} className="border-t border-gray-100">
-                  <td className="py-2 pr-2">{variant.title}</td>
-                  <td className="py-2 pr-2">
-                    <input
-                      type="number"
-                      min={1000}
-                      step={1000}
-                      value={variant.price}
-                      onChange={(event) =>
-                        setVariants((previous) =>
-                          previous.map((row, i) => (i === index ? { ...row, price: event.target.value } : row))
-                        )
-                      }
-                      className={fieldClass}
-                      aria-label="Price"
-                    />
-                  </td>
-                  {type === "ready" && (
-                    <td className="py-2">
+      <FormSection title={`Price${type === "ready" ? " and stock" : ""}${product ? " by variant" : ""}`}>
+        {product ? (
+          <div className="overflow-x-auto rounded-xl border border-yarnly-line">
+            <table className="w-full min-w-[420px] txt-medium">
+              <thead className="bg-yarnly-paper text-left txt-small text-yarnly-muted">
+                <tr>
+                  <th className="px-4 py-2.5 font-normal">Variant</th>
+                  <th className="px-4 py-2.5 font-normal">Price (VND)</th>
+                  {type === "ready" && <th className="px-4 py-2.5 font-normal">Stock</th>}
+                </tr>
+              </thead>
+              <tbody>
+                {variants.map((variant, index) => (
+                  <tr key={variant.id} className="border-t border-yarnly-line align-top">
+                    <td className="px-4 py-3">{variant.title}</td>
+                    <td className="px-4 py-3">
                       <input
                         type="number"
-                        min={0}
-                        value={variant.stock}
+                        min={1000}
+                        step={1000}
+                        value={variant.price}
                         onChange={(event) =>
                           setVariants((previous) =>
-                            previous.map((row, i) => (i === index ? { ...row, stock: event.target.value } : row))
+                            previous.map((row, i) => (i === index ? { ...row, price: event.target.value } : row))
                           )
                         }
                         className={fieldClass}
-                        aria-label="Stock"
+                        aria-label="Price"
                       />
-                      {variant.reserved > 0 && (
-                        <span className="txt-small text-ui-fg-subtle">Reserved for orders: {variant.reserved}</span>
-                      )}
                     </td>
-                  )}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 gap-4 small:grid-cols-2">
-          <Field label="Price (VND)">
-            <input
-              type="number"
-              min={1000}
-              step={1000}
-              value={price}
-              onChange={(event) => setPrice(event.target.value)}
-              className={fieldClass}
-            />
-          </Field>
-          {type === "ready" && (
-            <Field label="Stock">
+                    {type === "ready" && (
+                      <td className="px-4 py-3">
+                        <input
+                          type="number"
+                          min={0}
+                          value={variant.stock}
+                          onChange={(event) =>
+                            setVariants((previous) =>
+                              previous.map((row, i) => (i === index ? { ...row, stock: event.target.value } : row))
+                            )
+                          }
+                          className={fieldClass}
+                          aria-label="Stock"
+                        />
+                        {variant.reserved > 0 && (
+                          <span className="mt-1 block txt-small text-yarnly-muted">
+                            Reserved for orders: {variant.reserved}
+                          </span>
+                        )}
+                      </td>
+                    )}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 gap-4 small:grid-cols-2">
+            <Field label="Price (VND)">
               <input
                 type="number"
-                min={0}
-                value={stock}
-                onChange={(event) => setStock(event.target.value)}
+                min={1000}
+                step={1000}
+                value={price}
+                onChange={(event) => setPrice(event.target.value)}
                 className={fieldClass}
               />
             </Field>
-          )}
-        </div>
-      )}
+            {type === "ready" && (
+              <Field label="Stock">
+                <input
+                  type="number"
+                  min={0}
+                  value={stock}
+                  onChange={(event) => setStock(event.target.value)}
+                  className={fieldClass}
+                />
+              </Field>
+            )}
+          </div>
+        )}
+      </FormSection>
 
-      <div className="flex flex-col gap-2">
-        <span className="txt-small-plus">Product images</span>
-        <div className="flex flex-wrap gap-2">
-          {images.map((url) => (
-            <div key={url} className="relative">
+      <FormSection title="Product images" hint="The first image is the cover shown on Yarnly.">
+        <div className="grid grid-cols-3 gap-3 xsmall:grid-cols-4 medium:grid-cols-6">
+          {images.map((url, index) => (
+            <div key={url} className="relative aspect-square">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={url} alt="" className="h-24 w-24 rounded-md object-cover" />
+              <img
+                src={url}
+                alt=""
+                className="h-full w-full rounded-xl border border-yarnly-line object-cover"
+              />
+              {index === 0 && (
+                <span className="absolute bottom-1.5 left-1.5 rounded-full bg-yarnly-ink/80 px-2 py-0.5 text-[10px] text-white">
+                  Cover
+                </span>
+              )}
               <button
                 type="button"
                 onClick={() => setImages((previous) => previous.filter((image) => image !== url))}
-                className="absolute right-1 top-1 rounded-full bg-white/90 px-2 txt-small"
+                className="absolute right-1.5 top-1.5 flex h-7 w-7 items-center justify-center rounded-full bg-white/95 text-yarnly-ink shadow-sm transition-colors hover:bg-yarnly-ink hover:text-white"
                 aria-label="Remove image"
               >
                 ×
               </button>
             </div>
           ))}
+          <label
+            className={clx(
+              "flex aspect-square cursor-pointer flex-col items-center justify-center gap-1 rounded-xl border border-dashed border-[#c9cdbf] bg-yarnly-paper p-2 text-center txt-small text-yarnly-muted transition-colors hover:border-yarnly-moss hover:text-yarnly-moss focus-within:border-yarnly-moss",
+              uploading && "pointer-events-none opacity-60"
+            )}
+          >
+            <span aria-hidden="true" className="text-2xl leading-none">+</span>
+            {uploading ? "Uploading images…" : "Add images"}
+            <input
+              type="file"
+              accept="image/*"
+              multiple
+              disabled={uploading}
+              onChange={(event) => upload(event.target.files)}
+              className="sr-only"
+            />
+          </label>
         </div>
-        <input
-          type="file"
-          accept="image/*"
-          multiple
-          disabled={uploading}
-          onChange={(event) => upload(event.target.files)}
-          className="txt-small"
-        />
-        {uploading && <span className="txt-small text-ui-fg-subtle">Uploading images…</span>}
-      </div>
+      </FormSection>
 
       {categories.length > 0 && (
-        <div className="flex flex-col gap-2">
-          <span className="txt-small-plus">Categories</span>
-          <div className="flex flex-wrap gap-3 txt-medium">
-            {categories.map((category) => (
-              <label key={category.id} className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  checked={categoryIds.includes(category.id)}
-                  onChange={(event) =>
-                    setCategoryIds((previous) =>
-                      event.target.checked
-                        ? [...previous, category.id]
-                        : previous.filter((id) => id !== category.id)
-                    )
-                  }
-                />
-                {category.name}
-              </label>
-            ))}
+        <FormSection title="Categories">
+          <div className="flex flex-wrap gap-2">
+            {categories.map((category) => {
+              const checked = categoryIds.includes(category.id)
+
+              return (
+                <label
+                  key={category.id}
+                  className={clx(
+                    "inline-flex h-9 cursor-pointer items-center gap-2 rounded-full border px-4 txt-small transition-colors focus-within:ring-2 focus-within:ring-yarnly-moss/30",
+                    checked
+                      ? "border-yarnly-moss bg-yarnly-sage text-yarnly-moss-dark"
+                      : "border-yarnly-line bg-white hover:border-yarnly-ink"
+                  )}
+                >
+                  <input
+                    type="checkbox"
+                    checked={checked}
+                    onChange={(event) =>
+                      setCategoryIds((previous) =>
+                        event.target.checked
+                          ? [...previous, category.id]
+                          : previous.filter((id) => id !== category.id)
+                      )
+                    }
+                    className="sr-only"
+                  />
+                  {checked && <span aria-hidden="true">✓</span>}
+                  {category.name}
+                </label>
+              )
+            })}
           </div>
-        </div>
+        </FormSection>
       )}
 
-      <label className="flex items-center gap-2 txt-medium">
-        <input type="checkbox" checked={visible} onChange={(event) => setVisible(event.target.checked)} />
-        Publish on marketplace
+      <label className="flex cursor-pointer items-center justify-between gap-4 rounded-xl border border-yarnly-line bg-yarnly-paper p-4">
+        <span className="flex flex-col gap-0.5">
+          <span className="txt-medium-plus">Publish on marketplace</span>
+          <span className="txt-small text-yarnly-muted">
+            Turn off to hide the product temporarily without deleting it.
+          </span>
+        </span>
+        <input
+          type="checkbox"
+          role="switch"
+          checked={visible}
+          onChange={(event) => setVisible(event.target.checked)}
+          className="peer sr-only"
+        />
+        <span
+          aria-hidden="true"
+          className="relative h-6 w-11 shrink-0 rounded-full bg-[#c9cdbf] transition-colors after:absolute after:left-0.5 after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-white after:shadow after:transition-transform peer-checked:bg-yarnly-moss peer-checked:after:translate-x-5 peer-focus-visible:ring-2 peer-focus-visible:ring-yarnly-moss/40 peer-focus-visible:ring-offset-2"
+        />
       </label>
 
-      <div className="flex gap-2">
+      <div className="flex flex-wrap gap-3 border-t border-yarnly-line pt-6">
         <Button onClick={save} isLoading={pending} disabled={uploading}>
           {product ? "Save changes" : "Publish product"}
         </Button>
@@ -344,3 +402,26 @@ export default function ProductForm({ product, categories }: Props) {
     </div>
   )
 }
+
+const TYPE_OPTIONS = [
+  { value: "ready", label: "Ready-made", hint: "Sold from stock and shipped once you accept the order" },
+  { value: "made_to_order", label: "Made to order", hint: "You start making it after accepting the order" },
+] as const
+
+const FormSection = ({
+  title,
+  hint,
+  children,
+}: {
+  title: string
+  hint?: string
+  children: React.ReactNode
+}) => (
+  <fieldset className="flex flex-col gap-4">
+    <legend className="mb-4 flex flex-col gap-0.5">
+      <span className="font-yarnly text-lg tracking-[-0.01em] text-yarnly-ink">{title}</span>
+      {hint && <span className="txt-small text-yarnly-muted">{hint}</span>}
+    </legend>
+    {children}
+  </fieldset>
+)

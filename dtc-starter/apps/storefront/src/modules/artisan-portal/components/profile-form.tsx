@@ -2,10 +2,9 @@
 
 import { updateArtisanProfile } from "@lib/data/artisan-portal"
 import type { Artisan } from "@lib/marketplace-types"
-import { Button } from "@modules/common/components/ui"
 import { useActionState } from "react"
 import { useFormStatus } from "react-dom"
-import { Field, fieldClass } from "../ui"
+import { Button, Field, Notice, fieldClass } from "../ui"
 import PickupAddressFields from "./pickup-address-fields"
 
 const FIELDS: { name: keyof Artisan; label: string; hint?: string }[] = [
@@ -31,9 +30,9 @@ export default function ProfileForm({ artisan }: { artisan: Artisan }) {
   const [state, action] = useActionState(updateArtisanProfile, null)
 
   return (
-    <form action={action} className="flex flex-col gap-4">
+    <form action={action} className="flex flex-col gap-5">
       <Field label="Sign-in email">
-        <input value={artisan.email} disabled className={`${fieldClass} bg-gray-50`} />
+        <input value={artisan.email} disabled className={fieldClass} />
       </Field>
       <div className="grid grid-cols-1 gap-4 small:grid-cols-2">
         {FIELDS.map((field) => (
@@ -48,10 +47,11 @@ export default function ProfileForm({ artisan }: { artisan: Artisan }) {
         ))}
       </div>
       <PickupAddressFields value={state?.values ?? artisan} />
-      {!artisan.pickup_ward_code && (
-        <p className="txt-small text-amber-700">
-          Choose your pickup province/city to calculate shipping at VND 18,000 within the province or VND 22,000 outside it per parcel.
-        </p>
+      {!artisan.pickup_province_name && (
+        <Notice tone="warning">
+          Customers cannot check out your products until you choose a pickup province/city.
+          Shipping is VND 18,000 per parcel within the province and VND 22,000 outside it.
+        </Notice>
       )}
       <Field label="Shop introduction">
         <textarea
@@ -61,9 +61,9 @@ export default function ProfileForm({ artisan }: { artisan: Artisan }) {
           className={fieldClass}
         />
       </Field>
-      {state?.error && <p className="txt-small text-red-600">{state.error}</p>}
-      {state?.success && <p className="txt-small text-emerald-700">Saved.</p>}
-      <div>
+      {state?.error && <p className="txt-small text-[#8f4333]">{state.error}</p>}
+      {state?.success && <p role="status" className="txt-small text-yarnly-moss">Changes saved.</p>}
+      <div className="border-t border-yarnly-line pt-5">
         <Save />
       </div>
     </form>

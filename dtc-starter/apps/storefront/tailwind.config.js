@@ -34,6 +34,17 @@ module.exports = {
           80: "#1F2937",
           90: "#111827",
         },
+        // Paper and moss palette shared with the landing and homepage.
+        yarnly: {
+          paper: "#f5f5f2",
+          cream: "#fbfbf8",
+          ink: "#33362f",
+          muted: "#697064",
+          line: "#dfe2d8",
+          moss: "#4f6b40",
+          "moss-dark": "#3e5532",
+          sage: "#e8edde",
+        },
       },
       borderRadius: {
         none: "0px",
@@ -69,6 +80,7 @@ module.exports = {
           "Ubuntu",
           "sans-serif",
         ],
+        yarnly: ["var(--font-yarnly-serif)", "Georgia", '"Times New Roman"', "serif"],
       },
       keyframes: {
         ring: {

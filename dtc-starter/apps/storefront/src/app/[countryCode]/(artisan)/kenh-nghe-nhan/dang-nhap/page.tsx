@@ -1,4 +1,5 @@
 import { getArtisanMe } from "@lib/data/artisan-portal"
+import AuthShell from "@modules/artisan-portal/components/auth-shell"
 import { ArtisanLoginForm } from "@modules/artisan-portal/components/auth-forms"
 import { redirect } from "next/navigation"
 
@@ -12,14 +13,12 @@ export default async function ArtisanLoginPage(props: {
   }
 
   return (
-    <div className="content-container flex justify-center py-16">
-      <div className="w-full max-w-sm rounded-lg border border-gray-200 bg-white p-6">
-        <h1 className="txt-xlarge-plus mb-1">Sign in to the Artisan Portal</h1>
-        <p className="txt-small text-ui-fg-subtle mb-6">
-          Manage products, accept orders, and track your earnings.
-        </p>
-        <ArtisanLoginForm />
-      </div>
-    </div>
+    <AuthShell
+      eyebrow="Welcome back"
+      title="Sign in to the Artisan Portal"
+      description="Manage your products, accept orders and track your earnings."
+    >
+      <ArtisanLoginForm />
+    </AuthShell>
   )
 }

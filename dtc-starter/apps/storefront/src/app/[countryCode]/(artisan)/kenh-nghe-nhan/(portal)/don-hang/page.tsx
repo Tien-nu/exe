@@ -1,7 +1,7 @@
 import { listArtisanSubOrders } from "@lib/data/artisan-portal"
 import SubOrderCard from "@modules/artisan-portal/components/sub-order-card"
+import { EmptyState, FilterTabs, PageHeader, linkClass } from "@modules/artisan-portal/ui"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import { clx } from "@modules/common/components/ui"
 
 const TABS = [
   { status: "", label: "All" },
@@ -13,7 +13,7 @@ const TABS = [
   { status: "canceled", label: "Canceled" },
 ]
 
-/** Orders for listed products; custom-made ones live in "Đơn làm riêng". */
+/** Orders for listed products; custom-made ones live in "Custom orders". */
 export default async function ArtisanOrdersPage(props: {
   searchParams: Promise<{ status?: string }>
 }) {
@@ -21,33 +21,28 @@ export default async function ArtisanOrdersPage(props: {
   const subOrders = await listArtisanSubOrders(status || undefined, false)
 
   return (
-    <div className="flex flex-col gap-4">
-      <div>
-        <h1 className="text-2xl-semi">Ready-made orders</h1>
-        <p className="txt-small text-ui-fg-subtle">
-          Orders for listed products. For custom requests, see{" "}
-          <LocalizedClientLink href="/kenh-nghe-nhan/don-lam-rieng" className="text-violet-700 underline">
-            Custom orders
-          </LocalizedClientLink>
-          .
-        </p>
-      </div>
-      <div className="flex flex-wrap gap-2">
-        {TABS.map((tab) => (
-          <LocalizedClientLink
-            key={tab.status}
-            href={`/kenh-nghe-nhan/don-hang${tab.status ? `?status=${tab.status}` : ""}`}
-            className={clx(
-              "rounded-full border px-3 py-1 txt-small",
-              tab.status === status
-                ? "border-violet-300 bg-violet-100 text-violet-800"
-                : "border-gray-200 bg-white"
-            )}
-          >
-            {tab.label}
-          </LocalizedClientLink>
-        ))}
-      </div>
+    <div className="flex flex-col gap-6">
+      <PageHeader
+        eyebrow="Orders"
+        title="Ready-made orders"
+        description={
+          <>
+            Orders for the products you list. Orders made to a customer's request are under{" "}
+            <LocalizedClientLink href="/kenh-nghe-nhan/don-lam-rieng" className={linkClass}>
+              Custom orders
+            </LocalizedClientLink>
+            .
+          </>
+        }
+      />
+      <FilterTabs
+        label="Filter by status"
+        tabs={TABS.map((tab) => ({
+          href: `/kenh-nghe-nhan/don-hang${tab.status ? `?status=${tab.status}` : ""}`,
+          label: tab.label,
+          active: tab.status === status,
+        }))}
+      />
       {subOrders.length ? (
         <ul className="flex flex-col gap-3">
           {subOrders.map((subOrder) => (
@@ -57,7 +52,10 @@ export default async function ArtisanOrdersPage(props: {
           ))}
         </ul>
       ) : (
-        <p className="txt-medium text-ui-fg-subtle">No orders found.</p>
+        <EmptyState
+          title="No orders here"
+          description="New orders appear here as soon as a customer buys one of your products."
+        />
       )}
     </div>
   )

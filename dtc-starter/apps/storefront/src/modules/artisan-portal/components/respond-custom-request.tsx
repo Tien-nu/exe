@@ -2,10 +2,9 @@
 
 import { respondCustomRequest } from "@lib/data/artisan-portal"
 import { useFeedback } from "@modules/common/components/feedback"
-import { Button } from "@modules/common/components/ui"
 import { useRouter } from "next/navigation"
 import { useTransition } from "react"
-import { Field, fieldClass } from "../ui"
+import { Button, Field, fieldClass } from "../ui"
 
 /** One answer only: a price per item and the making time, or a refusal. */
 export default function RespondCustomRequest({ requestId }: { requestId: string }) {
@@ -28,7 +27,7 @@ export default function RespondCustomRequest({ requestId }: { requestId: string 
 
   return (
     <form
-      className="mt-3 flex flex-col gap-3 rounded-md bg-gray-50 p-3"
+      className="mt-4 flex flex-col gap-4 rounded-xl border border-yarnly-line bg-yarnly-paper p-4"
       action={(formData) => submit(formData, true)}
     >
       <div className="grid grid-cols-1 gap-3 small:grid-cols-2">
@@ -42,10 +41,10 @@ export default function RespondCustomRequest({ requestId }: { requestId: string 
       <Field label="Message to customer (optional)">
         <input name="note" className={fieldClass} />
       </Field>
-      <p className="txt-small text-ui-fg-subtle">
+      <p className="txt-small text-yarnly-muted">
         You can reply only once. If the customer accepts and pays, the order moves directly to In progress.
       </p>
-      <div className="flex gap-2">
+      <div className="flex flex-wrap gap-2">
         <Button type="submit" size="small" isLoading={pending}>
           Send quote
         </Button>

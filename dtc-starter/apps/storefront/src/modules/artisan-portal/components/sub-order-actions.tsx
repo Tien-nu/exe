@@ -7,7 +7,7 @@ import {
 } from "@lib/data/artisan-portal"
 import type { ArtisanSubOrder } from "@lib/marketplace-types"
 import { useFeedback } from "@modules/common/components/feedback"
-import { Button } from "@modules/common/components/ui"
+import { Button } from "../ui"
 import { useRouter } from "next/navigation"
 import { useTransition } from "react"
 
@@ -27,7 +27,7 @@ export default function SubOrderActions({ subOrder }: { subOrder: ArtisanSubOrde
 
   if (subOrder.status === "pending_acceptance") {
     return (
-      <div className="flex gap-2">
+      <div className="flex flex-wrap gap-2">
         <Button
           isLoading={pending}
           onClick={() => run(() => acceptSubOrder(subOrder.id), `Accepted order ${subOrder.code}`)}

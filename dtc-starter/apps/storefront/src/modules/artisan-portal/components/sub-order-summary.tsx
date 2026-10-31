@@ -1,5 +1,6 @@
 import type { ArtisanSubOrder } from "@lib/marketplace-types"
 import { formatDate, formatDateTime } from "@lib/util/vn-format"
+import { linkClass } from "../ui"
 
 /** One line telling the artisan what happens next with this sub-order. */
 export default function SubOrderNextStep({ subOrder }: { subOrder: ArtisanSubOrder }) {
@@ -19,7 +20,7 @@ export default function SubOrderNextStep({ subOrder }: { subOrder: ArtisanSubOrd
         <>
           {subOrder.carrier} –{" "}
           {subOrder.tracking_url ? (
-            <a href={subOrder.tracking_url} target="_blank" rel="noreferrer" className="text-violet-700 underline">
+            <a href={subOrder.tracking_url} target="_blank" rel="noreferrer" className={linkClass}>
               {subOrder.tracking_number}
             </a>
           ) : (
@@ -31,7 +32,13 @@ export default function SubOrderNextStep({ subOrder }: { subOrder: ArtisanSubOrd
     case "delivered":
       return <>Delivered; automatically completes at {formatDateTime(subOrder.complete_at)}.</>
     case "completed":
-      return subOrder.payout_id ? <>Included in a payout period.</> : <>Will be included in next Monday's payout.</>
+      return subOrder.payout_id ? (
+        <>Included in a payout period.</>
+      ) : subOrder.payment_mode === "simulation" ? (
+        <>Order completed.</>
+      ) : (
+        <>Will be included in next Monday's payout.</>
+      )
     case "canceled":
       return <>{subOrder.cancel_reason}</>
     default:

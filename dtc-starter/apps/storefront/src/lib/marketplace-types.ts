@@ -76,6 +76,8 @@ export type CustomerSubOrder = SubOrderBase & {
 
 export type ArtisanSubOrder = SubOrderBase & {
   payment_method: "cod" | "bank_transfer"
+  /** "simulation" orders (coursework QR) are never paid out. */
+  payment_mode?: "bank" | "simulation"
   payout_id: string | null
   custom_request: {
     description: string

@@ -1,18 +1,39 @@
 "use client"
 
 import { artisanLogout } from "@lib/data/artisan-portal"
+import {
+  ArrowRightOnRectangle,
+  BuildingStorefront,
+  Cash,
+  ChartBar,
+  ShoppingBag,
+  Sparkles,
+  Tag,
+} from "@medusajs/icons"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { clx } from "@modules/common/components/ui"
 import { useParams, usePathname } from "next/navigation"
 
 const LINKS = [
-  { href: "/kenh-nghe-nhan", label: "Overview" },
-  { href: "/kenh-nghe-nhan/don-hang", label: "Ready-made orders" },
-  { href: "/kenh-nghe-nhan/don-lam-rieng", label: "Custom orders" },
-  { href: "/kenh-nghe-nhan/san-pham", label: "Products" },
-  { href: "/kenh-nghe-nhan/thu-nhap", label: "Earnings" },
-  { href: "/kenh-nghe-nhan/ho-so", label: "Shop profile" },
+  { href: "/kenh-nghe-nhan", label: "Overview", icon: ChartBar },
+  { href: "/kenh-nghe-nhan/don-hang", label: "Ready-made orders", icon: ShoppingBag },
+  { href: "/kenh-nghe-nhan/don-lam-rieng", label: "Custom orders", icon: Sparkles },
+  { href: "/kenh-nghe-nhan/san-pham", label: "Products", icon: Tag },
+  { href: "/kenh-nghe-nhan/thu-nhap", label: "Earnings", icon: Cash },
+  { href: "/kenh-nghe-nhan/ho-so", label: "Shop profile", icon: BuildingStorefront },
 ]
+
+const LogoutButton = ({ countryCode, className }: { countryCode: string; className?: string }) => (
+  <form action={() => artisanLogout(countryCode)} className={className}>
+    <button
+      type="submit"
+      className="inline-flex h-10 w-full items-center gap-3 rounded-lg px-3 txt-small text-yarnly-muted transition-colors hover:bg-yarnly-paper hover:text-yarnly-ink"
+    >
+      <ArrowRightOnRectangle />
+      Sign out
+    </button>
+  </form>
+)
 
 export default function PortalNav({ shopName }: { shopName: string }) {
   const { countryCode } = useParams() as { countryCode: string }
@@ -20,32 +41,55 @@ export default function PortalNav({ shopName }: { shopName: string }) {
   const current = pathname.replace(`/${countryCode}`, "")
 
   return (
-    <nav className="flex flex-col gap-1">
-      <p className="txt-medium-plus mb-2 px-3">{shopName}</p>
-      {LINKS.map((link) => {
-        const active =
-          link.href === "/kenh-nghe-nhan"
-            ? current === link.href
-            : current.startsWith(link.href)
+    <div className="rounded-2xl border border-yarnly-line bg-white p-3 small:p-4">
+      <div className="flex items-center gap-3 border-b border-yarnly-line px-1 pb-3 small:pb-4">
+        <span
+          aria-hidden="true"
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-yarnly-sage font-yarnly text-xl text-yarnly-moss"
+        >
+          {shopName.trim().charAt(0).toUpperCase()}
+        </span>
+        <div className="min-w-0 flex-1">
+          <p className="text-[10px] font-medium uppercase tracking-[0.14em] text-yarnly-muted">
+            Shop
+          </p>
+          <p className="truncate font-yarnly text-lg leading-tight text-yarnly-ink">{shopName}</p>
+        </div>
+        <LogoutButton countryCode={countryCode} className="shrink-0 small:hidden" />
+      </div>
+      <nav aria-label="Artisan Portal" className="-mx-1 mt-3 overflow-x-auto px-1">
+        <ul className="flex w-max gap-1 small:w-auto small:flex-col">
+          {LINKS.map((link) => {
+            const active =
+              link.href === "/kenh-nghe-nhan"
+                ? current === link.href
+                : current.startsWith(link.href)
+            const Icon = link.icon
 
-        return (
-          <LocalizedClientLink
-            key={link.href}
-            href={link.href}
-            className={clx(
-              "rounded-md px-3 py-2 txt-medium",
-              active ? "bg-violet-100 text-violet-800" : "hover:bg-gray-100"
-            )}
-          >
-            {link.label}
-          </LocalizedClientLink>
-        )
-      })}
-      <form action={() => artisanLogout(countryCode)}>
-        <button type="submit" className="mt-4 w-full rounded-md px-3 py-2 text-left txt-medium text-ui-fg-subtle hover:bg-gray-100">
-          Sign out
-        </button>
-      </form>
-    </nav>
+            return (
+              <li key={link.href}>
+                <LocalizedClientLink
+                  href={link.href}
+                  aria-current={active ? "page" : undefined}
+                  className={clx(
+                    "flex h-10 items-center gap-3 whitespace-nowrap rounded-lg px-3 txt-medium transition-colors",
+                    active
+                      ? "bg-yarnly-sage font-medium text-yarnly-ink"
+                      : "text-yarnly-muted hover:bg-yarnly-paper hover:text-yarnly-ink"
+                  )}
+                >
+                  <Icon className={active ? "text-yarnly-moss" : undefined} />
+                  {link.label}
+                </LocalizedClientLink>
+              </li>
+            )
+          })}
+        </ul>
+      </nav>
+      <LogoutButton
+        countryCode={countryCode}
+        className="mt-3 hidden border-t border-yarnly-line pt-3 small:block"
+      />
+    </div>
   )
 }
