@@ -1,4 +1,5 @@
 import { ArrowUpRightMini } from "@medusajs/icons"
+import LanguageToggle from "@modules/common/components/language/language-toggle"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { yarnlySerif } from "@lib/fonts"
 import { Metadata } from "next"
@@ -20,14 +21,17 @@ export default function ArtisanChannelLayout({ children }: { children: React.Rea
               Artisan Portal
             </span>
           </LocalizedClientLink>
-          <LocalizedClientLink
-            href="/home"
-            className="inline-flex items-center gap-1 txt-small text-yarnly-muted transition-colors hover:text-yarnly-ink"
-          >
-            <span className="hidden xsmall:inline">Back to shopping</span>
-            <span className="xsmall:hidden">Shop</span>
-            <ArrowUpRightMini />
-          </LocalizedClientLink>
+          <div className="flex items-center gap-3 small:gap-5">
+            <LanguageToggle className="text-yarnly-ink" />
+            <LocalizedClientLink
+              href="/home"
+              className="inline-flex items-center gap-1 txt-small text-yarnly-muted transition-colors hover:text-yarnly-ink"
+            >
+              <span className="hidden xsmall:inline">Back to shopping</span>
+              <span className="xsmall:hidden">Shop</span>
+              <ArrowUpRightMini />
+            </LocalizedClientLink>
+          </div>
         </div>
       </header>
       {children}

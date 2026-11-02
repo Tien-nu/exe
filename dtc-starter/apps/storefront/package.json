@@ -28,7 +28,8 @@
     "build:mongodb": "node scripts/prepare-original-admin.mjs && MONGODB_API_PREVIEW=true NEXT_PUBLIC_YARNLY_BACKEND_MODE=mongodb next build",
     "start:mongodb": "MONGODB_API_PREVIEW=true NEXT_PUBLIC_YARNLY_BACKEND_MODE=mongodb next start -p 8000",
     "dev:mongodb": "MONGODB_API_PREVIEW=true NEXT_PUBLIC_YARNLY_BACKEND_MODE=mongodb next dev -p 8000",
-    "test:smoke": "node scripts/http-smoke.mjs"
+    "test:smoke": "node scripts/http-smoke.mjs",
+    "i18n:missing": "node --import tsx scripts/i18n-missing.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1156.0",

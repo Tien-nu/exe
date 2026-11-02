@@ -7,7 +7,7 @@ const TABS = [
   { status: "", label: "All" },
   { status: "pending_acceptance", label: "Awaiting acceptance" },
   { status: "processing", label: "In progress" },
-  { status: "ready_to_ship", label: "Ready to ship" },
+  { status: "ready_to_ship", label: "Awaiting shipment" },
   { status: "shipping", label: "Shipping" },
   { status: "completed", label: "Completed" },
   { status: "canceled", label: "Canceled" },

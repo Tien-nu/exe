@@ -4,6 +4,7 @@ import { Popover, PopoverPanel, Transition } from "@headlessui/react"
 import useToggleState from "@lib/hooks/use-toggle-state"
 import { ArrowRightMini, XMark } from "@medusajs/icons"
 import { HttpTypes } from "@medusajs/types"
+import LanguageToggle from "@modules/common/components/language/language-toggle"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { Text, clx } from "@modules/common/components/ui"
 import { Fragment } from "react"
@@ -89,6 +90,10 @@ const SideMenu = ({ regions, locales, currentLocale }: SideMenuProps) => {
                       })}
                     </ul>
                     <div className="flex flex-col gap-y-6">
+                      <div className="flex items-center justify-between txt-compact-small">
+                        <span>Language</span>
+                        <LanguageToggle />
+                      </div>
                       {!!locales?.length && (
                         <div
                           className="flex justify-between"

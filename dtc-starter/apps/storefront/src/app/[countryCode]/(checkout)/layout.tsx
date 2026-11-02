@@ -1,3 +1,4 @@
+import LanguageToggle from "@modules/common/components/language/language-toggle"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import ChevronDown from "@modules/common/icons/chevron-down"
 import MedusaCTA from "@modules/layout/components/medusa-cta"
@@ -31,7 +32,9 @@ export default function CheckoutLayout({
           >
             Yarnly
           </LocalizedClientLink>
-          <div className="flex-1 basis-0" />
+          <div className="flex flex-1 basis-0 justify-end">
+            <LanguageToggle className="text-ui-fg-subtle" />
+          </div>
         </nav>
       </div>
       <div className="relative" data-testid="checkout-container">{children}</div>

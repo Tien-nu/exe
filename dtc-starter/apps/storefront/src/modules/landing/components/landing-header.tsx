@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 
+import LanguageToggle from "@modules/common/components/language/language-toggle"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import styles from "@modules/landing/templates/yarnly-landing/landing-shell.module.css"
 
@@ -44,6 +45,7 @@ export default function LandingHeader() {
         <LocalizedClientLink href="/home" className={styles.headerCta}>
           Enter Yarnly <span aria-hidden="true">↗</span>
         </LocalizedClientLink>
+        <LanguageToggle className={styles.languageToggle} />
         <details className={styles.mobileMenu}>
           <summary aria-label="Open menu">
             <span />
@@ -54,6 +56,10 @@ export default function LandingHeader() {
             <a href="#lam-rieng">Custom made</a>
             <a href="#nghe-nhan">For artisans</a>
             <LocalizedClientLink href="/account">Account</LocalizedClientLink>
+            <div className={styles.mobileLanguage}>
+              <span>Language</span>
+              <LanguageToggle />
+            </div>
           </nav>
         </details>
       </div>
