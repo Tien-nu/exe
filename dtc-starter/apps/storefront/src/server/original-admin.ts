@@ -284,6 +284,17 @@ export async function originalAdminAuth(request: Request, path: string[]) {
     const origin = request.headers.get("origin")
     if (origin && origin !== new URL(request.url).origin)
       throw new ApiError(403, "Invalid origin")
+    // The login page needs provider discovery before a session exists.
+    if (path.join("/") === "user/providers" && request.method === "GET") {
+      return json({
+        providers: [{
+          id: "emailpass",
+          identifier: "emailpass",
+          display_name: "Email and Password",
+          flow: "credentials",
+        }],
+      })
+    }
     if (path.join("/") === "user/emailpass" && request.method === "POST") {
       const input = await body(request)
       await rateLimit(
