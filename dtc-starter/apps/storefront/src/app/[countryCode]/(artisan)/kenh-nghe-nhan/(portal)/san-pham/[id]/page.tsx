@@ -1,7 +1,9 @@
 import { getArtisanProduct, listArtisanCategories } from "@lib/data/artisan-portal"
+import { ArrowUpRightMini } from "@medusajs/icons"
 import ProductForm from "@modules/artisan-portal/components/product-form"
-import { Card } from "@modules/artisan-portal/ui"
+import { Card, PageHeader, linkClass } from "@modules/artisan-portal/ui"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import { clx } from "@modules/common/components/ui"
 import { notFound } from "next/navigation"
 
 export default async function EditArtisanProductPage(props: { params: Promise<{ id: string }> }) {
@@ -16,19 +18,20 @@ export default async function EditArtisanProductPage(props: { params: Promise<{ 
   }
 
   return (
-    <div className="flex flex-col gap-4">
-      <LocalizedClientLink href="/kenh-nghe-nhan/san-pham" className="txt-small text-ui-fg-subtle">
-        ← Products
-      </LocalizedClientLink>
-      <div className="flex flex-wrap items-center justify-between gap-2">
-        <h1 className="text-2xl-semi">{product.title}</h1>
-        <LocalizedClientLink
-          href={`/products/${product.handle}`}
-          className="txt-small text-violet-700 underline"
-        >
-          View on marketplace
-        </LocalizedClientLink>
-      </div>
+    <div className="flex flex-col gap-6">
+      <PageHeader
+        back={{ href: "/kenh-nghe-nhan/san-pham", label: "Sản phẩm" }}
+        title={product.title}
+        actions={
+          <LocalizedClientLink
+            href={`/products/${product.handle}`}
+            className={clx("inline-flex items-center gap-0.5 txt-small", linkClass)}
+          >
+            Xem trên sàn
+            <ArrowUpRightMini />
+          </LocalizedClientLink>
+        }
+      />
       <Card>
         <ProductForm key={product.id} product={product} categories={categories} />
       </Card>

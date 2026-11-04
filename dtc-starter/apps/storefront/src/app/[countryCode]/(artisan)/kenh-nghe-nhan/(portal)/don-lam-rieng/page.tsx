@@ -7,8 +7,7 @@ import {
 import { formatDateTime, formatVnd } from "@lib/util/vn-format"
 import RespondCustomRequest from "@modules/artisan-portal/components/respond-custom-request"
 import SubOrderCard from "@modules/artisan-portal/components/sub-order-card"
-import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import { clx } from "@modules/common/components/ui"
+import { EmptyState, FilterTabs, PageHeader } from "@modules/artisan-portal/ui"
 
 /**
  * Everything custom-made in one place: requests to quote, quotes waiting on
@@ -20,46 +19,46 @@ const TABS: {
   requests?: CustomRequest["status"][]
   orders?: ArtisanSubOrder["status"][]
 }[] = [
-  { key: "", label: "New requests", requests: ["pending"] },
-  { key: "bao-gia", label: "Awaiting customer decision", requests: ["quoted", "accepted"] },
-  { key: "dang-lam", label: "In progress", orders: ["processing"] },
-  { key: "giao-hang", label: "Delivery", orders: ["ready_to_ship", "shipping", "delivered"] },
-  { key: "hoan-thanh", label: "Completed", orders: ["completed"] },
+  { key: "", label: "Yêu cầu mới", requests: ["pending"] },
+  { key: "bao-gia", label: "Chờ khách quyết định", requests: ["quoted", "accepted"] },
+  { key: "dang-lam", label: "Đang làm", orders: ["processing"] },
+  { key: "giao-hang", label: "Giao hàng", orders: ["ready_to_ship", "shipping", "delivered"] },
+  { key: "hoan-thanh", label: "Hoàn thành", orders: ["completed"] },
   {
     key: "da-huy",
-    label: "Canceled / declined",
+    label: "Đã huỷ / từ chối",
     requests: ["artisan_declined", "customer_declined"],
     orders: ["canceled"],
   },
 ]
 
 const RequestCard = ({ request }: { request: CustomRequest }) => (
-  <div className="rounded-lg border border-gray-200 bg-white p-4">
+  <div className="rounded-2xl border border-yarnly-line bg-white p-4 small:p-5">
     <div className="flex flex-wrap items-start justify-between gap-2">
       <div>
-        <p className="txt-medium-plus">{request.product_title}</p>
-        <p className="txt-small text-ui-fg-subtle">
-          {request.customer_name ?? "Customer"} · {formatDateTime(request.created_at)}
+        <p className="font-yarnly text-lg tracking-[-0.01em]">{request.product_title}</p>
+        <p className="txt-small text-yarnly-muted">
+          {request.customer_name ?? "Khách hàng"} · {formatDateTime(request.created_at)}
         </p>
       </div>
-      <span className="rounded-full bg-gray-100 px-3 py-1 txt-small-plus">
+      <span className="rounded-full bg-yarnly-sage px-3 py-1 text-[12px] font-medium text-yarnly-moss-dark">
         {CUSTOM_REQUEST_LABELS[request.status]}
       </span>
     </div>
-    <p className="mt-2 txt-medium">
-      {request.quantity} items · {request.description}
+    <p className="mt-3 txt-medium leading-relaxed">
+      <span className="font-medium">{request.quantity} cái</span> · {request.description}
     </p>
     {(request.color || request.size) && (
-      <p className="txt-small text-ui-fg-subtle">
-        {request.color && `Color: ${request.color}`}
+      <p className="mt-1 txt-small text-yarnly-muted">
+        {request.color && `Màu: ${request.color}`}
         {request.color && request.size && " · "}
-        {request.size && `Size: ${request.size}`}
+        {request.size && `Kích thước: ${request.size}`}
       </p>
     )}
     {request.quoted_price !== null && (
-      <p className="mt-2 txt-small">
-        Your quote {formatVnd(request.quoted_price)}/item · {request.quoted_lead_days} days
-        {request.status === "accepted" && " · accepted by the customer, awaiting payment"}
+      <p className="mt-3 border-t border-yarnly-line pt-3 txt-small">
+        Bạn đã báo <strong>{formatVnd(request.quoted_price)}</strong>/cái · {request.quoted_lead_days} ngày
+        {request.status === "accepted" && " · khách đã đồng ý, đang chờ khách thanh toán"}
       </p>
     )}
     {request.status === "pending" && <RespondCustomRequest requestId={request.id} />}
@@ -85,34 +84,25 @@ export default async function ArtisanCustomOrdersPage(props: {
   const shown = inTab(current)
 
   return (
-    <div className="flex flex-col gap-4">
-      <div>
-        <h1 className="text-2xl-semi">Custom orders</h1>
-        <p className="txt-small text-ui-fg-subtle">
-          Send one quote with a price and production time. Once the customer accepts and pays by bank transfer, including regional shipping, the order moves to In progress. Mark it Ready when finished so Yarnly can arrange delivery.
-        </p>
-      </div>
-      <div className="flex flex-wrap gap-2">
-        {TABS.map((t) => {
-          const count = (({ requests, orders }) => requests.length + orders.length)(inTab(t))
+    <div className="flex flex-col gap-6">
+      <PageHeader
+        eyebrow="Đơn hàng"
+        title="Đơn làm riêng"
+        description="Bạn báo giá và số ngày làm một lần. Khách đồng ý thì thanh toán chuyển khoản (kèm phí ship GHN), đơn vào mục Đang làm; làm xong bấm “Đã làm xong” để Yarnly giao hàng như đơn thường."
+      />
+      <FilterTabs
+        label="Lọc đơn làm riêng"
+        tabs={TABS.map((t) => {
+          const { requests, orders } = inTab(t)
 
-          return (
-            <LocalizedClientLink
-              key={t.key}
-              href={`/kenh-nghe-nhan/don-lam-rieng${t.key ? `?tab=${t.key}` : ""}`}
-              className={clx(
-                "rounded-full border px-3 py-1 txt-small",
-                t.key === current.key
-                  ? "border-violet-300 bg-violet-100 text-violet-800"
-                  : "border-gray-200 bg-white"
-              )}
-            >
-              {t.label}
-              {count > 0 && ` (${count})`}
-            </LocalizedClientLink>
-          )
+          return {
+            href: `/kenh-nghe-nhan/don-lam-rieng${t.key ? `?tab=${t.key}` : ""}`,
+            label: t.label,
+            active: t.key === current.key,
+            count: requests.length + orders.length,
+          }
         })}
-      </div>
+      />
       {shown.requests.length || shown.orders.length ? (
         <ul className="flex flex-col gap-3">
           {shown.orders.map((subOrder) => (
@@ -127,7 +117,10 @@ export default async function ArtisanCustomOrdersPage(props: {
           ))}
         </ul>
       ) : (
-        <p className="txt-medium text-ui-fg-subtle">Nothing here yet.</p>
+        <EmptyState
+          title="Không có gì ở mục này"
+          description="Khi khách gửi yêu cầu làm riêng cho sản phẩm của bạn, yêu cầu sẽ hiện ở “Yêu cầu mới”."
+        />
       )}
     </div>
   )

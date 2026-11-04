@@ -7,7 +7,7 @@ import {
 } from "@lib/data/artisan-portal"
 import type { ArtisanSubOrder } from "@lib/marketplace-types"
 import { useFeedback } from "@modules/common/components/feedback"
-import { Button } from "@modules/common/components/ui"
+import { Button } from "../ui"
 import { useRouter } from "next/navigation"
 import { useTransition } from "react"
 
@@ -27,33 +27,33 @@ export default function SubOrderActions({ subOrder }: { subOrder: ArtisanSubOrde
 
   if (subOrder.status === "pending_acceptance") {
     return (
-      <div className="flex gap-2">
+      <div className="flex flex-wrap gap-2">
         <Button
           isLoading={pending}
-          onClick={() => run(() => acceptSubOrder(subOrder.id), `Accepted order ${subOrder.code}`)}
+          onClick={() => run(() => acceptSubOrder(subOrder.id), `Đã nhận đơn ${subOrder.code}`)}
         >
-          Accepted
+          Nhận đơn
         </Button>
         <Button
           variant="secondary"
           disabled={pending}
           onClick={async () => {
             const reason = await ask({
-              title: `Decline order ${subOrder.code}?`,
-              description: "The customer will see this reason. If they have paid by bank transfer, Yarnly will arrange a refund.",
-              label: "Reason for declining",
-              placeholder: "e.g. The requested yarn color is out of stock",
+              title: `Từ chối đơn ${subOrder.code}?`,
+              description: "Khách sẽ thấy lý do này. Nếu khách đã chuyển khoản, Yarnly sẽ hoàn tiền.",
+              label: "Lý do từ chối",
+              placeholder: "VD: Hết len màu khách chọn",
               multiline: true,
               required: true,
-              confirmText: "Decline order",
+              confirmText: "Từ chối đơn",
               tone: "danger",
             })
             if (reason) {
-              run(() => declineSubOrder(subOrder.id, reason), `Declined order ${subOrder.code}`)
+              run(() => declineSubOrder(subOrder.id, reason), `Đã từ chối đơn ${subOrder.code}`)
             }
           }}
         >
-          Decline
+          Từ chối
         </Button>
       </div>
     )
@@ -65,20 +65,20 @@ export default function SubOrderActions({ subOrder }: { subOrder: ArtisanSubOrde
         isLoading={pending}
         onClick={async () => {
           const ok = await confirm({
-            title: "Is the order finished and packed?",
-            description: "Yarnly will arrange shipment and the carrier will collect it from your pickup address.",
-            confirmText: "Mark as ready",
-            cancelText: "Not yet",
+            title: "Đã làm xong và đóng gói?",
+            description: "Yarnly sẽ tạo đơn vận chuyển và shipper sẽ tới địa chỉ lấy hàng của bạn.",
+            confirmText: "Đã làm xong",
+            cancelText: "Chưa",
           })
           if (ok) {
             run(
               () => markSubOrderReady(subOrder.id),
-              "Yarnly notified — awaiting collection"
+              "Đã báo Yarnly – shipper sẽ tới lấy hàng"
             )
           }
         }}
       >
-        Ready — awaiting shipment
+        Đã làm xong – chờ giao hàng
       </Button>
     )
   }
