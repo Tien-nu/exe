@@ -4,7 +4,7 @@ import BankTransferBox from "../components/bank-transfer-box"
 import SubOrderList from "../components/sub-order-list"
 
 /** Payment box and per-artisan sub-orders of one order. */
-export default async function MarketplaceOrderPanel({ orderId }: { orderId: string }) {
+export default async function MarketplaceOrderPanel({ orderId, autoOpenPayment = false }: { orderId: string; autoOpenPayment?: boolean }) {
   const order = await getMarketplaceOrder(orderId)
 
   if (!order) {
@@ -21,7 +21,7 @@ export default async function MarketplaceOrderPanel({ orderId }: { orderId: stri
 
   return (
     <div className="flex flex-col gap-4" data-testid="marketplace-order">
-      <BankTransferBox order={order} />
+      <BankTransferBox order={order} autoOpenPayment={autoOpenPayment} />
       <Heading level="h2" className="text-2xl-regular">
         {order.sub_orders.length > 1
           ? `This order contains ${order.sub_orders.length} parcels from ${shops}, delivered separately`

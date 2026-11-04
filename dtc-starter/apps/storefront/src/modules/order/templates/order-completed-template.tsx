@@ -38,7 +38,7 @@ export default async function OrderCompletedTemplate({
             <span>Your order was placed successfully.</span>
           </Heading>
           <OrderDetails order={order} />
-          <MarketplaceOrderPanel orderId={order.id} />
+          <MarketplaceOrderPanel orderId={order.id} autoOpenPayment />
           <Heading level="h2" className="flex flex-row text-3xl-regular">
             Summary
           </Heading>
