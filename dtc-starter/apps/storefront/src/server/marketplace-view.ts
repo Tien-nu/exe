@@ -109,6 +109,8 @@ export const marketplaceOrderForCustomer = (order: any, settings?: any) => ({
   payment_method: order.payment_method,
   payment_status: order.payment_status,
   payment_mode: order.payment_mode ?? "bank",
+  payment_provider: order.payment_provider ?? null,
+  payment_url: order.payment_url ?? null,
   qr_payment_token: simulatedPaymentsEnabled() && order.payment_mode === "simulation" && order.payment_status === "awaiting_transfer" && order.payment_deadline && +new Date(order.payment_deadline) > Date.now() ? createQrPaymentToken(order) : null,
   payment_deadline: order.payment_deadline,
   transfer_submitted_at: order.transfer_submitted_at,
