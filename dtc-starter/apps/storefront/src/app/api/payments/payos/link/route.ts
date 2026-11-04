@@ -1,4 +1,5 @@
 import { randomUUID } from "node:crypto"
+import { APIError as PayOSAPIError, InvalidSignatureError, ConnectionError } from "@payos/node"
 import { authenticate } from "../../../../../server/auth"
 import { database } from "../../../../../server/mongodb"
 import { ApiError, body, errorResponse, json, text } from "../../../../../server/http"
@@ -27,6 +28,7 @@ function orderPage(baseUrl: string, orderId: string, result: "return" | "cancel"
 
 export async function POST(request: Request) {
   let lock: { orderId: string; lockId: string } | null = null
+  let stage = "authentication"
   try {
     if (process.env.MONGODB_API_PREVIEW !== "true") throw new ApiError(404, "Not found", "not_found")
     const origin = request.headers.get("origin")
@@ -53,6 +55,7 @@ export async function POST(request: Request) {
     }
 
     const payOS = payOSClient()
+    stage = "claim_payment_link"
     const now = new Date()
     const lockId = randomUUID()
     const claim = await db.collection("marketplace_orders").findOneAndUpdate(
@@ -92,6 +95,7 @@ export async function POST(request: Request) {
       }
     }
 
+    stage = "allocate_order_code"
     await db.collection("counters").updateOne(
       { id: "payos_order_code" },
       { $max: { value: Date.now() } },
@@ -111,6 +115,7 @@ export async function POST(request: Request) {
 
     const deadline = new Date(order.payment_deadline)
     const baseUrl = process.env.STOREFRONT_URL || process.env.NEXT_PUBLIC_BASE_URL || new URL(request.url).origin
+    stage = "create_payos_link"
     const link = await payOS.paymentRequests.create({
       orderCode,
       amount,
@@ -120,6 +125,7 @@ export async function POST(request: Request) {
       expiredAt: Math.floor(+deadline / 1000),
     })
 
+    stage = "save_payos_link"
     const currentAmount = await amountToPay(db, order.id)
     if (currentAmount !== amount) {
       await payOS.paymentRequests.cancel(link.paymentLinkId, "Order total changed")
@@ -148,6 +154,24 @@ export async function POST(request: Request) {
         { id: lock.orderId, payment_link_lock_id: lock.lockId },
         { $unset: { payment_link_lock_id: "", payment_link_lock_until: "", payos_pending_order_code: "" } }
       ).catch(() => {})
+    }
+    // Log only safe diagnostic fields, never SDK request headers or credentials.
+    if (!(error instanceof ApiError)) {
+      console.error("PayOS link failure", {
+        stage,
+        name: error instanceof Error ? error.name : "UnknownError",
+        ...(error instanceof PayOSAPIError ? { status: error.status, code: error.code } : {}),
+      })
+    }
+    if (error instanceof InvalidSignatureError) {
+      return errorResponse(new ApiError(503, "PayOS response signature is invalid. Check the payment channel checksum key.", "payos_signature_error"))
+    }
+    if (error instanceof ConnectionError) {
+      return errorResponse(new ApiError(503, "Unable to connect to PayOS. Please retry shortly.", "payos_connection_error"))
+    }
+    if (error instanceof PayOSAPIError) {
+      const code = String(error.code ?? error.status ?? "unknown").replace(/[^a-zA-Z0-9_-]/g, "").slice(0, 20)
+      return errorResponse(new ApiError(503, `PayOS could not create the payment link (code ${code}). Please contact Yarnly support.`, "payos_api_error"))
     }
     return errorResponse(error)
   }
