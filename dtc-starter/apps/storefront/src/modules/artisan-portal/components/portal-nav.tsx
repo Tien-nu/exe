@@ -15,12 +15,12 @@ import { clx } from "@modules/common/components/ui"
 import { useParams, usePathname } from "next/navigation"
 
 const LINKS = [
-  { href: "/kenh-nghe-nhan", label: "Tổng quan", icon: ChartBar },
-  { href: "/kenh-nghe-nhan/don-hang", label: "Đơn hàng có sẵn", icon: ShoppingBag },
-  { href: "/kenh-nghe-nhan/don-lam-rieng", label: "Đơn làm riêng", icon: Sparkles },
-  { href: "/kenh-nghe-nhan/san-pham", label: "Sản phẩm", icon: Tag },
-  { href: "/kenh-nghe-nhan/thu-nhap", label: "Thu nhập", icon: Cash },
-  { href: "/kenh-nghe-nhan/ho-so", label: "Hồ sơ gian hàng", icon: BuildingStorefront },
+  { href: "/kenh-nghe-nhan", label: "Overview", icon: ChartBar },
+  { href: "/kenh-nghe-nhan/don-hang", label: "Ready-made orders", icon: ShoppingBag },
+  { href: "/kenh-nghe-nhan/don-lam-rieng", label: "Custom orders", icon: Sparkles },
+  { href: "/kenh-nghe-nhan/san-pham", label: "Products", icon: Tag },
+  { href: "/kenh-nghe-nhan/thu-nhap", label: "Earnings", icon: Cash },
+  { href: "/kenh-nghe-nhan/ho-so", label: "Shop profile", icon: BuildingStorefront },
 ]
 
 const LogoutButton = ({ countryCode, className }: { countryCode: string; className?: string }) => (
@@ -30,7 +30,7 @@ const LogoutButton = ({ countryCode, className }: { countryCode: string; classNa
       className="inline-flex h-10 w-full items-center gap-3 rounded-lg px-3 txt-small text-yarnly-muted transition-colors hover:bg-yarnly-paper hover:text-yarnly-ink"
     >
       <ArrowRightOnRectangle />
-      Đăng xuất
+      Sign out
     </button>
   </form>
 )
@@ -51,13 +51,13 @@ export default function PortalNav({ shopName }: { shopName: string }) {
         </span>
         <div className="min-w-0 flex-1">
           <p className="text-[10px] font-medium uppercase tracking-[0.14em] text-yarnly-muted">
-            Gian hàng
+            Shop
           </p>
           <p className="truncate font-yarnly text-lg leading-tight text-yarnly-ink">{shopName}</p>
         </div>
         <LogoutButton countryCode={countryCode} className="shrink-0 small:hidden" />
       </div>
-      <nav aria-label="Kênh nghệ nhân" className="-mx-1 mt-3 overflow-x-auto px-1">
+      <nav aria-label="Artisan Portal" className="-mx-1 mt-3 overflow-x-auto px-1">
         <ul className="flex w-max gap-1 small:w-auto small:flex-col">
           {LINKS.map((link) => {
             const active =

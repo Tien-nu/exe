@@ -5,23 +5,23 @@ import type { Artisan } from "@lib/marketplace-types"
 import { useActionState } from "react"
 import { useFormStatus } from "react-dom"
 import { Button, Field, Notice, fieldClass } from "../ui"
-import GhnPickupFields from "./ghn-pickup-fields"
+import PickupAddressFields from "./pickup-address-fields"
 
 const FIELDS: { name: keyof Artisan; label: string; hint?: string }[] = [
-  { name: "shop_name", label: "Tên gian hàng" },
-  { name: "full_name", label: "Họ tên" },
-  { name: "phone", label: "Số điện thoại" },
-  { name: "pickup_address", label: "Số nhà, tên đường lấy hàng", hint: "Shipper GHN tới đây lấy hàng" },
-  { name: "bank_name", label: "Ngân hàng nhận tiền" },
-  { name: "bank_account_number", label: "Số tài khoản" },
-  { name: "bank_account_name", label: "Chủ tài khoản" },
+  { name: "shop_name", label: "Shop name" },
+  { name: "full_name", label: "Full name" },
+  { name: "phone", label: "Phone number" },
+  { name: "pickup_address", label: "Pickup street address", hint: "Your shop's dispatch address" },
+  { name: "bank_name", label: "Receiving bank" },
+  { name: "bank_account_number", label: "Account number" },
+  { name: "bank_account_name", label: "Account holder" },
 ]
 
 const Save = () => {
   const { pending } = useFormStatus()
   return (
     <Button type="submit" isLoading={pending}>
-      Lưu
+      Save
     </Button>
   )
 }
@@ -31,7 +31,7 @@ export default function ProfileForm({ artisan }: { artisan: Artisan }) {
 
   return (
     <form action={action} className="flex flex-col gap-5">
-      <Field label="Email đăng nhập">
+      <Field label="Sign-in email">
         <input value={artisan.email} disabled className={fieldClass} />
       </Field>
       <div className="grid grid-cols-1 gap-4 small:grid-cols-2">
@@ -46,13 +46,14 @@ export default function ProfileForm({ artisan }: { artisan: Artisan }) {
           </Field>
         ))}
       </div>
-      <GhnPickupFields value={state?.values ?? artisan} />
-      {!artisan.pickup_ward_code && (
+      <PickupAddressFields value={state?.values ?? artisan} />
+      {!artisan.pickup_province_name && (
         <Notice tone="warning">
-          Hãy chọn Tỉnh / Quận / Phường lấy hàng để Yarnly đặt được shipper GHN tới lấy hàng.
+          Customers cannot check out your products until you choose a pickup province/city.
+          Shipping is VND 18,000 per parcel within the province and VND 22,000 outside it.
         </Notice>
       )}
-      <Field label="Giới thiệu gian hàng">
+      <Field label="Shop introduction">
         <textarea
           name="description"
           rows={3}
@@ -61,7 +62,7 @@ export default function ProfileForm({ artisan }: { artisan: Artisan }) {
         />
       </Field>
       {state?.error && <p className="txt-small text-[#8f4333]">{state.error}</p>}
-      {state?.success && <p role="status" className="txt-small text-yarnly-moss">Đã lưu thay đổi.</p>}
+      {state?.success && <p role="status" className="txt-small text-yarnly-moss">Changes saved.</p>}
       <div className="border-t border-yarnly-line pt-5">
         <Save />
       </div>

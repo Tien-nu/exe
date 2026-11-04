@@ -8,7 +8,7 @@ import { clx } from "@modules/common/components/ui"
 const AddProductLink = () => (
   <LocalizedClientLink href="/kenh-nghe-nhan/san-pham/moi" className={buttonClass()}>
     <Plus />
-    Thêm sản phẩm
+    Add product
   </LocalizedClientLink>
 )
 
@@ -18,9 +18,9 @@ export default async function ArtisanProductsPage() {
   return (
     <div className="flex flex-col gap-6">
       <PageHeader
-        eyebrow="Gian hàng"
-        title="Sản phẩm"
-        description="Sản phẩm bạn đang bán và đang ẩn trên sàn Yarnly."
+        eyebrow="Shop"
+        title="Products"
+        description="Products you sell, and those hidden, on Yarnly."
         actions={products.length > 0 && <AddProductLink />}
       />
       {products.length ? (
@@ -50,10 +50,10 @@ export default async function ArtisanProductsPage() {
                     <p className="truncate font-yarnly text-lg tracking-[-0.01em]">{product.title}</p>
                     <p className="txt-small text-yarnly-muted">
                       {product.fulfillment_type === "made_to_order"
-                        ? `Làm theo đơn · ${product.lead_days} ngày`
-                        : `Có sẵn · tồn ${stock}`}
+                        ? `Made to order · ${product.lead_days} days`
+                        : `In stock · quantity ${stock}`}
                       {" · "}
-                      {product.variants.length} phân loại
+                      {product.variants.length} variants
                     </p>
                   </div>
                   <div className="flex shrink-0 flex-col items-end gap-1.5 text-right">
@@ -70,7 +70,7 @@ export default async function ArtisanProductsPage() {
                           : "bg-[#ecebe5] text-[#55594f]"
                       )}
                     >
-                      {published ? "Đang bán" : "Đang ẩn"}
+                      {published ? "On sale" : "Hidden"}
                     </span>
                   </div>
                 </LocalizedClientLink>
@@ -80,8 +80,8 @@ export default async function ArtisanProductsPage() {
         </ul>
       ) : (
         <EmptyState
-          title="Bạn chưa có sản phẩm nào"
-          description="Đăng món len đầu tiên để khách tìm thấy gian hàng của bạn."
+          title="You have no products yet"
+          description="List your first crochet piece so customers can find your shop."
           action={<AddProductLink />}
         />
       )}

@@ -8,9 +8,9 @@ export default async function ArtisanPayoutsPage() {
   return (
     <div className="flex flex-col gap-6">
       <PageHeader
-        eyebrow="Gian hàng"
-        title="Thu nhập"
-        description="Mỗi thứ Hai, Yarnly tổng hợp các đơn hoàn thành tuần trước và chuyển khoản vào tài khoản trong hồ sơ của bạn. Phí sàn hiện tại: 0%."
+        eyebrow="Shop"
+        title="Earnings"
+        description="Every Monday, Yarnly totals the previous week's completed orders and transfers your earnings to the bank account in your profile. Current platform fee: 0%."
       />
       {payouts.length ? (
         <section className="overflow-hidden rounded-2xl border border-yarnly-line bg-white">
@@ -18,12 +18,12 @@ export default async function ArtisanPayoutsPage() {
             <table className="w-full min-w-[640px] txt-medium">
               <thead className="bg-yarnly-paper text-left txt-small text-yarnly-muted">
                 <tr>
-                  <th className="px-5 py-3 font-normal">Kỳ</th>
-                  <th className="px-5 py-3 font-normal">Số đơn</th>
-                  <th className="px-5 py-3 font-normal">Tiền hàng</th>
-                  <th className="px-5 py-3 font-normal">Phí sàn</th>
-                  <th className="px-5 py-3 font-normal">Thực nhận</th>
-                  <th className="px-5 py-3 font-normal">Trạng thái</th>
+                  <th className="px-5 py-3 font-normal">Period</th>
+                  <th className="px-5 py-3 font-normal">Orders</th>
+                  <th className="px-5 py-3 font-normal">Item total</th>
+                  <th className="px-5 py-3 font-normal">Platform fee</th>
+                  <th className="px-5 py-3 font-normal">Net payout</th>
+                  <th className="px-5 py-3 font-normal">Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -42,13 +42,13 @@ export default async function ArtisanPayoutsPage() {
                       {payout.status === "paid" ? (
                         <span className="flex flex-col gap-1">
                           <span className="w-fit rounded-full bg-yarnly-sage px-2.5 py-0.5 text-[12px] font-medium text-yarnly-moss-dark">
-                            Đã chuyển {formatDateTime(payout.paid_at)}
+                            Paid {formatDateTime(payout.paid_at)}
                           </span>
-                          <span className="txt-small text-yarnly-muted">Mã GD: {payout.transaction_ref}</span>
+                          <span className="txt-small text-yarnly-muted">Transaction ref: {payout.transaction_ref}</span>
                         </span>
                       ) : (
                         <span className="rounded-full bg-[#f6ead0] px-2.5 py-0.5 text-[12px] font-medium text-[#7d5716]">
-                          Chờ Yarnly chuyển
+                          Awaiting payment from Yarnly
                         </span>
                       )}
                     </td>
@@ -60,8 +60,8 @@ export default async function ArtisanPayoutsPage() {
         </section>
       ) : (
         <EmptyState
-          title="Chưa có kỳ chuyển tiền nào"
-          description="Khi có đơn hoàn thành, Yarnly sẽ tổng hợp và chuyển tiền cho bạn vào thứ Hai kế tiếp."
+          title="No payouts yet"
+          description="Once orders are completed, Yarnly totals them and pays you the following Monday."
         />
       )}
     </div>

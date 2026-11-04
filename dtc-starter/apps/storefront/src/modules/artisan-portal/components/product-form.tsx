@@ -4,6 +4,8 @@ import {
   deleteArtisanProduct,
   saveArtisanProduct,
   uploadArtisanImages,
+  requestArtisanImageUpload,
+  completeArtisanImageUpload,
 } from "@lib/data/artisan-portal"
 import type { ArtisanProduct } from "@lib/marketplace-types"
 import { shrinkImage } from "@lib/util/shrink-image"
@@ -54,8 +56,25 @@ export default function ProductForm({ product, categories }: Props) {
     const urls: string[] = []
     let error: string | null = null
     for (const file of Array.from(files)) {
+      const image = await shrinkImage(file)
+      if (process.env.NEXT_PUBLIC_YARNLY_BACKEND_MODE === "mongodb") {
+        try {
+          const signed = await requestArtisanImageUpload({ filename: image.name, mime_type: image.type, size: image.size })
+          if (!signed.upload) throw new Error(signed.error ?? "Unable to create an image upload session")
+          const response = await fetch(signed.upload.upload_url, { method: "PUT", headers: signed.upload.headers,
+            body: image, signal: AbortSignal.timeout(120_000) })
+          if (!response.ok) throw new Error("Upload failed. Please try again.")
+          const completed = await completeArtisanImageUpload(signed.upload.id)
+          if (!completed.url) throw new Error(completed.error ?? "Unable to verify the uploaded image")
+          urls.push(completed.url)
+        } catch (failure) {
+          error = failure instanceof Error ? failure.message : "Unable to upload the image. Please try again."
+          break
+        }
+        continue
+      }
       const formData = new FormData()
-      formData.append("files", await shrinkImage(file))
+      formData.append("files", image)
       const result = await uploadArtisanImages(formData)
       if (result.error) {
         error = result.error
@@ -65,7 +84,7 @@ export default function ProductForm({ product, categories }: Props) {
     }
     setUploading(false)
     if (error) toast.error(error)
-    else toast.success(`Đã tải lên ${urls.length} ảnh – nhớ bấm Lưu`)
+    else toast.success(`Uploaded ${urls.length} images — remember to save`)
     setImages((previous) => [...previous, ...urls])
   }
 
@@ -96,7 +115,7 @@ export default function ProductForm({ product, categories }: Props) {
       if (result.error) {
         toast.error(result.error)
       } else {
-        toast.success(product ? "Đã lưu thay đổi" : "Đã đăng sản phẩm")
+        toast.success(product ? "Changes saved" : "Product published")
         if (!product && result.id) {
           router.push(`/${countryCode}/kenh-nghe-nhan/san-pham/${result.id}`)
         } else {
@@ -108,14 +127,14 @@ export default function ProductForm({ product, categories }: Props) {
   return (
     <div className="flex flex-col gap-7">
       {product?.hidden_by_lock && (
-        <Notice tone="warning">Sản phẩm đang bị ẩn vì gian hàng bị khoá.</Notice>
+        <Notice tone="warning">This product is hidden because the shop is suspended.</Notice>
       )}
 
-      <FormSection title="Thông tin">
-        <Field label="Tên sản phẩm">
+      <FormSection title="Details">
+        <Field label="Product name">
           <input value={title} onChange={(event) => setTitle(event.target.value)} className={fieldClass} />
         </Field>
-        <Field label="Mô tả">
+        <Field label="Description">
           <textarea
             rows={4}
             value={description}
@@ -125,8 +144,8 @@ export default function ProductForm({ product, categories }: Props) {
         </Field>
       </FormSection>
 
-      <FormSection title="Loại hàng">
-        <div role="radiogroup" aria-label="Loại hàng" className="grid grid-cols-1 gap-3 xsmall:grid-cols-2">
+      <FormSection title="Fulfillment type">
+        <div role="radiogroup" aria-label="Fulfillment type" className="grid grid-cols-1 gap-3 xsmall:grid-cols-2">
           {TYPE_OPTIONS.map((option) => (
             <label
               key={option.value}
@@ -152,7 +171,7 @@ export default function ProductForm({ product, categories }: Props) {
           ))}
         </div>
         {type === "made_to_order" && (
-          <Field label="Số ngày làm" hint="Tính từ lúc bạn nhận đơn" className="max-w-xs">
+          <Field label="Production time (days)" hint="From the time you accept the order" className="max-w-xs">
             <input
               type="number"
               min={1}
@@ -164,15 +183,15 @@ export default function ProductForm({ product, categories }: Props) {
         )}
       </FormSection>
 
-      <FormSection title={`Giá${type === "ready" ? " và tồn kho" : ""}${product ? " theo phân loại" : ""}`}>
+      <FormSection title={`Price${type === "ready" ? " and stock" : ""}${product ? " by variant" : ""}`}>
         {product ? (
           <div className="overflow-x-auto rounded-xl border border-yarnly-line">
             <table className="w-full min-w-[420px] txt-medium">
               <thead className="bg-yarnly-paper text-left txt-small text-yarnly-muted">
                 <tr>
-                  <th className="px-4 py-2.5 font-normal">Phân loại</th>
-                  <th className="px-4 py-2.5 font-normal">Giá (₫)</th>
-                  {type === "ready" && <th className="px-4 py-2.5 font-normal">Tồn kho</th>}
+                  <th className="px-4 py-2.5 font-normal">Variant</th>
+                  <th className="px-4 py-2.5 font-normal">Price (VND)</th>
+                  {type === "ready" && <th className="px-4 py-2.5 font-normal">Stock</th>}
                 </tr>
               </thead>
               <tbody>
@@ -191,7 +210,7 @@ export default function ProductForm({ product, categories }: Props) {
                           )
                         }
                         className={fieldClass}
-                        aria-label="Giá"
+                        aria-label="Price"
                       />
                     </td>
                     {type === "ready" && (
@@ -206,11 +225,11 @@ export default function ProductForm({ product, categories }: Props) {
                             )
                           }
                           className={fieldClass}
-                          aria-label="Tồn kho"
+                          aria-label="Stock"
                         />
                         {variant.reserved > 0 && (
                           <span className="mt-1 block txt-small text-yarnly-muted">
-                            Đang giữ cho đơn: {variant.reserved}
+                            Reserved for orders: {variant.reserved}
                           </span>
                         )}
                       </td>
@@ -222,7 +241,7 @@ export default function ProductForm({ product, categories }: Props) {
           </div>
         ) : (
           <div className="grid grid-cols-1 gap-4 small:grid-cols-2">
-            <Field label="Giá (₫)">
+            <Field label="Price (VND)">
               <input
                 type="number"
                 min={1000}
@@ -233,7 +252,7 @@ export default function ProductForm({ product, categories }: Props) {
               />
             </Field>
             {type === "ready" && (
-              <Field label="Tồn kho">
+              <Field label="Stock">
                 <input
                   type="number"
                   min={0}
@@ -247,7 +266,7 @@ export default function ProductForm({ product, categories }: Props) {
         )}
       </FormSection>
 
-      <FormSection title="Ảnh sản phẩm" hint="Ảnh đầu tiên là ảnh đại diện trên sàn.">
+      <FormSection title="Product images" hint="The first image is the cover shown on Yarnly.">
         <div className="grid grid-cols-3 gap-3 xsmall:grid-cols-4 medium:grid-cols-6">
           {images.map((url, index) => (
             <div key={url} className="relative aspect-square">
@@ -259,14 +278,14 @@ export default function ProductForm({ product, categories }: Props) {
               />
               {index === 0 && (
                 <span className="absolute bottom-1.5 left-1.5 rounded-full bg-yarnly-ink/80 px-2 py-0.5 text-[10px] text-white">
-                  Ảnh chính
+                  Cover
                 </span>
               )}
               <button
                 type="button"
                 onClick={() => setImages((previous) => previous.filter((image) => image !== url))}
                 className="absolute right-1.5 top-1.5 flex h-7 w-7 items-center justify-center rounded-full bg-white/95 text-yarnly-ink shadow-sm transition-colors hover:bg-yarnly-ink hover:text-white"
-                aria-label="Xoá ảnh"
+                aria-label="Remove image"
               >
                 ×
               </button>
@@ -279,7 +298,7 @@ export default function ProductForm({ product, categories }: Props) {
             )}
           >
             <span aria-hidden="true" className="text-2xl leading-none">+</span>
-            {uploading ? "Đang tải ảnh…" : "Thêm ảnh"}
+            {uploading ? "Uploading images…" : "Add images"}
             <input
               type="file"
               accept="image/*"
@@ -293,7 +312,7 @@ export default function ProductForm({ product, categories }: Props) {
       </FormSection>
 
       {categories.length > 0 && (
-        <FormSection title="Danh mục">
+        <FormSection title="Categories">
           <div className="flex flex-wrap gap-2">
             {categories.map((category) => {
               const checked = categoryIds.includes(category.id)
@@ -331,9 +350,9 @@ export default function ProductForm({ product, categories }: Props) {
 
       <label className="flex cursor-pointer items-center justify-between gap-4 rounded-xl border border-yarnly-line bg-yarnly-paper p-4">
         <span className="flex flex-col gap-0.5">
-          <span className="txt-medium-plus">Hiển thị trên sàn</span>
+          <span className="txt-medium-plus">Publish on marketplace</span>
           <span className="txt-small text-yarnly-muted">
-            Tắt để tạm ẩn sản phẩm mà không phải xoá.
+            Turn off to hide the product temporarily without deleting it.
           </span>
         </span>
         <input
@@ -351,7 +370,7 @@ export default function ProductForm({ product, categories }: Props) {
 
       <div className="flex flex-wrap gap-3 border-t border-yarnly-line pt-6">
         <Button onClick={save} isLoading={pending} disabled={uploading}>
-          {product ? "Lưu thay đổi" : "Đăng sản phẩm"}
+          {product ? "Save changes" : "Publish product"}
         </Button>
         {product && (
           <Button
@@ -359,9 +378,9 @@ export default function ProductForm({ product, categories }: Props) {
             disabled={pending}
             onClick={async () => {
               const ok = await confirm({
-                title: "Xoá sản phẩm này?",
-                description: `"${product.title}" sẽ biến mất khỏi gian hàng và không khôi phục được. Muốn tạm ẩn thì bỏ chọn "Hiển thị trên sàn".`,
-                confirmText: "Xoá sản phẩm",
+                title: "Delete this product?",
+                description: `"${product.title}" will be removed from your shop and cannot be restored here. To hide it temporarily, turn off "Publish on marketplace".`,
+                confirmText: "Delete product",
                 tone: "danger",
               })
               if (!ok) return
@@ -371,12 +390,12 @@ export default function ProductForm({ product, categories }: Props) {
                   toast.error(result.error)
                   return
                 }
-                toast.success("Đã xoá sản phẩm")
+                toast.success("Product deleted")
                 router.push(`/${countryCode}/kenh-nghe-nhan/san-pham`)
               })
             }}
           >
-            Xoá
+            Delete
           </Button>
         )}
       </div>
@@ -385,8 +404,8 @@ export default function ProductForm({ product, categories }: Props) {
 }
 
 const TYPE_OPTIONS = [
-  { value: "ready", label: "Hàng có sẵn", hint: "Bán theo tồn kho, giao ngay khi nhận đơn" },
-  { value: "made_to_order", label: "Làm theo đơn", hint: "Bắt đầu làm sau khi bạn nhận đơn" },
+  { value: "ready", label: "Ready-made", hint: "Sold from stock and shipped once you accept the order" },
+  { value: "made_to_order", label: "Made to order", hint: "You start making it after accepting the order" },
 ] as const
 
 const FormSection = ({

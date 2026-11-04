@@ -111,6 +111,22 @@
 .mobileMenu {
   display: none;
 }
+/* Same glass as the other header controls while over the hero. */
+.languageToggle {
+  height: 42px;
+  padding: 4px;
+  border-color: #ffffff26 !important;
+  background: #ffffff12;
+  backdrop-filter: blur(14px);
+}
+.headerScrolled .languageToggle {
+  border-color: #d9ded1 !important;
+  background: transparent;
+}
+/* Shown inside the mobile menu only where the header has no room for it. */
+.mobileLanguage {
+  display: none;
+}
 .hero {
   height: 100svh;
   min-height: 680px;
@@ -330,6 +346,20 @@
   }
   .footerBottom nav {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 400px) {
+  .languageToggle {
+    display: none;
+  }
+  .mobileLanguage {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 46px;
+    padding: 0 12px;
+    font-size: 14px;
+    border-top: 1px solid #d5dec9;
   }
 }
 @media (max-width: 520px) {

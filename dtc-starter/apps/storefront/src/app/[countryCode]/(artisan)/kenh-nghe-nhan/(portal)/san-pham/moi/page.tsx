@@ -8,8 +8,8 @@ export default async function NewArtisanProductPage() {
   return (
     <div className="flex flex-col gap-6">
       <PageHeader
-        back={{ href: "/kenh-nghe-nhan/san-pham", label: "Sản phẩm" }}
-        title="Thêm sản phẩm"
+        back={{ href: "/kenh-nghe-nhan/san-pham", label: "Products" }}
+        title="Add product"
       />
       <Card>
         <ProductForm categories={categories} />

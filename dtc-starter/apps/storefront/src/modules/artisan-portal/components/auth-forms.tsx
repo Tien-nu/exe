@@ -6,7 +6,7 @@ import { useParams } from "next/navigation"
 import { useActionState } from "react"
 import { useFormStatus } from "react-dom"
 import { Button, Field, Notice, fieldClass, linkClass } from "../ui"
-import GhnPickupFields from "./ghn-pickup-fields"
+import PickupAddressFields from "./pickup-address-fields"
 
 const Submit = ({ children }: { children: React.ReactNode }) => {
   const { pending } = useFormStatus()
@@ -41,7 +41,7 @@ export const ArtisanLoginForm = () => {
           className={fieldClass}
         />
       </Field>
-      <Field label="Mật khẩu">
+      <Field label="Password">
         <input
           name="password"
           type="password"
@@ -51,11 +51,11 @@ export const ArtisanLoginForm = () => {
         />
       </Field>
       <FormError error={state?.error} />
-      <Submit>Đăng nhập</Submit>
+      <Submit>Sign in</Submit>
       <p className="border-t border-yarnly-line pt-5 txt-small text-center text-yarnly-muted">
-        Chưa có gian hàng?{" "}
+        Don't have a shop yet?{" "}
         <LocalizedClientLink href="/kenh-nghe-nhan/dang-ky" className={linkClass}>
-          Đăng ký làm nghệ nhân
+          Become an artisan
         </LocalizedClientLink>
       </p>
     </form>
@@ -72,39 +72,39 @@ type RegisterField = {
 
 const REGISTER_GROUPS: { title: string; fields: RegisterField[]; pickup?: boolean }[] = [
   {
-    title: "Gian hàng và tài khoản",
+    title: "Shop and account",
     fields: [
-      { name: "shop_name", label: "Tên gian hàng" },
-      { name: "full_name", label: "Họ tên", autoComplete: "name" },
-      { name: "email", label: "Email (dùng để đăng nhập)", type: "email", autoComplete: "email" },
+      { name: "shop_name", label: "Shop name" },
+      { name: "full_name", label: "Full name", autoComplete: "name" },
+      { name: "email", label: "Email (used to sign in)", type: "email", autoComplete: "email" },
       {
         name: "password",
-        label: "Mật khẩu",
+        label: "Password",
         type: "password",
-        hint: "Tối thiểu 8 ký tự",
+        hint: "At least 8 characters",
         autoComplete: "new-password",
       },
-      { name: "phone", label: "Số điện thoại", type: "tel", autoComplete: "tel" },
+      { name: "phone", label: "Phone number", type: "tel", autoComplete: "tel" },
     ],
   },
   {
-    title: "Địa chỉ lấy hàng",
+    title: "Pickup address",
     pickup: true,
     fields: [
       {
         name: "pickup_address",
-        label: "Số nhà, tên đường lấy hàng",
-        hint: "Shipper GHN sẽ tới đây lấy hàng",
+        label: "Pickup street address",
+        hint: "Your shop's dispatch address",
         autoComplete: "street-address",
       },
     ],
   },
   {
-    title: "Tài khoản nhận tiền",
+    title: "Payout account",
     fields: [
-      { name: "bank_name", label: "Ngân hàng nhận tiền" },
-      { name: "bank_account_number", label: "Số tài khoản" },
-      { name: "bank_account_name", label: "Chủ tài khoản" },
+      { name: "bank_name", label: "Receiving bank" },
+      { name: "bank_account_number", label: "Account number" },
+      { name: "bank_account_name", label: "Account holder" },
     ],
   },
 ]
@@ -143,10 +143,10 @@ export const ArtisanRegisterForm = () => {
               </Field>
             ))}
           </div>
-          {group.pickup && <GhnPickupFields value={state?.values} />}
+          {group.pickup && <PickupAddressFields value={state?.values} />}
         </fieldset>
       ))}
-      <Field label="Giới thiệu gian hàng (tuỳ chọn)">
+      <Field label="Shop introduction (optional)">
         <textarea
           name="description"
           rows={3}
@@ -155,15 +155,15 @@ export const ArtisanRegisterForm = () => {
         />
       </Field>
       <Notice>
-        Yarnly nhận tiền từ khách và chuyển cho bạn mỗi thứ Hai (phí sàn hiện tại 0%). Tài khoản
-        cần Admin duyệt trước khi bán.
+        Yarnly collects payments from customers and pays you every Monday. The current platform
+        fee is 0%. Your account must be approved by an admin before you can sell.
       </Notice>
       <FormError error={state?.error} />
-      <Submit>Đăng ký</Submit>
+      <Submit>Register</Submit>
       <p className="border-t border-yarnly-line pt-5 txt-small text-center text-yarnly-muted">
-        Đã có gian hàng?{" "}
+        Already have a shop?{" "}
         <LocalizedClientLink href="/kenh-nghe-nhan/dang-nhap" className={linkClass}>
-          Đăng nhập
+          Sign in
         </LocalizedClientLink>
       </p>
     </form>

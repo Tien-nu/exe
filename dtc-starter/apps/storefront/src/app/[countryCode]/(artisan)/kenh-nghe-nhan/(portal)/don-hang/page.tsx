@@ -4,16 +4,16 @@ import { EmptyState, FilterTabs, PageHeader, linkClass } from "@modules/artisan-
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 const TABS = [
-  { status: "", label: "Tất cả" },
-  { status: "pending_acceptance", label: "Chờ xác nhận" },
-  { status: "processing", label: "Đang làm" },
-  { status: "ready_to_ship", label: "Chờ giao" },
-  { status: "shipping", label: "Đang giao" },
-  { status: "completed", label: "Hoàn thành" },
-  { status: "canceled", label: "Đã huỷ" },
+  { status: "", label: "All" },
+  { status: "pending_acceptance", label: "Awaiting acceptance" },
+  { status: "processing", label: "In progress" },
+  { status: "ready_to_ship", label: "Awaiting shipment" },
+  { status: "shipping", label: "Shipping" },
+  { status: "completed", label: "Completed" },
+  { status: "canceled", label: "Canceled" },
 ]
 
-/** Orders for listed products; custom-made ones live in "Đơn làm riêng". */
+/** Orders for listed products; custom-made ones live in "Custom orders". */
 export default async function ArtisanOrdersPage(props: {
   searchParams: Promise<{ status?: string }>
 }) {
@@ -23,20 +23,20 @@ export default async function ArtisanOrdersPage(props: {
   return (
     <div className="flex flex-col gap-6">
       <PageHeader
-        eyebrow="Đơn hàng"
-        title="Đơn hàng có sẵn"
+        eyebrow="Orders"
+        title="Ready-made orders"
         description={
           <>
-            Đơn đặt sản phẩm đang bán. Đơn làm theo yêu cầu riêng xem ở{" "}
+            Orders for the products you list. Orders made to a customer's request are under{" "}
             <LocalizedClientLink href="/kenh-nghe-nhan/don-lam-rieng" className={linkClass}>
-              Đơn làm riêng
+              Custom orders
             </LocalizedClientLink>
             .
           </>
         }
       />
       <FilterTabs
-        label="Lọc theo trạng thái"
+        label="Filter by status"
         tabs={TABS.map((tab) => ({
           href: `/kenh-nghe-nhan/don-hang${tab.status ? `?status=${tab.status}` : ""}`,
           label: tab.label,
@@ -53,8 +53,8 @@ export default async function ArtisanOrdersPage(props: {
         </ul>
       ) : (
         <EmptyState
-          title="Không có đơn nào"
-          description="Đơn mới sẽ hiện ở đây ngay khi khách đặt sản phẩm của bạn."
+          title="No orders here"
+          description="New orders appear here as soon as a customer buys one of your products."
         />
       )}
     </div>

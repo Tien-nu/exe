@@ -96,7 +96,7 @@ const SubOrderCard = ({ subOrder }: { subOrder: CustomerSubOrder }) => {
           className={`rounded-full px-3 py-1 txt-small-plus ${SUB_ORDER_BADGE[subOrder.status]}`}
         >
           {subOrder.status === "pending_acceptance"
-            ? `Waiting for ${subOrder.artisan?.shop_name ?? "shop"} confirmed`
+            ? `Waiting for ${subOrder.artisan?.shop_name ?? "shop"} to confirm`
             : subOrder.status_label}
         </span>
       </div>

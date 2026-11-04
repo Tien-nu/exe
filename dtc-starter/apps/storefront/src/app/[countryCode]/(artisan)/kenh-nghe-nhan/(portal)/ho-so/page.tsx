@@ -15,15 +15,15 @@ export default async function ArtisanProfilePage() {
   return (
     <div className="flex flex-col gap-6">
       <PageHeader
-        eyebrow="Gian hàng"
-        title="Hồ sơ gian hàng"
-        description="Thông tin hiển thị cho khách, địa chỉ để shipper GHN tới lấy hàng và tài khoản nhận tiền."
+        eyebrow="Shop"
+        title="Shop profile"
+        description="What customers see, the pickup address used for shipping, and the account Yarnly pays you into."
         actions={
           <LocalizedClientLink
             href={`/nghe-nhan/${artisan.handle}`}
             className={clx("inline-flex items-center gap-0.5 txt-small", linkClass)}
           >
-            Xem gian hàng của bạn
+            View your shop
             <ArrowUpRightMini />
           </LocalizedClientLink>
         }

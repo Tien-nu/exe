@@ -68,8 +68,11 @@ export async function marketplace(request: Request, path: string[]) {
       const [counts, pendingRequests, revenue, payouts] = await Promise.all([
         db.collection("sub_orders").aggregate([{ $match: actorFilter }, { $group: { _id: "$status", count: { $sum: 1 } } }]).toArray(),
         db.collection("custom_requests").countDocuments({ ...actorFilter, status: "pending" }),
+        // Simulated (coursework QR) sub-orders never enter a payout, so they must not wait for one.
         db.collection("sub_orders").aggregate([{ $match: { ...actorFilter, status: "completed" } }, { $group: {
-          _id: null, completed_total: { $sum: "$subtotal" }, awaiting_payout: { $sum: { $cond: [{ $eq: [{ $ifNull: ["$payout_id", null] }, null] }, "$subtotal", 0] } },
+          _id: null, completed_total: { $sum: "$subtotal" }, awaiting_payout: { $sum: { $cond: [{ $and: [
+            { $eq: [{ $ifNull: ["$payout_id", null] }, null] }, { $ne: ["$payment_mode", "simulation"] },
+          ] }, "$subtotal", 0] } },
         } }]).toArray(),
         db.collection("payouts").aggregate([{ $match: actorFilter }, { $group: { _id: "$status", total: { $sum: "$net_amount" } } }]).toArray(),
       ])

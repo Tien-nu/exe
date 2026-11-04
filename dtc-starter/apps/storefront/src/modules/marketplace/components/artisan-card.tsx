@@ -46,10 +46,10 @@ export default function ArtisanCard({
           {artisan.shop_name}
         </h2>
         <p className="line-clamp-3 txt-small leading-relaxed text-yarnly-muted">
-          {artisan.description || "Gian hàng đồ len thủ công trên Yarnly."}
+          {artisan.description || "A handmade crochet shop on Yarnly."}
         </p>
         <span className="mt-auto inline-flex items-center gap-0.5 pt-4 txt-small font-medium text-yarnly-moss">
-          Xem gian hàng
+          Visit shop
           <ArrowRightMini className="transition-transform group-hover:translate-x-0.5" />
         </span>
       </div>

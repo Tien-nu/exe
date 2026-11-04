@@ -13,10 +13,10 @@ export default function SubOrderCard({ subOrder }: { subOrder: ArtisanSubOrder }
     >
       <div className="flex flex-wrap items-center justify-between gap-2">
         <span className="flex items-center gap-2">
-          <span className="font-yarnly text-lg tracking-[-0.01em]">Đơn {subOrder.code}</span>
+          <span className="font-yarnly text-lg tracking-[-0.01em]">Order {subOrder.code}</span>
           {subOrder.is_custom && (
             <span className="rounded-full bg-yarnly-sage px-2 py-0.5 text-[11px] font-medium text-yarnly-moss">
-              Làm riêng
+              Custom-made
             </span>
           )}
         </span>
@@ -31,7 +31,7 @@ export default function SubOrderCard({ subOrder }: { subOrder: ArtisanSubOrder }
         </span>
         <span>
           <span className="font-medium text-yarnly-ink">{formatVnd(subOrder.subtotal)}</span> ·{" "}
-          {subOrder.payment_method === "cod" ? "COD" : "Đã chuyển khoản"} ·{" "}
+          {subOrder.payment_method === "cod" ? "COD" : "Paid by bank transfer"} ·{" "}
           {formatDateTime(subOrder.created_at)}
         </span>
       </div>

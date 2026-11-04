@@ -20,14 +20,14 @@ export default async function EditArtisanProductPage(props: { params: Promise<{ 
   return (
     <div className="flex flex-col gap-6">
       <PageHeader
-        back={{ href: "/kenh-nghe-nhan/san-pham", label: "Sản phẩm" }}
+        back={{ href: "/kenh-nghe-nhan/san-pham", label: "Products" }}
         title={product.title}
         actions={
           <LocalizedClientLink
             href={`/products/${product.handle}`}
             className={clx("inline-flex items-center gap-0.5 txt-small", linkClass)}
           >
-            Xem trên sàn
+            View on Yarnly
             <ArrowUpRightMini />
           </LocalizedClientLink>
         }

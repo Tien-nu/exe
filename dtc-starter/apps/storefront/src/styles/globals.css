@@ -14,6 +14,19 @@
   --yarnly-line: #e4dbcf;
 }
 
+/* Vietnamese visitors: hide the English first paint until it is translated,
+   but never for longer than 1.5s. */
+html[data-i18n="pending"] body {
+  visibility: hidden;
+  animation: yarnly-i18n-reveal 0s linear 1.5s forwards;
+}
+
+@keyframes yarnly-i18n-reveal {
+  to {
+    visibility: visible;
+  }
+}
+
 @layer utilities {
   /* Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {

@@ -6,15 +6,15 @@ import { linkClass } from "../ui"
 export default function SubOrderNextStep({ subOrder }: { subOrder: ArtisanSubOrder }) {
   switch (subOrder.status) {
     case "pending_acceptance":
-      return <>Hạn xác nhận: <strong>{formatDateTime(subOrder.accept_deadline)}</strong> – quá hạn đơn tự huỷ.</>
+      return <>Acceptance deadline: <strong>{formatDateTime(subOrder.accept_deadline)}</strong> — the order is canceled automatically after this deadline.</>
     case "processing":
       return subOrder.due_date ? (
-        <>Hạn làm xong: <strong>{formatDate(subOrder.due_date)}</strong></>
+        <>Production deadline: <strong>{formatDate(subOrder.due_date)}</strong></>
       ) : (
-        <>Chuẩn bị và đóng gói hàng có sẵn.</>
+        <>Prepare and pack the ready-made items.</>
       )
     case "ready_to_ship":
-      return <>Đã báo Yarnly lúc {formatDateTime(subOrder.ready_at)}. Chờ đơn vị vận chuyển tới lấy.</>
+      return <>Yarnly notified at {formatDateTime(subOrder.ready_at)}. Awaiting carrier collection.</>
     case "shipping":
       return (
         <>
@@ -30,9 +30,15 @@ export default function SubOrderNextStep({ subOrder }: { subOrder: ArtisanSubOrd
         </>
       )
     case "delivered":
-      return <>Đã giao, tự hoàn thành lúc {formatDateTime(subOrder.complete_at)}.</>
+      return <>Delivered; automatically completes at {formatDateTime(subOrder.complete_at)}.</>
     case "completed":
-      return subOrder.payout_id ? <>Đã vào kỳ chuyển tiền.</> : <>Sẽ vào kỳ chuyển tiền thứ Hai tới.</>
+      return subOrder.payout_id ? (
+        <>Included in a payout period.</>
+      ) : subOrder.payment_mode === "simulation" ? (
+        <>Order completed.</>
+      ) : (
+        <>Will be included in next Monday's payout.</>
+      )
     case "canceled":
       return <>{subOrder.cancel_reason}</>
     default:

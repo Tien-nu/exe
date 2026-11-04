@@ -74,6 +74,7 @@ export const publicArtisan = (artisan: any) =>
 export const subOrderForArtisan = (sub: any, customRequest?: any) => ({
   ...common(sub),
   payment_method: sub.marketplace_order?.payment_method,
+  payment_mode: sub.payment_mode ?? "bank",
   payout_id: sub.payout_id,
   custom_request: customRequest
     ? {

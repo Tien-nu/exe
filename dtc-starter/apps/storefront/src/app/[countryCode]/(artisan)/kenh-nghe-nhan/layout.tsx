@@ -1,10 +1,11 @@
 import { ArrowUpRightMini } from "@medusajs/icons"
+import LanguageToggle from "@modules/common/components/language/language-toggle"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { yarnlySerif } from "@lib/fonts"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Kênh nghệ nhân | Yarnly",
+  title: "Artisan Portal | Yarnly",
 }
 
 export default function ArtisanChannelLayout({ children }: { children: React.ReactNode }) {
@@ -17,17 +18,20 @@ export default function ArtisanChannelLayout({ children }: { children: React.Rea
               Yarnly<span aria-hidden="true" className="text-yarnly-moss">.</span>
             </span>
             <span className="text-[10px] font-medium uppercase tracking-[0.16em] text-yarnly-moss">
-              Kênh nghệ nhân
+              Artisan Portal
             </span>
           </LocalizedClientLink>
-          <LocalizedClientLink
-            href="/home"
-            className="inline-flex items-center gap-1 txt-small text-yarnly-muted transition-colors hover:text-yarnly-ink"
-          >
-            <span className="hidden xsmall:inline">Về trang mua sắm</span>
-            <span className="xsmall:hidden">Mua sắm</span>
-            <ArrowUpRightMini />
-          </LocalizedClientLink>
+          <div className="flex items-center gap-3 small:gap-5">
+            <LanguageToggle className="text-yarnly-ink" />
+            <LocalizedClientLink
+              href="/home"
+              className="inline-flex items-center gap-1 txt-small text-yarnly-muted transition-colors hover:text-yarnly-ink"
+            >
+              <span className="hidden xsmall:inline">Back to shopping</span>
+              <span className="xsmall:hidden">Shop</span>
+              <ArrowUpRightMini />
+            </LocalizedClientLink>
+          </div>
         </div>
       </header>
       {children}

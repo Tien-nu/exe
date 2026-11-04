@@ -3,10 +3,10 @@ import PixelIcon from "@modules/landing/components/pixel-icon"
 import Image from "next/image"
 
 const PERKS = [
-  { icon: "yarn", text: "Đăng món len của bạn và nhận đơn trên sàn Yarnly" },
-  { icon: "gift", text: "Báo giá đơn làm riêng theo ý khách" },
-  { icon: "heart", text: "Shipper GHN tới tận nơi lấy hàng" },
-  { icon: "flower", text: "Nhận tiền mỗi thứ Hai, phí sàn hiện tại 0%" },
+  { icon: "yarn", text: "List your crochet pieces and receive orders on Yarnly" },
+  { icon: "gift", text: "Quote custom orders made to each customer's wishes" },
+  { icon: "heart", text: "Flat shipping: VND 18,000 within your province, VND 22,000 elsewhere" },
+  { icon: "flower", text: "Get paid every Monday, with a 0% platform fee today" },
 ] as const
 
 /** Login and sign-up: the pixel garden on one side, the form on the other. */
@@ -46,10 +46,10 @@ export default function AuthShell({
           className="absolute inset-0 -z-10 bg-gradient-to-t from-[#1d2a1b]/90 via-[#1d2a1b]/40 to-transparent"
         />
         <p className="text-[10px] font-medium uppercase tracking-[0.16em] text-white/80">
-          Kênh nghệ nhân Yarnly
+          Yarnly Artisan Portal
         </p>
         <p className="mt-2 max-w-md font-yarnly text-2xl leading-tight tracking-[-0.03em] small:text-[40px]">
-          Mỗi mũi len là một câu chuyện của bạn.
+          Every stitch tells your story.
         </p>
         <ul className="mt-8 hidden flex-col gap-3 small:flex">
           {PERKS.map((perk) => (

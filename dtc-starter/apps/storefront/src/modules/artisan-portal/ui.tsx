@@ -145,7 +145,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       className={clx(buttonClass({ variant, size }), className)}
       {...props}
     >
-      {isLoading ? "Đang xử lý…" : children}
+      {isLoading ? "Processing…" : children}
     </button>
   )
 )

@@ -14,6 +14,8 @@ export default function WardSelect({
   label = "Ward / Commune",
   required = true,
   labelPlacement = "above",
+  labelClassName,
+  selectClassName,
 }: {
   province: string
   value: string
@@ -22,6 +24,9 @@ export default function WardSelect({
   label?: string
   required?: boolean
   labelPlacement?: "above" | "inside"
+  /** Override the "above" label/select styles, e.g. in the artisan portal. */
+  labelClassName?: string
+  selectClassName?: string
 }) {
   const id = useId()
   const code = provinceCode(province) ?? ""
@@ -75,7 +80,7 @@ export default function WardSelect({
         className={
           labelPlacement === "inside"
             ? "pointer-events-none absolute left-4 top-1 z-10 text-[10px] leading-3 text-ui-fg-subtle"
-            : "block text-sm"
+            : labelClassName ?? "block text-sm"
         }
       >
         {label}
@@ -89,7 +94,8 @@ export default function WardSelect({
         className={
           labelPlacement === "inside"
             ? "block h-11 w-full appearance-none rounded-md border border-ui-border-base bg-ui-bg-field pb-1 pl-4 pr-9 pt-4 txt-compact-medium hover:bg-ui-bg-field-hover focus:outline-none focus:shadow-borders-interactive-with-active disabled:bg-gray-100"
-            : "mt-1 min-h-11 w-full rounded-md border border-gray-300 bg-white px-4 py-2 focus:ring-1 focus:ring-gray-900 disabled:bg-gray-100"
+            : selectClassName ??
+              "mt-1 min-h-11 w-full rounded-md border border-gray-300 bg-white px-4 py-2 focus:ring-1 focus:ring-gray-900 disabled:bg-gray-100"
         }
         value={selected}
         required={required}

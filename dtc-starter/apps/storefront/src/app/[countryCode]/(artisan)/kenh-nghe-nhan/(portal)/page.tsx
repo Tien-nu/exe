@@ -7,17 +7,17 @@ import { clx } from "@modules/common/components/ui"
 import PixelIcon from "@modules/landing/components/pixel-icon"
 
 const TODO = [
-  { status: "pending_acceptance", label: "Đơn chờ bạn xác nhận", hint: "Nhận hoặc từ chối trong 12 tiếng" },
-  { status: "processing", label: "Đơn đang làm / chuẩn bị", hint: "Làm xong thì bấm “Đã làm xong”" },
-  { status: "ready_to_ship", label: "Chờ Yarnly tạo vận đơn", hint: "Đơn vị vận chuyển sẽ tới lấy hàng" },
-  { status: "shipping", label: "Đang giao", hint: "Theo dõi mã vận đơn trong từng đơn" },
+  { status: "pending_acceptance", label: "Orders awaiting your acceptance", hint: "Accept or decline within 12 hours" },
+  { status: "processing", label: "Orders in production / preparation", hint: "Mark the order Ready when it is finished" },
+  { status: "ready_to_ship", label: "Awaiting shipment from Yarnly", hint: "The carrier will collect your package" },
+  { status: "shipping", label: "Shipping", hint: "See the tracking number in each order" },
 ] as const
 
 const REVENUE = [
-  { key: "completed_total", label: "Đơn hoàn thành" },
-  { key: "awaiting_payout", label: "Chờ tổng hợp (thứ Hai tới)" },
-  { key: "pending_payout", label: "Chờ Yarnly chuyển" },
-  { key: "paid_out", label: "Đã nhận" },
+  { key: "completed_total", label: "Completed orders" },
+  { key: "awaiting_payout", label: "Awaiting next Monday's payout" },
+  { key: "pending_payout", label: "Awaiting payment from Yarnly" },
+  { key: "paid_out", label: "Paid out" },
 ] as const
 
 export default async function ArtisanDashboardPage() {
@@ -32,12 +32,12 @@ export default async function ArtisanDashboardPage() {
   return (
     <div className="flex flex-col gap-8">
       <PageHeader
-        eyebrow="Xưởng của bạn hôm nay"
-        title="Tổng quan"
-        description="Việc cần làm với các đơn đang mở và tiền hàng của gian hàng."
+        eyebrow="Your studio today"
+        title="Overview"
+        description="What your open orders need next, and your shop's earnings."
       />
 
-      <section aria-label="Việc cần làm" className="grid grid-cols-2 gap-3 small:gap-4 medium:grid-cols-4">
+      <section aria-label="To do" className="grid grid-cols-2 gap-3 small:gap-4 medium:grid-cols-4">
         {TODO.map((item) => {
           const count = counts[item.status] ?? 0
           const urgent = item.status === "pending_acceptance" && count > 0
@@ -59,14 +59,14 @@ export default async function ArtisanDashboardPage() {
                 </span>
                 {urgent && (
                   <span className="rounded-full bg-[#7d5716] px-2 py-0.5 text-[10px] font-medium uppercase tracking-[0.1em] text-white">
-                    Cần xử lý
+                    Action needed
                   </span>
                 )}
               </span>
               <span className="mt-2 txt-medium-plus leading-snug">{item.label}</span>
               <span className="txt-small text-yarnly-muted">{item.hint}</span>
               <span className="mt-auto inline-flex items-center gap-0.5 pt-3 txt-small text-yarnly-moss">
-                Xem đơn
+                View orders
                 <ArrowRightMini className="transition-transform group-hover:translate-x-0.5" />
               </span>
             </LocalizedClientLink>
@@ -81,17 +81,17 @@ export default async function ArtisanDashboardPage() {
         >
           <PixelIcon kind="gift" className="h-10 w-10 shrink-0" />
           <span className="flex-1 txt-medium">
-            Bạn có <strong>{dashboard.pending_custom_requests}</strong> yêu cầu làm riêng chờ báo giá
+            You have <strong>{dashboard.pending_custom_requests}</strong> custom requests awaiting a quote
           </span>
           <ArrowRightMini className="shrink-0 text-yarnly-moss transition-transform group-hover:translate-x-0.5" />
         </LocalizedClientLink>
       )}
 
       <Card
-        title="Thu nhập"
+        title="Earnings"
         actions={
           <LocalizedClientLink href="/kenh-nghe-nhan/thu-nhap" className={clx("txt-small", linkClass)}>
-            Xem các kỳ chuyển tiền
+            View payout periods
           </LocalizedClientLink>
         }
       >

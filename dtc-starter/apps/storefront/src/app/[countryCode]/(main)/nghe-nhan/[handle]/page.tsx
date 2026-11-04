@@ -20,7 +20,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   const shop = await getArtisanShop(handle)
 
   return {
-    title: shop ? `${shop.artisan.shop_name} | Yarnly` : "Gian hàng | Yarnly",
+    title: shop ? `${shop.artisan.shop_name} | Yarnly` : "Shop | Yarnly",
     description: shop?.artisan.description ?? undefined,
   }
 }
@@ -51,7 +51,7 @@ export default async function ArtisanShopPage(props: Props) {
           className="inline-flex items-center gap-1.5 txt-small text-yarnly-muted transition-colors hover:text-yarnly-ink"
         >
           <ArrowLeft className="h-4 w-4" />
-          Tất cả nghệ nhân
+          All artisans
         </LocalizedClientLink>
 
         <section className="mt-4 overflow-hidden rounded-3xl border border-yarnly-line bg-white">
@@ -73,7 +73,7 @@ export default async function ArtisanShopPage(props: Props) {
               />
               <div className="flex max-w-2xl flex-col gap-2 small:pt-6">
                 <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-yarnly-moss">
-                  Gian hàng nghệ nhân
+                  Artisan shop
                 </p>
                 <h1 className="font-yarnly text-[34px] leading-[1.05] tracking-[-0.035em] small:text-[48px]">
                   {shop.artisan.shop_name}
@@ -87,13 +87,13 @@ export default async function ArtisanShopPage(props: Props) {
             </div>
             <dl className="flex shrink-0 gap-8 border-t border-yarnly-line pt-5 small:border-l small:border-t-0 small:pl-10 small:pt-0">
               <div className="flex flex-col gap-1">
-                <dt className="txt-small text-yarnly-muted">Sản phẩm</dt>
+                <dt className="txt-small text-yarnly-muted">Products</dt>
                 <dd className="font-yarnly text-[32px] leading-none tracking-[-0.03em]">
                   {products.length}
                 </dd>
               </div>
               <div className="flex flex-col gap-1">
-                <dt className="txt-small text-yarnly-muted">Làm thủ công</dt>
+                <dt className="txt-small text-yarnly-muted">Handmade</dt>
                 <dd className="flex h-8 items-center">
                   <PixelIcon kind="heart" className="h-7 w-7" />
                 </dd>
@@ -108,9 +108,9 @@ export default async function ArtisanShopPage(props: Props) {
               id="shop-products"
               className="font-yarnly text-[28px] leading-tight tracking-[-0.03em] small:text-[36px]"
             >
-              Sản phẩm của gian hàng
+              Products from this shop
             </h2>
-            <p className="txt-small text-yarnly-muted">{products.length} sản phẩm</p>
+            <p className="txt-small text-yarnly-muted">{products.length} {products.length === 1 ? "product" : "products"}</p>
           </div>
           {products.length ? (
             <ul className="grid grid-cols-2 gap-x-4 gap-y-10 small:grid-cols-3 small:gap-x-6 medium:grid-cols-4">
@@ -123,15 +123,15 @@ export default async function ArtisanShopPage(props: Props) {
           ) : (
             <div className="flex flex-col items-center gap-3 rounded-2xl border border-dashed border-[#cfd3c6] bg-yarnly-cream px-6 py-14 text-center">
               <PixelIcon kind="yarn" className="h-10 w-10" />
-              <p className="font-yarnly text-xl">Gian hàng chưa có sản phẩm</p>
+              <p className="font-yarnly text-xl">This shop has no products yet</p>
               <p className="max-w-sm txt-small text-yarnly-muted">
-                Nghệ nhân đang chuẩn bị những món len đầu tiên. Bạn quay lại sau nhé.
+                The artisan is preparing their first pieces. Please check back soon.
               </p>
               <LocalizedClientLink
                 href="/nghe-nhan"
                 className="mt-2 txt-small text-yarnly-moss underline decoration-yarnly-moss/40 underline-offset-4 hover:decoration-yarnly-moss"
               >
-                Xem các nghệ nhân khác
+                See other artisans
               </LocalizedClientLink>
             </div>
           )}

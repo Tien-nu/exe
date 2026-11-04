@@ -14,9 +14,9 @@ export default async function ArtisanLoginPage(props: {
 
   return (
     <AuthShell
-      eyebrow="Chào mừng trở lại"
-      title="Đăng nhập Kênh nghệ nhân"
-      description="Quản lý sản phẩm, nhận đơn và theo dõi thu nhập."
+      eyebrow="Welcome back"
+      title="Sign in to the Artisan Portal"
+      description="Manage your products, accept orders and track your earnings."
     >
       <ArtisanLoginForm />
     </AuthShell>

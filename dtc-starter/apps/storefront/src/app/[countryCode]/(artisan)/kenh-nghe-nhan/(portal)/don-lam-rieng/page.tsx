@@ -1,9 +1,5 @@
 import { listArtisanCustomRequests, listArtisanSubOrders } from "@lib/data/artisan-portal"
-import {
-  CUSTOM_REQUEST_LABELS,
-  type ArtisanSubOrder,
-  type CustomRequest,
-} from "@lib/marketplace-types"
+import type { ArtisanSubOrder, CustomRequest } from "@lib/marketplace-types"
 import { formatDateTime, formatVnd } from "@lib/util/vn-format"
 import RespondCustomRequest from "@modules/artisan-portal/components/respond-custom-request"
 import SubOrderCard from "@modules/artisan-portal/components/sub-order-card"
@@ -19,18 +15,28 @@ const TABS: {
   requests?: CustomRequest["status"][]
   orders?: ArtisanSubOrder["status"][]
 }[] = [
-  { key: "", label: "Yêu cầu mới", requests: ["pending"] },
-  { key: "bao-gia", label: "Chờ khách quyết định", requests: ["quoted", "accepted"] },
-  { key: "dang-lam", label: "Đang làm", orders: ["processing"] },
-  { key: "giao-hang", label: "Giao hàng", orders: ["ready_to_ship", "shipping", "delivered"] },
-  { key: "hoan-thanh", label: "Hoàn thành", orders: ["completed"] },
+  { key: "", label: "New requests", requests: ["pending"] },
+  { key: "bao-gia", label: "Awaiting customer decision", requests: ["quoted", "accepted"] },
+  { key: "dang-lam", label: "In progress", orders: ["processing"] },
+  { key: "giao-hang", label: "Delivery", orders: ["ready_to_ship", "shipping", "delivered"] },
+  { key: "hoan-thanh", label: "Completed", orders: ["completed"] },
   {
     key: "da-huy",
-    label: "Đã huỷ / từ chối",
+    label: "Canceled / declined",
     requests: ["artisan_declined", "customer_declined"],
     orders: ["canceled"],
   },
 ]
+
+// The shared labels speak to the customer ("You declined"); these speak to the artisan.
+const REQUEST_LABELS: Record<CustomRequest["status"], string> = {
+  pending: "Awaiting your quote",
+  quoted: "Quote sent",
+  artisan_declined: "You declined",
+  accepted: "Accepted — awaiting payment",
+  customer_declined: "Customer declined",
+  ordered: "Ordered",
+}
 
 const RequestCard = ({ request }: { request: CustomRequest }) => (
   <div className="rounded-2xl border border-yarnly-line bg-white p-4 small:p-5">
@@ -38,27 +44,27 @@ const RequestCard = ({ request }: { request: CustomRequest }) => (
       <div>
         <p className="font-yarnly text-lg tracking-[-0.01em]">{request.product_title}</p>
         <p className="txt-small text-yarnly-muted">
-          {request.customer_name ?? "Khách hàng"} · {formatDateTime(request.created_at)}
+          {request.customer_name ?? "Customer"} · {formatDateTime(request.created_at)}
         </p>
       </div>
       <span className="rounded-full bg-yarnly-sage px-3 py-1 text-[12px] font-medium text-yarnly-moss-dark">
-        {CUSTOM_REQUEST_LABELS[request.status]}
+        {REQUEST_LABELS[request.status]}
       </span>
     </div>
     <p className="mt-3 txt-medium leading-relaxed">
-      <span className="font-medium">{request.quantity} cái</span> · {request.description}
+      <span className="font-medium">{request.quantity} {request.quantity === 1 ? "item" : "items"}</span> · {request.description}
     </p>
     {(request.color || request.size) && (
       <p className="mt-1 txt-small text-yarnly-muted">
-        {request.color && `Màu: ${request.color}`}
+        {request.color && `Color: ${request.color}`}
         {request.color && request.size && " · "}
-        {request.size && `Kích thước: ${request.size}`}
+        {request.size && `Size: ${request.size}`}
       </p>
     )}
     {request.quoted_price !== null && (
       <p className="mt-3 border-t border-yarnly-line pt-3 txt-small">
-        Bạn đã báo <strong>{formatVnd(request.quoted_price)}</strong>/cái · {request.quoted_lead_days} ngày
-        {request.status === "accepted" && " · khách đã đồng ý, đang chờ khách thanh toán"}
+        You quoted <strong>{formatVnd(request.quoted_price)}</strong>/item · {request.quoted_lead_days} days
+        {request.status === "accepted" && " · the customer accepted and is completing payment"}
       </p>
     )}
     {request.status === "pending" && <RespondCustomRequest requestId={request.id} />}
@@ -86,12 +92,12 @@ export default async function ArtisanCustomOrdersPage(props: {
   return (
     <div className="flex flex-col gap-6">
       <PageHeader
-        eyebrow="Đơn hàng"
-        title="Đơn làm riêng"
-        description="Bạn báo giá và số ngày làm một lần. Khách đồng ý thì thanh toán chuyển khoản (kèm phí ship GHN), đơn vào mục Đang làm; làm xong bấm “Đã làm xong” để Yarnly giao hàng như đơn thường."
+        eyebrow="Orders"
+        title="Custom orders"
+        description="You quote a price and production time once. If the customer accepts, they pay by bank transfer (shipping included) and the order moves to In progress. When it is finished, mark it Ready and Yarnly ships it like any other order."
       />
       <FilterTabs
-        label="Lọc đơn làm riêng"
+        label="Filter custom orders"
         tabs={TABS.map((t) => {
           const { requests, orders } = inTab(t)
 
@@ -118,8 +124,8 @@ export default async function ArtisanCustomOrdersPage(props: {
         </ul>
       ) : (
         <EmptyState
-          title="Không có gì ở mục này"
-          description="Khi khách gửi yêu cầu làm riêng cho sản phẩm của bạn, yêu cầu sẽ hiện ở “Yêu cầu mới”."
+          title="Nothing here yet"
+          description="When a customer sends a custom request for one of your products, it appears under New requests."
         />
       )}
     </div>

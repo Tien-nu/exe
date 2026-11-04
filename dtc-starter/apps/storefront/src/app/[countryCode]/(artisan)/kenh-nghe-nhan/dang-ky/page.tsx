@@ -15,9 +15,9 @@ export default async function ArtisanRegisterPage(props: {
   return (
     <AuthShell
       wide
-      eyebrow="Mở gian hàng"
-      title="Đăng ký làm nghệ nhân"
-      description="Mở gian hàng đồ len handmade trên Yarnly. Admin sẽ duyệt đăng ký của bạn."
+      eyebrow="Open a shop"
+      title="Become a Yarnly artisan"
+      description="Open a handmade crochet shop on Yarnly. An admin will review your registration."
     >
       <ArtisanRegisterForm />
     </AuthShell>

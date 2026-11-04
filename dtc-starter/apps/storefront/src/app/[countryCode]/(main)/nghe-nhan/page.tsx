@@ -8,8 +8,8 @@ import { Metadata } from "next"
 import Image from "next/image"
 
 export const metadata: Metadata = {
-  title: "Nghệ nhân | Yarnly",
-  description: "Các gian hàng đồ len handmade trên Yarnly.",
+  title: "Artisans | Yarnly",
+  description: "Handmade crochet shops on Yarnly.",
 }
 
 export default async function ArtisansPage() {
@@ -20,40 +20,40 @@ export default async function ArtisansPage() {
       <section className="content-container grid grid-cols-1 gap-10 pb-12 pt-12 small:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] small:items-center small:gap-16 small:pb-20 small:pt-20">
         <div className="flex flex-col gap-5">
           <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-yarnly-moss">
-            Gặp gỡ nghệ nhân
+            Meet the artisans
           </p>
           <h1 className="font-yarnly text-[40px] leading-[1.05] tracking-[-0.04em] small:text-[64px]">
-            Những đôi tay đứng sau mỗi món len.
+            The hands behind every crochet piece.
           </h1>
           <p className="max-w-xl txt-large leading-relaxed text-yarnly-muted">
-            Mỗi món đồ len trên Yarnly được làm bởi một nghệ nhân thật. Chọn một gian hàng để xem
-            sản phẩm của họ, hoặc gửi yêu cầu làm riêng theo ý bạn.
+            Every crochet piece on Yarnly is made by a real artisan. Choose a shop to see their
+            products, or send a custom request for something made just for you.
           </p>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-2">
             <a
               href="#gian-hang"
               className="inline-flex h-12 items-center gap-3 rounded-lg border border-yarnly-ink bg-yarnly-ink px-6 text-sm font-medium text-yarnly-paper transition-colors hover:bg-yarnly-paper hover:text-yarnly-ink"
             >
-              Xem các gian hàng
+              Browse shops
               <ArrowRightMini />
             </a>
             <span className="flex items-center gap-2 txt-small text-yarnly-muted">
               <PixelIcon kind="yarn" className="h-5 w-5" />
-              {artisans.length} gian hàng đang mở
+              {artisans.length} {artisans.length === 1 ? "shop" : "shops"} open
             </span>
           </div>
         </div>
         <div className="relative aspect-[4/3] overflow-hidden rounded-3xl small:aspect-[5/4]">
           <Image
             src="/images/yarnly-studio-yarn.webp"
-            alt="Ba cuộn len lông mềm màu trắng, xanh xám và nâu nhạt đặt trên khay gỗ"
+            alt="Three soft balls of yarn in white, grey-blue and light brown on a wooden tray"
             fill
             priority
             sizes="(min-width: 1024px) 45vw, 100vw"
             className="object-cover"
           />
           <span className="absolute bottom-4 left-4 rounded-full bg-white/90 px-4 py-2 txt-small text-yarnly-ink backdrop-blur">
-            Làm bằng đôi tay, gửi bằng yêu thương
+            Made by hand, sent with love
           </span>
         </div>
       </section>
@@ -62,9 +62,9 @@ export default async function ArtisansPage() {
         <div className="content-container py-12 small:py-16">
           <div className="mb-8 flex flex-wrap items-end justify-between gap-3">
             <h2 className="font-yarnly text-[30px] leading-tight tracking-[-0.03em] small:text-[40px]">
-              Các gian hàng
+              Shops
             </h2>
-            <p className="txt-small text-yarnly-muted">{artisans.length} nghệ nhân</p>
+            <p className="txt-small text-yarnly-muted">{artisans.length} {artisans.length === 1 ? "artisan" : "artisans"}</p>
           </div>
           {artisans.length ? (
             <ul className="grid grid-cols-1 gap-5 xsmall:grid-cols-2 medium:grid-cols-3">
@@ -77,9 +77,9 @@ export default async function ArtisansPage() {
           ) : (
             <div className="flex flex-col items-center gap-3 rounded-2xl border border-dashed border-[#cfd3c6] bg-yarnly-cream px-6 py-14 text-center">
               <PixelIcon kind="yarn" className="h-10 w-10" />
-              <p className="font-yarnly text-xl">Chưa có gian hàng nào</p>
+              <p className="font-yarnly text-xl">No shops yet</p>
               <p className="max-w-sm txt-small text-yarnly-muted">
-                Các nghệ nhân đầu tiên sẽ sớm có mặt ở đây.
+                The first artisans will be here soon.
               </p>
             </div>
           )}
@@ -101,27 +101,27 @@ export default async function ArtisansPage() {
           />
           <div className="flex max-w-xl flex-col gap-4">
             <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-white/80">
-              Kênh nghệ nhân Yarnly
+              Yarnly Artisan Portal
             </p>
             <h2 className="font-yarnly text-[30px] leading-tight tracking-[-0.03em] small:text-[42px]">
-              Bạn là người làm đồ len handmade?
+              Do you make handmade crochet?
             </h2>
             <p className="txt-medium leading-relaxed text-white/85">
-              Mở gian hàng miễn phí trên Yarnly, nhận đơn và nhận tiền mỗi thứ Hai.
+              Open a free shop on Yarnly, receive orders, and get paid every Monday.
             </p>
             <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-2">
               <LocalizedClientLink
                 href="/kenh-nghe-nhan/dang-ky"
                 className="inline-flex h-12 items-center gap-3 rounded-lg bg-yarnly-paper px-6 text-sm font-medium text-yarnly-ink transition-colors hover:bg-white"
               >
-                Đăng ký làm nghệ nhân
+                Become an artisan
                 <ArrowRightMini />
               </LocalizedClientLink>
               <LocalizedClientLink
                 href="/kenh-nghe-nhan/dang-nhap"
                 className="txt-small text-white/85 underline decoration-white/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
               >
-                Đã có gian hàng? Đăng nhập
+                Already have a shop? Sign in
               </LocalizedClientLink>
             </div>
           </div>

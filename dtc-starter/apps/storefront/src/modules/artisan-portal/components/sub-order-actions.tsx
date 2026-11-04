@@ -30,30 +30,30 @@ export default function SubOrderActions({ subOrder }: { subOrder: ArtisanSubOrde
       <div className="flex flex-wrap gap-2">
         <Button
           isLoading={pending}
-          onClick={() => run(() => acceptSubOrder(subOrder.id), `Đã nhận đơn ${subOrder.code}`)}
+          onClick={() => run(() => acceptSubOrder(subOrder.id), `Accepted order ${subOrder.code}`)}
         >
-          Nhận đơn
+          Accepted
         </Button>
         <Button
           variant="secondary"
           disabled={pending}
           onClick={async () => {
             const reason = await ask({
-              title: `Từ chối đơn ${subOrder.code}?`,
-              description: "Khách sẽ thấy lý do này. Nếu khách đã chuyển khoản, Yarnly sẽ hoàn tiền.",
-              label: "Lý do từ chối",
-              placeholder: "VD: Hết len màu khách chọn",
+              title: `Decline order ${subOrder.code}?`,
+              description: "The customer will see this reason. If they have paid by bank transfer, Yarnly will arrange a refund.",
+              label: "Reason for declining",
+              placeholder: "e.g. The requested yarn color is out of stock",
               multiline: true,
               required: true,
-              confirmText: "Từ chối đơn",
+              confirmText: "Decline order",
               tone: "danger",
             })
             if (reason) {
-              run(() => declineSubOrder(subOrder.id, reason), `Đã từ chối đơn ${subOrder.code}`)
+              run(() => declineSubOrder(subOrder.id, reason), `Declined order ${subOrder.code}`)
             }
           }}
         >
-          Từ chối
+          Decline
         </Button>
       </div>
     )
@@ -65,20 +65,20 @@ export default function SubOrderActions({ subOrder }: { subOrder: ArtisanSubOrde
         isLoading={pending}
         onClick={async () => {
           const ok = await confirm({
-            title: "Đã làm xong và đóng gói?",
-            description: "Yarnly sẽ tạo đơn vận chuyển và shipper sẽ tới địa chỉ lấy hàng của bạn.",
-            confirmText: "Đã làm xong",
-            cancelText: "Chưa",
+            title: "Is the order finished and packed?",
+            description: "Yarnly will arrange shipment and the carrier will collect it from your pickup address.",
+            confirmText: "Mark as ready",
+            cancelText: "Not yet",
           })
           if (ok) {
             run(
               () => markSubOrderReady(subOrder.id),
-              "Đã báo Yarnly – shipper sẽ tới lấy hàng"
+              "Yarnly notified — awaiting collection"
             )
           }
         }}
       >
-        Đã làm xong – chờ giao hàng
+        Ready — awaiting shipment
       </Button>
     )
   }

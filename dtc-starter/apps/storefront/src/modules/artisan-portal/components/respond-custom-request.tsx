@@ -21,7 +21,7 @@ export default function RespondCustomRequest({ requestId }: { requestId: string 
         note: String(formData.get("note") ?? "") || undefined,
       })
       if (result.error) toast.error(result.error)
-      else toast.success(accept ? "Đã gửi báo giá cho khách" : "Đã từ chối yêu cầu")
+      else toast.success(accept ? "Quote sent to the customer" : "Request declined")
       router.refresh()
     })
 
@@ -31,22 +31,22 @@ export default function RespondCustomRequest({ requestId }: { requestId: string 
       action={(formData) => submit(formData, true)}
     >
       <div className="grid grid-cols-1 gap-3 small:grid-cols-2">
-        <Field label="Giá mỗi cái (₫)">
+        <Field label="Price per item (VND)">
           <input name="price" type="number" min={1000} step={1000} required className={fieldClass} />
         </Field>
-        <Field label="Số ngày làm">
+        <Field label="Production time (days)">
           <input name="lead_days" type="number" min={1} max={120} required className={fieldClass} />
         </Field>
       </div>
-      <Field label="Lời nhắn cho khách (tuỳ chọn)">
+      <Field label="Message to customer (optional)">
         <input name="note" className={fieldClass} />
       </Field>
       <p className="txt-small text-yarnly-muted">
-        Bạn chỉ trả lời được một lần. Khách đồng ý thì đơn vào thẳng trạng thái “Đang làm” sau khi thanh toán.
+        You can reply only once. If the customer accepts and pays, the order moves directly to In progress.
       </p>
       <div className="flex flex-wrap gap-2">
         <Button type="submit" size="small" isLoading={pending}>
-          Gửi báo giá
+          Send quote
         </Button>
         <Button
           type="button"
@@ -56,15 +56,15 @@ export default function RespondCustomRequest({ requestId }: { requestId: string 
           onClick={async (event) => {
             const form = event.currentTarget.form
             const ok = await confirm({
-              title: "Từ chối yêu cầu làm riêng này?",
-              description: "Bạn chỉ trả lời được một lần; khách sẽ được báo là bạn từ chối.",
-              confirmText: "Từ chối",
+              title: "Decline this custom request?",
+              description: "You can reply only once. The customer will be notified that you declined.",
+              confirmText: "Decline",
               tone: "danger",
             })
             if (ok) submit(new FormData(form ?? undefined), false)
           }}
         >
-          Từ chối
+          Decline
         </Button>
       </div>
     </form>
