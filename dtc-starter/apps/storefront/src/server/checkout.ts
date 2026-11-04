@@ -101,7 +101,6 @@ export async function checkout(request: Request, path: string[]) {
       display_id: counter.value, customer_id: cart.customer_id, email: cart.email,
       currency_code: cart.currency_code, items_total: total.item_total,
       payment_method: "bank_transfer", payment_status: "awaiting_transfer", payment_mode: paymentMode,
-      payment_provider: paymentMode === "simulation" ? "simulation" : "payos",
       payment_deadline: new Date(+now + PAYMENT_WINDOW), created_at: now, updated_at: now,
     }, { session })
     for (let index = 0; index < quote.parcels.length; index++) {

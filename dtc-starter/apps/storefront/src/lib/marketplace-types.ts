@@ -92,8 +92,6 @@ export type ArtisanSubOrder = SubOrderBase & {
 
 export type MarketplaceOrder = {
   payment_mode?: "bank" | "simulation"
-  payment_provider?: "payos" | "sepay" | "simulation" | null
-  payment_url?: string | null
   qr_payment_token?: string | null
   id: string
   order_id: string
