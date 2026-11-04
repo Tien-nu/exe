@@ -41,8 +41,10 @@ const Notice = ({
 /** Bank transfer instructions and server-verified payment status. */
 export default function BankTransferBox({
   order,
+  autoOpenPayment = false,
 }: {
   order: MarketplaceOrder
+  autoOpenPayment?: boolean
 }) {
   const router = useRouter()
   const qrPayment = order.payment_mode === "simulation"
@@ -51,6 +53,7 @@ export default function BankTransferBox({
   const [linkLoading, setLinkLoading] = useState(false)
   const [linkError, setLinkError] = useState<string | null>(null)
   const linkRequestStarted = useRef(false)
+  const redirectStarted = useRef(false)
   const secondsLeft = useSecondsLeft(order.payment_deadline)
   const canCreatePayment = secondsLeft > 0
   const shops = Array.from(
@@ -104,6 +107,13 @@ export default function BankTransferBox({
       void createPayOSLink()
     }
   }, [payOSPayment, order.payment_status, canCreatePayment, paymentUrl, createPayOSLink])
+
+  useEffect(() => {
+    if (autoOpenPayment && payOSPayment && paymentUrl && canCreatePayment && order.payment_status === "awaiting_transfer" && !redirectStarted.current) {
+      redirectStarted.current = true
+      window.location.assign(paymentUrl)
+    }
+  }, [autoOpenPayment, payOSPayment, paymentUrl, canCreatePayment, order.payment_status])
 
   if (order.payment_method !== "bank_transfer") {
     return null

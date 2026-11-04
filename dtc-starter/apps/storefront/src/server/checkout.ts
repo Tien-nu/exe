@@ -1,4 +1,4 @@
-import { simulatedPaymentsEnabled } from "./qr-payment-token"
+import { payOSClient } from "./payos"
 import { randomUUID } from "node:crypto"
 import type { Document } from "mongodb"
 import { database, transaction } from "./mongodb"
@@ -36,6 +36,8 @@ export async function checkout(request: Request, path: string[]) {
     })
   }
   if (path[0] !== "carts" || path.length !== 3 || path[2] !== "complete" || request.method !== "POST") return undefined
+  // New checkouts use real PayOS payments even if a legacy simulation flag remains.
+  payOSClient()
   const highest = await db.collection("orders").findOne({}, { sort: { display_id: -1 }, projection: { display_id: 1 } })
   await db.collection("counters").updateOne({ id: "order_display" }, { $max: { value: Number(highest?.display_id ?? 0) } }, { upsert: true })
   return transaction(async (db, session) => {
@@ -91,17 +93,17 @@ export async function checkout(request: Request, path: string[]) {
     const lineIds = quote.parcels.flatMap((parcel: Document) => parcel.line_item_ids)
     if (lineIds.length !== cart.items.length || new Set(lineIds).size !== lineIds.length || cart.items.some((item: Document) => !lineIds.includes(item.id))) throw new ApiError(409, "Shipping parcels do not match the cart")
     const total = cartTotals({ ...cart, items })
-    const paymentMode = simulatedPaymentsEnabled() ? "simulation" : "bank"
+    const paymentMode = "bank"
     const order = { ...total, id: orderId, cart_id: cart.id, display_id: counter.value,
       status: "pending", created_at: now, updated_at: now, completed_at: null,
-      metadata: { ...cart.metadata, payment_mode: paymentMode, is_simulated: paymentMode === "simulation" },
+      metadata: { ...cart.metadata, payment_mode: paymentMode, is_simulated: false },
       payment_status: "awaiting", fulfillment_status: "not_fulfilled" }
     await db.collection("orders").insertOne(order, { session })
     await db.collection("marketplace_orders").insertOne({ id: marketplaceId, order_id: orderId,
       display_id: counter.value, customer_id: cart.customer_id, email: cart.email,
       currency_code: cart.currency_code, items_total: total.item_total,
       payment_method: "bank_transfer", payment_status: "awaiting_transfer", payment_mode: paymentMode,
-      payment_provider: paymentMode === "simulation" ? "simulation" : "payos",
+      payment_provider: "payos",
       payment_deadline: new Date(+now + PAYMENT_WINDOW), created_at: now, updated_at: now,
     }, { session })
     for (let index = 0; index < quote.parcels.length; index++) {

@@ -25,7 +25,7 @@ export default async function CheckoutForm({
           <Payment
             cart={cart}
             availablePaymentMethods={paymentMethods}
-            qrPayment={process.env.PAYMENT_MODE === "simulation"}
+            qrPayment={false}
           />
           <Review cart={cart} />
         </>
